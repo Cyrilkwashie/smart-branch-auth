@@ -31,8 +31,8 @@ const Login = () => {
       <div className="flex w-full lg:w-1/2 flex-col justify-center px-6 sm:px-12 lg:px-16">
         <div className="w-full max-w-sm mx-auto space-y-8">
           {/* Logo/Brand */}
-          <div className="space-y-2">
-            <h1 className="text-3xl font-bold text-foreground tracking-tight">Smart Branch</h1>
+          <div className="text-center space-y-2">
+            <h1 className="text-5xl font-bold text-primary tracking-tight">Smart Branch</h1>
           </div>
 
           {/* Login Form */}
