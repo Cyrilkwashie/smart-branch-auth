@@ -38,6 +38,12 @@ All colors MUST be HSL.
 
     --radius: 0.75rem;
 
+    /* Custom design tokens */
+    --shadow-soft: 0 2px 8px -2px hsl(220 13% 18% / 0.08);
+    --shadow-medium: 0 4px 16px -4px hsl(220 13% 18% / 0.12);
+    --shadow-strong: 0 8px 32px -8px hsl(220 13% 18% / 0.16);
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
     --sidebar-background: 0 0% 98%;
 
     --sidebar-foreground: 240 5.3% 26.1%;
@@ -101,5 +107,14 @@ All colors MUST be HSL.
 
   body {
     @apply bg-background text-foreground;
+  }
+
+  /* Custom utility classes */
+  .input-focus {
+    @apply focus:ring-2 focus:ring-primary/20 focus:border-primary transition-all duration-200;
+  }
+
+  .button-primary {
+    @apply bg-primary text-primary-foreground hover:bg-primary/90 transition-all duration-200 shadow-md hover:shadow-lg;
   }
 }
