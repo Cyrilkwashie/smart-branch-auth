@@ -28,23 +28,17 @@ const Login = () => {
       </div>
 
       {/* Right Side - Login Form */}
-      <div className="flex w-full lg:w-1/2 flex-col justify-center px-6 sm:px-12 lg:px-20 xl:px-32">
-        <div className="w-full max-w-md mx-auto">
+      <div className="flex w-full lg:w-1/2 flex-col justify-center px-6 sm:px-12 lg:px-16">
+        <div className="w-full max-w-sm mx-auto space-y-8">
           {/* Logo/Brand */}
-          <div className="mb-10 animate-fade-in">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/5 mb-8">
-              <div className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-              <span className="text-sm font-medium text-primary">Secure Banking Platform</span>
-            </div>
-            <h1 className="text-4xl font-bold text-foreground mb-3 tracking-tight">Smart Branch</h1>
-            <p className="text-muted-foreground text-sm">Banking made simple and secure</p>
+          <div className="space-y-2">
+            <h1 className="text-3xl font-bold text-foreground tracking-tight">Smart Branch</h1>
           </div>
 
           {/* Login Form */}
-          <div className="space-y-6 animate-fade-in" style={{ animationDelay: "0.1s" }}>
+          <div className="space-y-6">
             <div>
-              <h2 className="text-2xl font-semibold text-foreground mb-2">Welcome Back</h2>
-              <p className="text-muted-foreground text-sm">Please sign in to continue</p>
+              <h2 className="text-xl font-semibold text-foreground">Welcome Back</h2>
             </div>
 
             <form onSubmit={handleSubmit} className="space-y-5">
