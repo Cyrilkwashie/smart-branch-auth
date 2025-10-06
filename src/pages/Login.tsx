@@ -17,7 +17,17 @@ const Login = () => {
 
   return (
     <div className="flex min-h-screen bg-gradient-to-br from-background to-muted/20">
-      {/* Left Side - Login Form */}
+      {/* Left Side - Image */}
+      <div className="hidden lg:block lg:w-1/2 relative overflow-hidden">
+        <div 
+          className="absolute inset-0 bg-cover bg-center"
+          style={{ backgroundImage: `url(${bankingHero})` }}
+        >
+          <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent" />
+        </div>
+      </div>
+
+      {/* Right Side - Login Form */}
       <div className="flex w-full lg:w-1/2 flex-col justify-center px-6 sm:px-12 lg:px-20 xl:px-32">
         <div className="w-full max-w-md mx-auto">
           {/* Logo/Brand */}
@@ -116,30 +126,6 @@ const Login = () => {
                 <button className="text-primary hover:text-primary/80 font-medium transition-colors">
                   Contact your administrator
                 </button>
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Right Side - Image */}
-      <div className="hidden lg:block lg:w-1/2 relative overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{ backgroundImage: `url(${bankingHero})` }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-br from-primary/20 to-transparent" />
-        </div>
-        
-        {/* Overlay Content */}
-        <div className="absolute inset-0 flex items-end p-12">
-          <div className="text-white space-y-4 max-w-lg">
-            <div className="backdrop-blur-sm bg-white/10 rounded-2xl p-8 border border-white/20">
-              <h3 className="text-3xl font-bold mb-3">
-                Modern Banking Experience
-              </h3>
-              <p className="text-white/90 text-lg leading-relaxed">
-                Access your accounts securely with our state-of-the-art banking platform designed for your convenience.
               </p>
             </div>
           </div>
