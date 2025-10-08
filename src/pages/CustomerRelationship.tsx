@@ -1,7 +1,20 @@
-import { Search, Filter, User, TrendingUp, Target } from "lucide-react";
+import {
+  Search,
+  Filter,
+  User,
+  TrendingUp,
+  Target,
+  Phone,
+  Mail,
+  MapPin,
+  Calendar,
+  DollarSign,
+  CreditCard,
+  Eye,
+} from "lucide-react";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
-import { ThemeToggle } from "@/components/ThemeToggle";
+import AppHeader from "@/components/AppHeader";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import {
@@ -11,21 +24,591 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import {
-  Table,
-  TableBody,
-  TableCell,
-  TableHead,
-  TableHeader,
-  TableRow,
-} from "@/components/ui/table";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from "@/components/ui/dialog";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Separator } from "@/components/ui/separator";
+import { useState } from "react";
 
 const customers = [
-  { name: "Jane Doe", account: "#123456", products: "Savings, Loan", balance: "$60K" },
-  { name: "John Smith", account: "#789012", products: "Checking, Credit Card", balance: "$45K" },
-  { name: "Sarah Wilson", account: "#345678", products: "Savings, Investment", balance: "$120K" },
+  {
+    id: 1,
+    name: "Jane Doe",
+    account: "ACC-2024-001234",
+    products: ["Savings", "Loan"],
+    balance: "$60K",
+    avatar:
+      "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face&auto=format&q=80",
+    email: "jane.doe@email.com",
+    phone: "+1 (555) 123-4567",
+    address: "123 Main St, Downtown",
+    riskLevel: "Low",
+    profitability: "$2K/year",
+    engagement: "85/100",
+    lastActivity: "2024-01-15",
+    joinDate: "2022-03-10",
+    segment: "Premium",
+    transactions: [
+      {
+        date: "2024-01-15",
+        type: "Deposit",
+        amount: "+$2,500",
+        description: "Salary Deposit",
+      },
+      {
+        date: "2024-01-10",
+        type: "Withdrawal",
+        amount: "-$500",
+        description: "ATM Withdrawal",
+      },
+      {
+        date: "2024-01-05",
+        type: "Transfer",
+        amount: "+$1,200",
+        description: "Transfer from Savings",
+      },
+    ],
+  },
+  {
+    id: 2,
+    name: "John Smith",
+    account: "ACC-2024-005678",
+    products: ["Checking", "Credit Card"],
+    balance: "$45K",
+    avatar:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face&auto=format&q=80",
+    email: "john.smith@email.com",
+    phone: "+1 (555) 987-6543",
+    address: "456 Oak Ave, Midtown",
+    riskLevel: "Medium",
+    profitability: "$1.5K/year",
+    engagement: "72/100",
+    lastActivity: "2024-01-14",
+    joinDate: "2021-08-22",
+    segment: "Standard",
+    transactions: [
+      {
+        date: "2024-01-14",
+        type: "Payment",
+        amount: "-$150",
+        description: "Credit Card Payment",
+      },
+      {
+        date: "2024-01-12",
+        type: "Deposit",
+        amount: "+$3,200",
+        description: "Direct Deposit",
+      },
+      {
+        date: "2024-01-08",
+        type: "Purchase",
+        amount: "-$89",
+        description: "Online Purchase",
+      },
+    ],
+  },
+  {
+    id: 3,
+    name: "Sarah Wilson",
+    account: "ACC-2024-009012",
+    products: ["Savings", "Investment"],
+    balance: "$120K",
+    avatar:
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face&auto=format&q=80",
+    email: "sarah.wilson@email.com",
+    phone: "+1 (555) 456-7890",
+    address: "789 Pine St, Uptown",
+    riskLevel: "Low",
+    profitability: "$5K/year",
+    engagement: "92/100",
+    lastActivity: "2024-01-16",
+    joinDate: "2020-11-05",
+    segment: "Premium",
+    transactions: [
+      {
+        date: "2024-01-16",
+        type: "Investment",
+        amount: "+$5,000",
+        description: "Mutual Fund Purchase",
+      },
+      {
+        date: "2024-01-13",
+        type: "Transfer",
+        amount: "+$2,000",
+        description: "Savings Transfer",
+      },
+      {
+        date: "2024-01-09",
+        type: "Dividend",
+        amount: "+$450",
+        description: "Investment Dividend",
+      },
+    ],
+  },
+  {
+    id: 4,
+    name: "Michael Johnson",
+    account: "ACC-2024-003456",
+    products: ["Checking", "Savings"],
+    balance: "$35K",
+    avatar:
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face&auto=format&q=80",
+    email: "michael.johnson@email.com",
+    phone: "+1 (555) 234-5678",
+    address: "321 Elm St, Riverside",
+    riskLevel: "Low",
+    profitability: "$1.8K/year",
+    engagement: "78/100",
+    lastActivity: "2024-01-13",
+    joinDate: "2021-05-15",
+    segment: "Standard",
+    transactions: [
+      {
+        date: "2024-01-13",
+        type: "Deposit",
+        amount: "+$1,800",
+        description: "Salary Deposit",
+      },
+      {
+        date: "2024-01-10",
+        type: "Transfer",
+        amount: "-$300",
+        description: "Bill Payment",
+      },
+      {
+        date: "2024-01-07",
+        type: "Deposit",
+        amount: "+$500",
+        description: "Bonus",
+      },
+    ],
+  },
+  {
+    id: 5,
+    name: "Emily Davis",
+    account: "ACC-2024-007890",
+    products: ["Credit Card", "Loan"],
+    balance: "$28K",
+    avatar:
+      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face&auto=format&q=80",
+    email: "emily.davis@email.com",
+    phone: "+1 (555) 345-6789",
+    address: "654 Maple Ave, Hillside",
+    riskLevel: "Medium",
+    profitability: "$1.2K/year",
+    engagement: "65/100",
+    lastActivity: "2024-01-12",
+    joinDate: "2022-01-20",
+    segment: "Standard",
+    transactions: [
+      {
+        date: "2024-01-12",
+        type: "Payment",
+        amount: "-$200",
+        description: "Credit Card Payment",
+      },
+      {
+        date: "2024-01-09",
+        type: "Purchase",
+        amount: "-$150",
+        description: "Grocery Shopping",
+      },
+      {
+        date: "2024-01-06",
+        type: "Deposit",
+        amount: "+$2,100",
+        description: "Direct Deposit",
+      },
+    ],
+  },
+  {
+    id: 6,
+    name: "David Brown",
+    account: "ACC-2024-001122",
+    products: ["Investment", "Savings"],
+    balance: "$95K",
+    avatar:
+      "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face&auto=format&q=80",
+    email: "david.brown@email.com",
+    phone: "+1 (555) 456-7891",
+    address: "987 Cedar Ln, Valley",
+    riskLevel: "Low",
+    profitability: "$4.2K/year",
+    engagement: "88/100",
+    lastActivity: "2024-01-16",
+    joinDate: "2019-09-12",
+    segment: "Premium",
+    transactions: [
+      {
+        date: "2024-01-16",
+        type: "Investment",
+        amount: "+$3,500",
+        description: "Stock Purchase",
+      },
+      {
+        date: "2024-01-14",
+        type: "Dividend",
+        amount: "+$320",
+        description: "Quarterly Dividend",
+      },
+      {
+        date: "2024-01-11",
+        type: "Transfer",
+        amount: "+$1,000",
+        description: "Savings Transfer",
+      },
+    ],
+  },
+  {
+    id: 7,
+    name: "Lisa Garcia",
+    account: "ACC-2024-003344",
+    products: ["Checking", "Credit Card", "Loan"],
+    balance: "$52K",
+    avatar:
+      "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face&auto=format&q=80",
+    email: "lisa.garcia@email.com",
+    phone: "+1 (555) 567-8901",
+    address: "147 Birch St, Lakeside",
+    riskLevel: "Low",
+    profitability: "$2.8K/year",
+    engagement: "82/100",
+    lastActivity: "2024-01-15",
+    joinDate: "2020-07-08",
+    segment: "Premium",
+    transactions: [
+      {
+        date: "2024-01-15",
+        type: "Deposit",
+        amount: "+$2,800",
+        description: "Salary Deposit",
+      },
+      {
+        date: "2024-01-13",
+        type: "Payment",
+        amount: "-$180",
+        description: "Loan Payment",
+      },
+      {
+        date: "2024-01-10",
+        type: "Purchase",
+        amount: "-$95",
+        description: "Restaurant",
+      },
+    ],
+  },
+  {
+    id: 8,
+    name: "Robert Miller",
+    account: "ACC-2024-005566",
+    products: ["Savings"],
+    balance: "$18K",
+    avatar:
+      "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&h=150&fit=crop&crop=face&auto=format&q=80",
+    email: "robert.miller@email.com",
+    phone: "+1 (555) 678-9012",
+    address: "258 Spruce Ave, Mountain",
+    riskLevel: "High",
+    profitability: "$800/year",
+    engagement: "45/100",
+    lastActivity: "2024-01-08",
+    joinDate: "2023-02-14",
+    segment: "Standard",
+    transactions: [
+      {
+        date: "2024-01-08",
+        type: "Deposit",
+        amount: "+$1,200",
+        description: "Part-time Income",
+      },
+      {
+        date: "2024-01-05",
+        type: "Withdrawal",
+        amount: "-$200",
+        description: "Cash Withdrawal",
+      },
+      {
+        date: "2024-01-02",
+        type: "Deposit",
+        amount: "+$800",
+        description: "Gift",
+      },
+    ],
+  },
+  {
+    id: 9,
+    name: "Jennifer Martinez",
+    account: "ACC-2024-007788",
+    products: ["Checking", "Savings", "Investment"],
+    balance: "$78K",
+    avatar:
+      "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=150&h=150&fit=crop&crop=face&auto=format&q=80",
+    email: "jennifer.martinez@email.com",
+    phone: "+1 (555) 789-0123",
+    address: "369 Willow Dr, Garden",
+    riskLevel: "Low",
+    profitability: "$3.5K/year",
+    engagement: "90/100",
+    lastActivity: "2024-01-16",
+    joinDate: "2018-11-25",
+    segment: "Premium",
+    transactions: [
+      {
+        date: "2024-01-16",
+        type: "Investment",
+        amount: "+$2,000",
+        description: "ETF Purchase",
+      },
+      {
+        date: "2024-01-14",
+        type: "Deposit",
+        amount: "+$3,500",
+        description: "Salary Deposit",
+      },
+      {
+        date: "2024-01-12",
+        type: "Transfer",
+        amount: "-$500",
+        description: "Investment Transfer",
+      },
+    ],
+  },
+  {
+    id: 10,
+    name: "Christopher Lee",
+    account: "ACC-2024-009900",
+    products: ["Credit Card"],
+    balance: "$12K",
+    avatar:
+      "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=150&h=150&fit=crop&crop=face&auto=format&q=80",
+    email: "christopher.lee@email.com",
+    phone: "+1 (555) 890-1234",
+    address: "741 Oakwood Ln, Forest",
+    riskLevel: "High",
+    profitability: "$600/year",
+    engagement: "38/100",
+    lastActivity: "2024-01-07",
+    joinDate: "2023-06-30",
+    segment: "Standard",
+    transactions: [
+      {
+        date: "2024-01-07",
+        type: "Payment",
+        amount: "-$100",
+        description: "Minimum Payment",
+      },
+      {
+        date: "2024-01-04",
+        type: "Purchase",
+        amount: "-$75",
+        description: "Gas Station",
+      },
+      {
+        date: "2024-01-01",
+        type: "Purchase",
+        amount: "-$120",
+        description: "Online Shopping",
+      },
+    ],
+  },
+  {
+    id: 11,
+    name: "Amanda Taylor",
+    account: "****-****-****-1123",
+    products: ["Savings", "Loan", "Credit Card"],
+    balance: "$67K",
+    avatar:
+      "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face&auto=format&q=80",
+    email: "amanda.taylor@email.com",
+    phone: "+1 (555) 901-2345",
+    address: "852 Pinecrest Rd, Summit",
+    riskLevel: "Low",
+    profitability: "$3.1K/year",
+    engagement: "86/100",
+    lastActivity: "2024-01-15",
+    joinDate: "2020-03-18",
+    segment: "Premium",
+    transactions: [
+      {
+        date: "2024-01-15",
+        type: "Deposit",
+        amount: "+$3,100",
+        description: "Salary Deposit",
+      },
+      {
+        date: "2024-01-13",
+        type: "Payment",
+        amount: "-$250",
+        description: "Loan Payment",
+      },
+      {
+        date: "2024-01-10",
+        type: "Purchase",
+        amount: "-$85",
+        description: "Coffee Shop",
+      },
+    ],
+  },
+  {
+    id: 12,
+    name: "Daniel Anderson",
+    account: "****-****-****-4455",
+    products: ["Checking", "Investment"],
+    balance: "$89K",
+    avatar:
+      "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face&auto=format&q=80",
+    email: "daniel.anderson@email.com",
+    phone: "+1 (555) 012-3456",
+    address: "963 Redwood Blvd, Canyon",
+    riskLevel: "Low",
+    profitability: "$4.0K/year",
+    engagement: "87/100",
+    lastActivity: "2024-01-14",
+    joinDate: "2019-12-05",
+    segment: "Premium",
+    transactions: [
+      {
+        date: "2024-01-14",
+        type: "Investment",
+        amount: "+$4,000",
+        description: "Bond Purchase",
+      },
+      {
+        date: "2024-01-12",
+        type: "Deposit",
+        amount: "+$3,800",
+        description: "Salary Deposit",
+      },
+      {
+        date: "2024-01-09",
+        type: "Dividend",
+        amount: "+$280",
+        description: "Monthly Dividend",
+      },
+    ],
+  },
+  {
+    id: 13,
+    name: "Rachel White",
+    account: "****-****-****-6677",
+    products: ["Savings", "Credit Card"],
+    balance: "$41K",
+    avatar:
+      "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face&auto=format&q=80",
+    email: "rachel.white@email.com",
+    phone: "+1 (555) 123-4568",
+    address: "159 Aspen Way, Meadow",
+    riskLevel: "Medium",
+    profitability: "$1.9K/year",
+    engagement: "74/100",
+    lastActivity: "2024-01-13",
+    joinDate: "2021-10-12",
+    segment: "Standard",
+    transactions: [
+      {
+        date: "2024-01-13",
+        type: "Deposit",
+        amount: "+$1,900",
+        description: "Salary Deposit",
+      },
+      {
+        date: "2024-01-10",
+        type: "Purchase",
+        amount: "-$65",
+        description: "Pharmacy",
+      },
+      {
+        date: "2024-01-07",
+        type: "Payment",
+        amount: "-$120",
+        description: "Credit Card Payment",
+      },
+    ],
+  },
+  {
+    id: 14,
+    name: "Kevin Thompson",
+    account: "****-****-****-8899",
+    products: ["Checking", "Savings", "Loan"],
+    balance: "$55K",
+    avatar:
+      "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face&auto=format&q=80",
+    email: "kevin.thompson@email.com",
+    phone: "+1 (555) 234-5679",
+    address: "357 Cypress Ct, Grove",
+    riskLevel: "Low",
+    profitability: "$2.5K/year",
+    engagement: "81/100",
+    lastActivity: "2024-01-15",
+    joinDate: "2020-08-20",
+    segment: "Premium",
+    transactions: [
+      {
+        date: "2024-01-15",
+        type: "Deposit",
+        amount: "+$2,500",
+        description: "Salary Deposit",
+      },
+      {
+        date: "2024-01-12",
+        type: "Payment",
+        amount: "-$220",
+        description: "Loan Payment",
+      },
+      {
+        date: "2024-01-09",
+        type: "Transfer",
+        amount: "+$800",
+        description: "Savings Transfer",
+      },
+    ],
+  },
+  {
+    id: 15,
+    name: "Michelle Clark",
+    account: "****-****-****-0011",
+    products: ["Investment", "Credit Card"],
+    balance: "$73K",
+    avatar:
+      "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face&auto=format&q=80",
+    email: "michelle.clark@email.com",
+    phone: "+1 (555) 345-6780",
+    address: "468 Magnolia Dr, Park",
+    riskLevel: "Low",
+    profitability: "$3.3K/year",
+    engagement: "89/100",
+    lastActivity: "2024-01-16",
+    joinDate: "2019-04-15",
+    segment: "Premium",
+    transactions: [
+      {
+        date: "2024-01-16",
+        type: "Investment",
+        amount: "+$3,300",
+        description: "Index Fund Purchase",
+      },
+      {
+        date: "2024-01-14",
+        type: "Purchase",
+        amount: "-$45",
+        description: "Bookstore",
+      },
+      {
+        date: "2024-01-11",
+        type: "Dividend",
+        amount: "+$195",
+        description: "Quarterly Dividend",
+      },
+    ],
+  },
 ];
 
 const opportunities = [
@@ -47,27 +630,134 @@ const opportunities = [
     status: "Open",
     nextAction: "Schedule meeting",
   },
+  {
+    customer: "Michael Johnson",
+    opportunity: "Investment Account Setup",
+    status: "Open",
+    nextAction: "Initial consultation",
+  },
+  {
+    customer: "Emily Davis",
+    opportunity: "Debt Consolidation",
+    status: "In Progress",
+    nextAction: "Review application",
+  },
+  {
+    customer: "David Brown",
+    opportunity: "Portfolio Review",
+    status: "Open",
+    nextAction: "Schedule review call",
+  },
+  {
+    customer: "Lisa Garcia",
+    opportunity: "Home Equity Loan",
+    status: "Open",
+    nextAction: "Property assessment",
+  },
+  {
+    customer: "Robert Miller",
+    opportunity: "Financial Planning",
+    status: "Open",
+    nextAction: "Needs assessment",
+  },
+  {
+    customer: "Jennifer Martinez",
+    opportunity: "Retirement Planning",
+    status: "In Progress",
+    nextAction: "Present options",
+  },
+  {
+    customer: "Christopher Lee",
+    opportunity: "Credit Improvement",
+    status: "Open",
+    nextAction: "Credit counseling",
+  },
+  {
+    customer: "Amanda Taylor",
+    opportunity: "Business Loan",
+    status: "Open",
+    nextAction: "Business plan review",
+  },
+  {
+    customer: "Daniel Anderson",
+    opportunity: "Tax Optimization",
+    status: "In Progress",
+    nextAction: "Tax strategy meeting",
+  },
+  {
+    customer: "Rachel White",
+    opportunity: "Emergency Fund Setup",
+    status: "Open",
+    nextAction: "Savings plan discussion",
+  },
+  {
+    customer: "Kevin Thompson",
+    opportunity: "Insurance Review",
+    status: "Open",
+    nextAction: "Coverage assessment",
+  },
+  {
+    customer: "Michelle Clark",
+    opportunity: "Estate Planning",
+    status: "In Progress",
+    nextAction: "Will and trust setup",
+  },
 ];
 
 const CustomerRelationship = () => {
+  const [selectedCustomer, setSelectedCustomer] = useState<
+    (typeof customers)[0] | null
+  >(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [searchTerm, setSearchTerm] = useState("");
+  const [selectedSegment, setSelectedSegment] = useState("all");
+
+  const openCustomerModal = (customer: (typeof customers)[0]) => {
+    setSelectedCustomer(customer);
+    setIsModalOpen(true);
+  };
+
+  const handleSearch = () => {
+    // Search is handled in real-time, but this could trigger additional search logic if needed
+  };
+
+  const handleClear = () => {
+    setSearchTerm("");
+    setSelectedSegment("all");
+  };
+
+  const filteredCustomers = customers.filter((customer) => {
+    const matchesSearch =
+      customer.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      customer.phone.includes(searchTerm) ||
+      customer.account.toLowerCase().includes(searchTerm.toLowerCase()) ||
+      customer.email.toLowerCase().includes(searchTerm.toLowerCase());
+
+    const matchesSegment =
+      selectedSegment === "all" ||
+      (selectedSegment === "premium" && customer.segment === "Premium") ||
+      (selectedSegment === "standard" && customer.segment === "Standard") ||
+      (selectedSegment === "new" &&
+        new Date(customer.joinDate) >
+          new Date(Date.now() - 365 * 24 * 60 * 60 * 1000)); // New customers joined in last year
+
+    return matchesSearch && matchesSegment;
+  });
+
   return (
     <SidebarProvider defaultOpen={true}>
       <div className="min-h-screen flex w-full bg-gradient-to-br from-background via-background to-muted/20">
         <AppSidebar />
         <main className="flex-1 flex flex-col">
-          {/* Header */}
-          <header className="sticky top-0 z-10 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
-            <div className="flex h-16 items-center justify-between px-6">
-              <div className="flex items-center gap-4">
-                <SidebarTrigger />
-                <div>
-                  <h1 className="text-2xl font-bold">Customer Relationship</h1>
-                  <p className="text-sm text-muted-foreground">Manage customer interactions and opportunities</p>
-                </div>
-              </div>
-              <ThemeToggle />
+          <AppHeader>
+            <SidebarTrigger />
+            <div>
+              <h1 className="text-2xl font-bold">Customer Relationship</h1>
+              <p className="text-sm text-muted-foreground">
+                Manage customer interactions and opportunities
+              </p>
             </div>
-          </header>
+          </AppHeader>
 
           {/* Content */}
           <div className="flex-1 p-6 space-y-6">
@@ -84,8 +774,13 @@ const CustomerRelationship = () => {
                   <Input
                     placeholder="Search by name, phone, account number..."
                     className="flex-1 h-11"
+                    value={searchTerm}
+                    onChange={(e) => setSearchTerm(e.target.value)}
                   />
-                  <Select defaultValue="all">
+                  <Select
+                    value={selectedSegment}
+                    onValueChange={setSelectedSegment}
+                  >
                     <SelectTrigger className="w-48 h-11">
                       <SelectValue placeholder="Segment: All" />
                     </SelectTrigger>
@@ -96,134 +791,387 @@ const CustomerRelationship = () => {
                       <SelectItem value="new">New Customers</SelectItem>
                     </SelectContent>
                   </Select>
-                  <Button className="h-11 px-8">Search</Button>
-                  <Button variant="outline" className="h-11 px-8">Clear</Button>
+                  <Button className="h-11 px-8" onClick={handleSearch}>
+                    Search
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="h-11 px-8"
+                    onClick={handleClear}
+                  >
+                    Clear
+                  </Button>
                 </div>
               </CardContent>
             </Card>
 
-            {/* Customer 360° View */}
-            <Card className="shadow-lg border-2">
-              <CardHeader className="pb-4">
-                <CardTitle className="flex items-center gap-2 text-xl">
-                  <User className="h-5 w-5 text-primary" />
-                  Customer 360° View
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="rounded-lg border overflow-hidden">
-                  <Table>
-                    <TableHeader>
-                      <TableRow className="bg-primary/10 hover:bg-primary/10">
-                        <TableHead className="font-bold text-foreground">Name</TableHead>
-                        <TableHead className="font-bold text-foreground">Account Number</TableHead>
-                        <TableHead className="font-bold text-foreground">Products</TableHead>
-                        <TableHead className="font-bold text-foreground text-right">Balance</TableHead>
-                      </TableRow>
-                    </TableHeader>
-                    <TableBody>
-                      {customers.map((customer, index) => (
-                        <TableRow key={index} className="hover:bg-muted/50 cursor-pointer transition-colors">
-                          <TableCell className="font-medium">{customer.name}</TableCell>
-                          <TableCell className="text-muted-foreground">{customer.account}</TableCell>
-                          <TableCell>{customer.products}</TableCell>
-                          <TableCell className="text-right font-semibold">{customer.balance}</TableCell>
-                        </TableRow>
-                      ))}
-                    </TableBody>
-                  </Table>
-                </div>
-              </CardContent>
-            </Card>
-
-            {/* Bottom Row - Customer Insights & Lead Tracker */}
-            <div className="grid md:grid-cols-2 gap-6">
-              {/* Customer Insights */}
-              <Card className="shadow-lg border-2">
-                <CardHeader className="pb-4">
-                  <CardTitle className="flex items-center gap-2 text-xl">
-                    <TrendingUp className="h-5 w-5 text-primary" />
-                    Customer Insights
-                  </CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-4">
-                  <div className="p-4 rounded-lg border bg-muted/30">
-                    <p className="text-sm">
-                      <span className="font-bold">Jane Doe:</span>{" "}
-                      <Badge variant="outline" className="bg-green-500/10 text-green-700 dark:text-green-400 border-green-500/20">
-                        Low Risk
-                      </Badge>
-                      {", "}
-                      Profitability: <span className="font-semibold">$2K/year</span>, Engagement:{" "}
-                      <span className="font-semibold">85/100</span>
-                    </p>
-                  </div>
-                  <div className="p-4 rounded-lg border bg-muted/30">
-                    <p className="text-sm">
-                      <span className="font-bold">John Smith:</span>{" "}
-                      <Badge variant="outline" className="bg-yellow-500/10 text-yellow-700 dark:text-yellow-400 border-yellow-500/20">
-                        Medium Risk
-                      </Badge>
-                      {", "}
-                      Profitability: <span className="font-semibold">$1.5K/year</span>, Engagement:{" "}
-                      <span className="font-semibold">72/100</span>
-                    </p>
-                  </div>
-                  <div className="p-4 rounded-lg border bg-muted/30">
-                    <p className="text-sm">
-                      <span className="font-bold">Sarah Wilson:</span>{" "}
-                      <Badge variant="outline" className="bg-green-500/10 text-green-700 dark:text-green-400 border-green-500/20">
-                        Low Risk
-                      </Badge>
-                      {", "}
-                      Profitability: <span className="font-semibold">$5K/year</span>, Engagement:{" "}
-                      <span className="font-semibold">92/100</span>
-                    </p>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Lead & Opportunity Tracker */}
-              <Card className="shadow-lg border-2">
-                <CardHeader className="pb-4">
-                  <CardTitle className="flex items-center gap-2 text-xl">
-                    <Target className="h-5 w-5 text-primary" />
-                    Lead & Opportunity Tracker
-                  </CardTitle>
-                </CardHeader>
-                <CardContent>
-                  <div className="rounded-lg border overflow-hidden">
-                    <Table>
-                      <TableHeader>
-                        <TableRow className="bg-primary/10 hover:bg-primary/10">
-                          <TableHead className="font-bold text-foreground">Customer</TableHead>
-                          <TableHead className="font-bold text-foreground">Opportunity</TableHead>
-                          <TableHead className="font-bold text-foreground">Status</TableHead>
-                          <TableHead className="font-bold text-foreground">Next Action</TableHead>
-                        </TableRow>
-                      </TableHeader>
-                      <TableBody>
-                        {opportunities.map((opp, index) => (
-                          <TableRow key={index} className="hover:bg-muted/50 transition-colors">
-                            <TableCell className="font-medium">{opp.customer}</TableCell>
-                            <TableCell className="text-sm">{opp.opportunity}</TableCell>
-                            <TableCell>
+            {/* Customer Cards */}
+            <div className="space-y-4">
+              <div className="flex items-center justify-between">
+                <h2 className="text-xl font-semibold">
+                  Customers ({filteredCustomers.length})
+                </h2>
+                {filteredCustomers.length !== customers.length && (
+                  <p className="text-sm text-muted-foreground">
+                    Showing {filteredCustomers.length} of {customers.length}{" "}
+                    customers
+                  </p>
+                )}
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {filteredCustomers.map((customer) => (
+                  <Card
+                    key={customer.id}
+                    className="cursor-pointer hover:shadow-lg transition-all hover:-translate-y-1 border-2 hover:border-primary/50"
+                    onClick={() => openCustomerModal(customer)}
+                  >
+                    <CardContent className="p-6">
+                      <div className="flex items-start gap-4">
+                        <Avatar className="h-16 w-16 border-2 border-primary/20">
+                          <AvatarImage src={customer.avatar} />
+                          <AvatarFallback className="bg-gradient-to-br from-primary/20 to-primary/10 text-primary font-bold">
+                            {customer.name
+                              .split(" ")
+                              .map((n) => n[0])
+                              .join("")}
+                          </AvatarFallback>
+                        </Avatar>
+                        <div className="flex-1 min-w-0">
+                          <div className="flex items-start justify-between mb-2">
+                            <div>
+                              <h3 className="font-bold text-lg truncate">
+                                {customer.name}
+                              </h3>
+                              <p className="text-sm text-muted-foreground">
+                                {customer.account}
+                              </p>
+                            </div>
+                            <Eye className="h-5 w-5 text-muted-foreground hover:text-primary transition-colors" />
+                          </div>
+                          <div className="space-y-2">
+                            <div className="flex items-center gap-2">
                               <Badge
-                                variant={opp.status === "Open" ? "default" : "secondary"}
-                                className="font-medium"
+                                variant="outline"
+                                className={`${
+                                  customer.segment === "Premium"
+                                    ? "bg-yellow-500/10 text-yellow-700 dark:text-yellow-400 border-yellow-500/20"
+                                    : "bg-blue-500/10 text-blue-700 dark:text-blue-400 border-blue-500/20"
+                                }`}
                               >
-                                {opp.status}
+                                {customer.segment}
                               </Badge>
-                            </TableCell>
-                            <TableCell className="text-sm">{opp.nextAction}</TableCell>
-                          </TableRow>
-                        ))}
-                      </TableBody>
-                    </Table>
-                  </div>
-                </CardContent>
-              </Card>
+                              <Badge
+                                variant="outline"
+                                className={`${
+                                  customer.riskLevel === "Low"
+                                    ? "bg-green-500/10 text-green-700 dark:text-green-400 border-green-500/20"
+                                    : customer.riskLevel === "Medium"
+                                    ? "bg-yellow-500/10 text-yellow-700 dark:text-yellow-400 border-yellow-500/20"
+                                    : "bg-red-500/10 text-red-700 dark:text-red-400 border-red-500/20"
+                                }`}
+                              >
+                                {customer.riskLevel} Risk
+                              </Badge>
+                            </div>
+                            <div className="flex items-center justify-between text-sm">
+                              <span className="text-muted-foreground">
+                                Balance:
+                              </span>
+                              <span className="font-bold text-lg">
+                                {customer.balance}
+                              </span>
+                            </div>
+                            <div className="flex flex-wrap gap-1">
+                              {customer.products.map((product, index) => (
+                                <Badge
+                                  key={index}
+                                  variant="secondary"
+                                  className="text-xs"
+                                >
+                                  {product}
+                                </Badge>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </CardContent>
+                  </Card>
+                ))}
+              </div>
             </div>
+
+            {/* Customer Detail Modal */}
+            <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
+              <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
+                <DialogHeader>
+                  <DialogTitle className="flex items-center gap-3">
+                    <Avatar className="h-12 w-12">
+                      <AvatarImage src={selectedCustomer?.avatar} />
+                      <AvatarFallback className="bg-gradient-to-br from-primary/20 to-primary/10 text-primary font-bold">
+                        {selectedCustomer?.name
+                          .split(" ")
+                          .map((n) => n[0])
+                          .join("")}
+                      </AvatarFallback>
+                    </Avatar>
+                    <div>
+                      <h2 className="text-2xl font-bold">
+                        {selectedCustomer?.name}
+                      </h2>
+                      <p className="text-muted-foreground">
+                        {selectedCustomer?.account}
+                      </p>
+                    </div>
+                  </DialogTitle>
+                  <DialogDescription>
+                    Complete customer profile and transaction history
+                  </DialogDescription>
+                </DialogHeader>
+
+                {selectedCustomer && (
+                  <div className="space-y-6">
+                    {/* Basic Info */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                      <Card>
+                        <CardHeader>
+                          <CardTitle className="text-lg flex items-center gap-2">
+                            <User className="h-5 w-5" />
+                            Personal Information
+                          </CardTitle>
+                        </CardHeader>
+                        <CardContent className="space-y-3">
+                          <div className="flex items-center gap-3">
+                            <Mail className="h-4 w-4 text-muted-foreground" />
+                            <span className="text-sm">
+                              {selectedCustomer.email}
+                            </span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <Phone className="h-4 w-4 text-muted-foreground" />
+                            <span className="text-sm">
+                              {selectedCustomer.phone}
+                            </span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <MapPin className="h-4 w-4 text-muted-foreground" />
+                            <span className="text-sm">
+                              {selectedCustomer.address}
+                            </span>
+                          </div>
+                          <div className="flex items-center gap-3">
+                            <Calendar className="h-4 w-4 text-muted-foreground" />
+                            <span className="text-sm">
+                              Joined:{" "}
+                              {new Date(
+                                selectedCustomer.joinDate
+                              ).toLocaleDateString()}
+                            </span>
+                          </div>
+                        </CardContent>
+                      </Card>
+
+                      <Card>
+                        <CardHeader>
+                          <CardTitle className="text-lg flex items-center gap-2">
+                            <DollarSign className="h-5 w-5" />
+                            Financial Overview
+                          </CardTitle>
+                        </CardHeader>
+                        <CardContent className="space-y-3">
+                          <div className="flex justify-between">
+                            <span className="text-sm text-muted-foreground">
+                              Current Balance:
+                            </span>
+                            <span className="font-bold text-lg">
+                              {selectedCustomer.balance}
+                            </span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-sm text-muted-foreground">
+                              Profitability:
+                            </span>
+                            <span className="font-semibold">
+                              {selectedCustomer.profitability}
+                            </span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-sm text-muted-foreground">
+                              Engagement:
+                            </span>
+                            <span className="font-semibold">
+                              {selectedCustomer.engagement}
+                            </span>
+                          </div>
+                          <div className="flex justify-between">
+                            <span className="text-sm text-muted-foreground">
+                              Risk Level:
+                            </span>
+                            <Badge
+                              variant="outline"
+                              className={`${
+                                selectedCustomer.riskLevel === "Low"
+                                  ? "bg-green-500/10 text-green-700 dark:text-green-400 border-green-500/20"
+                                  : selectedCustomer.riskLevel === "Medium"
+                                  ? "bg-yellow-500/10 text-yellow-700 dark:text-yellow-400 border-yellow-500/20"
+                                  : "bg-red-500/10 text-red-700 dark:text-red-400 border-red-500/20"
+                              }`}
+                            >
+                              {selectedCustomer.riskLevel}
+                            </Badge>
+                          </div>
+                        </CardContent>
+                      </Card>
+                    </div>
+
+                    {/* Products */}
+                    <Card>
+                      <CardHeader>
+                        <CardTitle className="text-lg flex items-center gap-2">
+                          <CreditCard className="h-5 w-5" />
+                          Active Products
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="flex flex-wrap gap-2">
+                          {selectedCustomer.products.map((product, index) => (
+                            <Badge
+                              key={index}
+                              variant="secondary"
+                              className="px-3 py-1"
+                            >
+                              {product}
+                            </Badge>
+                          ))}
+                        </div>
+                      </CardContent>
+                    </Card>
+
+                    {/* Customer Insights */}
+                    <Card>
+                      <CardHeader>
+                        <CardTitle className="text-lg flex items-center gap-2">
+                          <TrendingUp className="h-5 w-5" />
+                          Customer Insights
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent className="space-y-4">
+                        <div className="p-4 rounded-lg border bg-muted/30">
+                          <p className="text-sm">
+                            <span className="font-bold">Risk Level:</span>{" "}
+                            <Badge
+                              variant="outline"
+                              className={`${
+                                selectedCustomer.riskLevel === "Low"
+                                  ? "bg-green-500/10 text-green-700 dark:text-green-400 border-green-500/20"
+                                  : selectedCustomer.riskLevel === "Medium"
+                                  ? "bg-yellow-500/10 text-yellow-700 dark:text-yellow-400 border-yellow-500/20"
+                                  : "bg-red-500/10 text-red-700 dark:text-red-400 border-red-500/20"
+                              }`}
+                            >
+                              {selectedCustomer.riskLevel}
+                            </Badge>
+                            {", "}
+                            Profitability:{" "}
+                            <span className="font-semibold">
+                              {selectedCustomer.profitability}
+                            </span>
+                            , Engagement:{" "}
+                            <span className="font-semibold">
+                              {selectedCustomer.engagement}
+                            </span>
+                          </p>
+                        </div>
+                        <div className="p-4 rounded-lg border bg-muted/30">
+                          <p className="text-sm">
+                            <span className="font-bold">Last Activity:</span>{" "}
+                            {new Date(
+                              selectedCustomer.lastActivity
+                            ).toLocaleDateString()}
+                          </p>
+                        </div>
+                        <div className="p-4 rounded-lg border bg-muted/30">
+                          <p className="text-sm">
+                            <span className="font-bold">Customer Segment:</span>{" "}
+                            <Badge
+                              variant="outline"
+                              className={`${
+                                selectedCustomer.segment === "Premium"
+                                  ? "bg-yellow-500/10 text-yellow-700 dark:text-yellow-400 border-yellow-500/20"
+                                  : "bg-blue-500/10 text-blue-700 dark:text-blue-400 border-blue-500/20"
+                              }`}
+                            >
+                              {selectedCustomer.segment}
+                            </Badge>
+                          </p>
+                        </div>
+                      </CardContent>
+                    </Card>
+
+                    {/* Lead & Opportunity Tracker */}
+                    <Card>
+                      <CardHeader>
+                        <CardTitle className="text-lg flex items-center gap-2">
+                          <Target className="h-5 w-5" />
+                          Opportunities & Leads
+                        </CardTitle>
+                      </CardHeader>
+                      <CardContent>
+                        <div className="space-y-4">
+                          {opportunities
+                            .filter(
+                              (opp) => opp.customer === selectedCustomer.name
+                            )
+                            .map((opp, index) => (
+                              <Card
+                                key={index}
+                                className="hover:shadow-md transition-all cursor-pointer border-2 hover:border-primary/50"
+                              >
+                                <CardContent className="p-4">
+                                  <div className="space-y-3">
+                                    <div className="flex items-start justify-between">
+                                      <div className="flex-1">
+                                        <h4 className="font-semibold text-sm mb-1">
+                                          {opp.opportunity}
+                                        </h4>
+                                        <p className="text-xs text-muted-foreground">
+                                          {opp.customer}
+                                        </p>
+                                      </div>
+                                      <Badge
+                                        variant={
+                                          opp.status === "Open"
+                                            ? "default"
+                                            : "secondary"
+                                        }
+                                        className="text-xs"
+                                      >
+                                        {opp.status}
+                                      </Badge>
+                                    </div>
+                                    <div className="flex items-center gap-2 text-xs text-muted-foreground">
+                                      <Calendar className="h-3 w-3" />
+                                      <span>{opp.nextAction}</span>
+                                    </div>
+                                  </div>
+                                </CardContent>
+                              </Card>
+                            ))}
+                          {opportunities.filter(
+                            (opp) => opp.customer === selectedCustomer.name
+                          ).length === 0 && (
+                            <div className="text-center py-8 text-muted-foreground">
+                              <Target className="h-12 w-12 mx-auto mb-2 opacity-50" />
+                              <p>No active opportunities for this customer</p>
+                            </div>
+                          )}
+                        </div>
+                      </CardContent>
+                    </Card>
+                  </div>
+                )}
+              </DialogContent>
+            </Dialog>
           </div>
         </main>
       </div>
