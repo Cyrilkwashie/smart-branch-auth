@@ -1,4 +1,4 @@
-import { Home, Users, DollarSign, FileText, Settings, LogOut, BarChart3 } from "lucide-react";
+import { Home, Users, DollarSign, FileText, Settings, LogOut, BarChart3, TrendingUp, Building, CreditCard, UserPlus, BookCheck, MessageSquare, Shield } from "lucide-react";
 import { NavLink } from "react-router-dom";
 import {
   Sidebar,
@@ -15,11 +15,15 @@ import {
 } from "@/components/ui/sidebar";
 
 const items = [
-  { title: "Dashboard", url: "/dashboard", icon: Home },
-  { title: "Customers", url: "/customers", icon: Users },
-  { title: "Portfolio", url: "/portfolio", icon: DollarSign },
-  { title: "Analytics", url: "/analytics", icon: BarChart3 },
-  { title: "Reports", url: "/reports", icon: FileText },
+  { title: "Dashboard Summary", url: "/dashboard", icon: Home },
+  { title: "Customer Relationship", url: "/customers", icon: Users },
+  { title: "Transaction & Account Management", url: "/transactions", icon: Building },
+  { title: "Analytics & Reporting", url: "/analytics", icon: TrendingUp },
+  { title: "Operations & Compliance", url: "/operations", icon: Shield },
+  { title: "Communication & Engagement", url: "/communication", icon: MessageSquare },
+  { title: "Cheque Book Request", url: "/cheque-request", icon: BookCheck },
+  { title: "Card Request", url: "/card-request", icon: CreditCard },
+  { title: "Account Opening", url: "/account-opening", icon: UserPlus },
   { title: "Settings", url: "/settings", icon: Settings },
 ];
 

@@ -1,15 +1,16 @@
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
+import { ThemeToggle } from "@/components/ThemeToggle";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Progress } from "@/components/ui/progress";
 import { Separator } from "@/components/ui/separator";
-import { Bell, TrendingUp, TrendingDown, Users, DollarSign, Calendar, AlertCircle, CheckCircle2, Clock, Cake, Award, Target, Briefcase, Mail, Phone, MapPin, Star, ArrowUpRight, ArrowDownRight } from "lucide-react";
+import { Bell, TrendingUp, TrendingDown, Users, DollarSign, Calendar, AlertCircle, CheckCircle2, Clock, Cake, Award, Target, Briefcase, Mail, Phone, MapPin, ArrowUpRight, ArrowDownRight } from "lucide-react";
 
 const Dashboard = () => {
   return (
-    <SidebarProvider>
+    <SidebarProvider defaultOpen={true}>
       <div className="flex min-h-screen w-full bg-gradient-to-br from-background via-muted/20 to-background">
         <AppSidebar />
         <div className="flex-1 flex flex-col">
@@ -23,6 +24,7 @@ const Dashboard = () => {
               </div>
             </div>
             <div className="flex items-center gap-2">
+              <ThemeToggle />
               <button className="relative p-2 hover:bg-accent rounded-lg transition-colors">
                 <Bell className="h-5 w-5" />
                 <span className="absolute top-1 right-1 h-2 w-2 bg-red-500 rounded-full animate-pulse"></span>
@@ -107,22 +109,6 @@ const Dashboard = () => {
                             </div>
                           </div>
 
-                          <Separator />
-
-                          {/* Quick Stats */}
-                          <div className="grid grid-cols-2 gap-4">
-                            <div className="text-center p-3 rounded-lg bg-muted/50">
-                              <p className="text-2xl font-bold">4.8</p>
-                              <p className="text-xs text-muted-foreground flex items-center justify-center gap-1">
-                                <Star className="h-3 w-3 fill-yellow-500 text-yellow-500" />
-                                Rating
-                              </p>
-                            </div>
-                            <div className="text-center p-3 rounded-lg bg-muted/50">
-                              <p className="text-2xl font-bold">3Y</p>
-                              <p className="text-xs text-muted-foreground">Experience</p>
-                            </div>
-                          </div>
                         </div>
                       </div>
                     </div>
