@@ -37,12 +37,10 @@ export function AppSidebar() {
           <div className="h-8 w-8 rounded-lg bg-primary flex items-center justify-center">
             <BarChart3 className="h-5 w-5 text-primary-foreground" />
           </div>
-          {open && (
-            <div className="flex flex-col">
-              <span className="font-bold text-lg">Smart Branch</span>
-              <span className="text-xs text-muted-foreground">RM Dashboard</span>
-            </div>
-          )}
+          <div className="flex flex-col group-data-[collapsible=icon]:hidden">
+            <span className="font-bold text-lg">Smart Branch</span>
+            <span className="text-xs text-muted-foreground">RM Dashboard</span>
+          </div>
         </div>
       </SidebarHeader>
 
@@ -62,7 +60,7 @@ export function AppSidebar() {
                       }
                     >
                       <item.icon className="h-4 w-4" />
-                      {open && <span>{item.title}</span>}
+                      <span>{item.title}</span>
                     </NavLink>
                   </SidebarMenuButton>
                 </SidebarMenuItem>
@@ -81,7 +79,7 @@ export function AppSidebar() {
                 className="hover:bg-destructive/10 hover:text-destructive w-full"
               >
                 <LogOut className="h-4 w-4" />
-                {open && <span>Logout</span>}
+                <span>Logout</span>
               </button>
             </SidebarMenuButton>
           </SidebarMenuItem>
