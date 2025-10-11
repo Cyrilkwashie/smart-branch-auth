@@ -38,13 +38,13 @@ const Dashboard = () => {
             <div>
               <h1 className="text-xl font-semibold">Dashboard Overview</h1>
               <p className="text-sm text-muted-foreground">
-                Welcome back, John!
+                Welcome back, Cyril!
               </p>
             </div>
           </AppHeader>
 
           <main className="flex-1 p-6 overflow-auto">
-            <div className="max-w-7xl mx-auto space-y-6 animate-fade-in">
+            <div className="space-y-6 animate-fade-in">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
                 {/* RM Profile Card - Left Side */}
                 <div className="lg:col-span-4">
@@ -71,7 +71,7 @@ const Dashboard = () => {
                         {/* Profile Info */}
                         <div className="space-y-4">
                           <div>
-                            <h2 className="text-2xl font-bold">John Doe</h2>
+                            <h2 className="text-2xl font-bold">Cyril Kwashie</h2>
                             <p className="text-sm text-muted-foreground">
                               Relationship Manager
                             </p>
@@ -117,7 +117,7 @@ const Dashboard = () => {
                                   Email
                                 </p>
                                 <p className="font-medium text-xs">
-                                  john.doe@smartbranch.com
+                                  cyril.kwashie@smartbranch.com
                                 </p>
                               </div>
                             </div>

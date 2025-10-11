@@ -14,7 +14,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 
 const SIDEBAR_COOKIE_NAME = "sidebar:state";
 const SIDEBAR_COOKIE_MAX_AGE = 60 * 60 * 24 * 7;
-const SIDEBAR_WIDTH = "16rem";
+const SIDEBAR_WIDTH = "18rem";
 const SIDEBAR_WIDTH_MOBILE = "18rem";
 const SIDEBAR_WIDTH_ICON = "3rem";
 const SIDEBAR_KEYBOARD_SHORTCUT = "b";
@@ -468,7 +468,7 @@ const SidebarMenuButton = React.forwardRef<
   return (
     <Tooltip>
       <TooltipTrigger asChild>{button}</TooltipTrigger>
-      <TooltipContent side="right" align="center" hidden={state !== "collapsed" || isMobile} {...tooltip} />
+      <TooltipContent side="right" align="center" className="max-w-none whitespace-nowrap z-50" {...tooltip} />
     </Tooltip>
   );
 });
@@ -585,11 +585,13 @@ const SidebarMenuSubButton = React.forwardRef<
     asChild?: boolean;
     size?: "sm" | "md";
     isActive?: boolean;
+    tooltip?: string | React.ComponentProps<typeof TooltipContent>;
   }
->(({ asChild = false, size = "md", isActive, className, ...props }, ref) => {
+>(({ asChild = false, size = "md", isActive, tooltip, className, ...props }, ref) => {
   const Comp = asChild ? Slot : "a";
+  const { isMobile, state } = useSidebar();
 
-  return (
+  const button = (
     <Comp
       ref={ref}
       data-sidebar="menu-sub-button"
@@ -605,6 +607,23 @@ const SidebarMenuSubButton = React.forwardRef<
       )}
       {...props}
     />
+  );
+
+  if (!tooltip) {
+    return button;
+  }
+
+  if (typeof tooltip === "string") {
+    tooltip = {
+      children: tooltip,
+    };
+  }
+
+  return (
+    <Tooltip delayDuration={200} disableHoverableContent>
+      <TooltipTrigger asChild>{button}</TooltipTrigger>
+      <TooltipContent side="top" align="start" className="max-w-none whitespace-nowrap z-50" {...tooltip} />
+    </Tooltip>
   );
 });
 SidebarMenuSubButton.displayName = "SidebarMenuSubButton";

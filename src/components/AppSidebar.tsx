@@ -40,7 +40,7 @@ const menuItems = [
   { title: "Dashboard", url: "/dashboard", icon: Home },
   { title: "Customer Relationship", url: "/customers", icon: Users },
   {
-    title: "Customer and Account Creation",
+    title: "Account Creation",
     icon: UserPlus,
     subItems: [
       { title: "Individual/Joint Account Creation", url: "/account-creation/individual" },
@@ -52,29 +52,44 @@ const menuItems = [
     icon: Building2,
     subItems: [
       { title: "Static Data Amendment", url: "/account-mgmt/static-data" },
-      { title: "Account Statement Request", url: "/account-mgmt/statement" },
       { title: "Additional Account", url: "/account-mgmt/additional" },
       { title: "Lien Creation", url: "/account-mgmt/lien-creation" },
       { title: "Lien Cancellation", url: "/account-mgmt/lien-cancellation" },
       { title: "Account Closure", url: "/account-mgmt/closure" },
       { title: "Dormant Account Reactivation", url: "/account-mgmt/reactivation" },
       { title: "Account Blockage/Unblockage", url: "/account-mgmt/blockage" },
-      { title: "ATM Request", url: "/account-mgmt/atm" },
       { title: "Account Notes", url: "/account-mgmt/notes" },
       { title: "Safe Custody", url: "/account-mgmt/safe-custody" },
     ],
   },
   {
-    title: "Cheques",
+    title: "Requests",
     icon: FileCheck,
     subItems: [
-      { title: "Counter Cheques", url: "/cheques/counter" },
-      { title: "Chequebook Request", url: "/cheques/request" },
-      { title: "Chequebook Maintenance", url: "/cheques/maintenance" },
-      { title: "Chequebook Issuance", url: "/cheques/issuance" },
-      { title: "Stopped Cheques", url: "/cheques/stopped" },
-      { title: "Untagged Stopped Cheques", url: "/cheques/untagged" },
-      { title: "Cheque Deposit", url: "/cheques/deposit" },
+      {
+        title: "Cheques",
+        subItems: [
+          { title: "Counter Cheques", url: "/cheques/counter" },
+          { title: "Chequebook Request", url: "/cheques/request" },
+          { title: "Chequebook Maintenance", url: "/cheques/maintenance" },
+          { title: "Chequebook Issuance", url: "/cheques/issuance" },
+          { title: "Stopped Cheques", url: "/cheques/stopped" },
+          { title: "Untagged Stopped Cheques", url: "/cheques/untagged" },
+          { title: "Cheque Deposit", url: "/cheques/deposit" },
+        ]
+      },
+      {
+        title: "Statement",
+        subItems: [
+          { title: "Account Statement Request", url: "/account-mgmt/statement" },
+        ]
+      },
+      {
+        title: "Card",
+        subItems: [
+          { title: "ATM Request", url: "/account-mgmt/atm" },
+        ]
+      }
     ],
   },
   {
@@ -128,7 +143,7 @@ const menuItems = [
     ],
   },
   {
-    title: "Treasury",
+    title: "Investment",
     icon: TrendingUp,
     subItems: [
       { title: "Treasury Bill", url: "/treasury/bill" },
@@ -159,36 +174,67 @@ export function AppSidebar() {
       <SidebarContent className="px-2 py-4">
         <SidebarGroup>
           <SidebarGroupContent>
-            <SidebarMenu className="space-y-1">
+            <SidebarMenu className="space-y-7">
               {menuItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   {item.subItems ? (
-                    <Collapsible defaultOpen={false}>
+                    <Collapsible defaultOpen={false} className="group/collapsible">
                       <CollapsibleTrigger asChild>
                         <SidebarMenuButton tooltip={item.title}>
-                          <item.icon className="h-4 w-4" />
-                          <span className="group-data-[collapsible=icon]:hidden">
+                          <item.icon className="h-4 w-4 text-sidebar-foreground" />
+                          <span className="group-data-[collapsible=icon]:hidden text-sidebar-foreground">
                             {item.title}
                           </span>
-                          <ChevronDown className="ml-auto h-4 w-4 transition-transform group-data-[collapsible=icon]:hidden group-data-[state=open]:rotate-180" />
+                          <ChevronDown className="ml-auto h-4 w-4 transition-transform duration-200 group-data-[collapsible=icon]:hidden group-data-[state=open]/collapsible:rotate-180" />
                         </SidebarMenuButton>
                       </CollapsibleTrigger>
                       <CollapsibleContent>
                         <SidebarMenuSub>
                           {item.subItems.map((subItem) => (
                             <SidebarMenuSubItem key={subItem.title}>
-                              <SidebarMenuSubButton asChild>
-                                <NavLink
-                                  to={subItem.url}
-                                  className={({ isActive }) =>
-                                    isActive
-                                      ? "bg-primary text-primary-foreground"
-                                      : ""
-                                  }
-                                >
-                                  <span>{subItem.title}</span>
-                                </NavLink>
-                              </SidebarMenuSubButton>
+                              {subItem.subItems ? (
+                                <Collapsible defaultOpen={false} className="group/sub-collapsible">
+                                  <CollapsibleTrigger asChild>
+                                    <SidebarMenuSubButton tooltip={subItem.title}>
+                                      <span className="text-sidebar-foreground">{subItem.title}</span>
+                                      <ChevronDown className="ml-auto h-3 w-3 transition-transform duration-200 group-data-[state=open]/sub-collapsible:rotate-180" />
+                                    </SidebarMenuSubButton>
+                                  </CollapsibleTrigger>
+                                  <CollapsibleContent>
+                                    <SidebarMenuSub>
+                                      {subItem.subItems.map((nestedItem) => (
+                                        <SidebarMenuSubItem key={nestedItem.title}>
+                                          <SidebarMenuSubButton asChild tooltip={nestedItem.title}>
+                                            <NavLink
+                                              to={nestedItem.url}
+                                              className={({ isActive }) =>
+                                                isActive
+                                                  ? "bg-sidebar-accent text-sidebar-accent-foreground"
+                                                  : "text-sidebar-foreground hover:text-sidebar-accent-foreground"
+                                              }
+                                            >
+                                              <span className="text-sidebar-foreground">{nestedItem.title}</span>
+                                            </NavLink>
+                                          </SidebarMenuSubButton>
+                                        </SidebarMenuSubItem>
+                                      ))}
+                                    </SidebarMenuSub>
+                                  </CollapsibleContent>
+                                </Collapsible>
+                              ) : (
+                                <SidebarMenuSubButton asChild tooltip={subItem.title}>
+                                  <NavLink
+                                    to={subItem.url}
+                                    className={({ isActive }) =>
+                                      isActive
+                                        ? "bg-sidebar-accent text-sidebar-accent-foreground"
+                                        : "text-sidebar-foreground hover:text-sidebar-accent-foreground"
+                                    }
+                                  >
+                                    <span className="text-sidebar-foreground">{subItem.title}</span>
+                                  </NavLink>
+                                </SidebarMenuSubButton>
+                              )}
                             </SidebarMenuSubItem>
                           ))}
                         </SidebarMenuSub>
@@ -201,11 +247,11 @@ export function AppSidebar() {
                         className={({ isActive }) =>
                           isActive
                             ? "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground"
-                            : ""
+                            : "text-sidebar-foreground hover:text-sidebar-accent-foreground"
                         }
                       >
-                        <item.icon className="h-4 w-4" />
-                        <span className="group-data-[collapsible=icon]:hidden">
+                        <item.icon className="h-4 w-4 text-sidebar-foreground" />
+                        <span className="group-data-[collapsible=icon]:hidden text-sidebar-foreground">
                           {item.title}
                         </span>
                       </NavLink>
