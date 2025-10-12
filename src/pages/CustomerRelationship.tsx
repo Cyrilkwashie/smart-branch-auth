@@ -764,113 +764,125 @@ const CustomerRelationship = () => {
         <main className="flex-1 flex flex-col">
           <AppHeader>
             <SidebarTrigger />
-            <div>
-              <h1 className="text-2xl font-bold">Customer Relationship</h1>
-              <p className="text-sm text-muted-foreground">
+            <div className="flex-1 min-w-0">
+              <h1 className="text-xl md:text-2xl font-bold truncate">Customer Relationship</h1>
+              <p className="text-xs md:text-sm text-muted-foreground truncate">
                 Manage customer interactions and opportunities
               </p>
             </div>
           </AppHeader>
 
           {/* Content */}
-          <div className="flex-1 p-6 space-y-6">
+          <div className="flex-1 p-3 md:p-6 space-y-4 md:space-y-6">
             {/* Search & Filter Section */}
             <Card className="shadow-lg border-2">
-              <CardHeader className="pb-4">
-                <CardTitle className="flex items-center gap-2 text-xl">
-                  <Search className="h-5 w-5 text-primary" />
-                  Customer Search & Filter
+              <CardHeader className="pb-3 md:pb-4">
+                <CardTitle className="flex items-center gap-2 text-lg md:text-xl">
+                  <Search className="h-4 w-4 md:h-5 md:w-5 text-primary" />
+                  <span className="truncate">Customer Search & Filter</span>
                 </CardTitle>
               </CardHeader>
               <CardContent>
-                <div className="flex gap-3">
+                <div className="space-y-3 md:space-y-0">
+                  {/* Search Input - Full width on mobile */}
                   <Input
-                    placeholder="Search by name, phone, account number..."
-                    className="flex-1 h-11"
+                    placeholder="Search by name, phone, account..."
+                    className="w-full h-10 md:h-11 text-sm md:text-base"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                   />
-                  <Select
-                    value={leadsFilter}
-                    onValueChange={setLeadsFilter}
-                  >
-                    <SelectTrigger className="w-40 h-11">
-                      <SelectValue placeholder="All Leads" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="all">All Leads</SelectItem>
-                      <SelectItem value="active">Active Leads</SelectItem>
-                      <SelectItem value="inactive">Inactive Leads</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <Select
-                    value={serviceFilter}
-                    onValueChange={setServiceFilter}
-                  >
-                    <SelectTrigger className="w-40 h-11">
-                      <SelectValue placeholder="All Service" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="all">All Service</SelectItem>
-                      <SelectItem value="banking">Banking</SelectItem>
-                      <SelectItem value="investment">Investment</SelectItem>
-                      <SelectItem value="credit">Credit Cards</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <Select
-                    value={customerTypeFilter}
-                    onValueChange={setCustomerTypeFilter}
-                  >
-                    <SelectTrigger className="w-48 h-11">
-                      <SelectValue placeholder="Customer Type" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="all">All Types</SelectItem>
-                      <SelectItem value="premium">Premium</SelectItem>
-                      <SelectItem value="standard">Standard</SelectItem>
-                      <SelectItem value="high-risk">High Risk</SelectItem>
-                      <SelectItem value="low-risk">Low Risk</SelectItem>
-                    </SelectContent>
-                  </Select>
-                  <Button className="h-11 px-8" onClick={handleSearch}>
-                    Search
-                  </Button>
-                  <Button
-                    variant="outline"
-                    className="h-11 px-8"
-                    onClick={handleClear}
-                  >
-                    Clear
-                  </Button>
+                  
+                  {/* Filters - Stack on mobile, flex on desktop */}
+                  <div className="flex flex-col sm:flex-row gap-2 md:gap-3">
+                    <Select
+                      value={leadsFilter}
+                      onValueChange={setLeadsFilter}
+                    >
+                      <SelectTrigger className="w-full sm:w-32 md:w-40 h-10 md:h-11 text-sm md:text-base">
+                        <SelectValue placeholder="All Leads" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="all">All Leads</SelectItem>
+                        <SelectItem value="active">Active Leads</SelectItem>
+                        <SelectItem value="inactive">Inactive Leads</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <Select
+                      value={serviceFilter}
+                      onValueChange={setServiceFilter}
+                    >
+                      <SelectTrigger className="w-full sm:w-32 md:w-40 h-10 md:h-11 text-sm md:text-base">
+                        <SelectValue placeholder="All Service" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="all">All Service</SelectItem>
+                        <SelectItem value="banking">Banking</SelectItem>
+                        <SelectItem value="investment">Investment</SelectItem>
+                        <SelectItem value="credit">Credit Cards</SelectItem>
+                      </SelectContent>
+                    </Select>
+                    <Select
+                      value={customerTypeFilter}
+                      onValueChange={setCustomerTypeFilter}
+                    >
+                      <SelectTrigger className="w-full sm:w-36 md:w-48 h-10 md:h-11 text-sm md:text-base">
+                        <SelectValue placeholder="Customer Type" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="all">All Types</SelectItem>
+                        <SelectItem value="premium">Premium</SelectItem>
+                        <SelectItem value="standard">Standard</SelectItem>
+                        <SelectItem value="high-risk">High Risk</SelectItem>
+                        <SelectItem value="low-risk">Low Risk</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
+                  
+                  {/* Action Buttons - Stack on mobile */}
+                  <div className="flex flex-col sm:flex-row gap-2 md:gap-3 pt-2 md:pt-0">
+                    <Button 
+                      className="w-full sm:w-auto h-10 md:h-11 px-4 md:px-8 text-sm md:text-base" 
+                      onClick={handleSearch}
+                    >
+                      Search
+                    </Button>
+                    <Button
+                      variant="outline"
+                      className="w-full sm:w-auto h-10 md:h-11 px-4 md:px-8 text-sm md:text-base"
+                      onClick={handleClear}
+                    >
+                      Clear
+                    </Button>
+                  </div>
                 </div>
               </CardContent>
             </Card>
 
             {/* Customer Cards */}
-            <div className="space-y-4">
-              <div className="flex items-center justify-between">
-                <h2 className="text-xl font-semibold">
+            <div className="space-y-3 md:space-y-4">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
+                <h2 className="text-lg md:text-xl font-semibold">
                   Customers ({filteredCustomers.length})
                 </h2>
                 {filteredCustomers.length !== customers.length && (
-                  <p className="text-sm text-muted-foreground">
+                  <p className="text-xs md:text-sm text-muted-foreground">
                     Showing {filteredCustomers.length} of {customers.length}{" "}
                     customers
                   </p>
                 )}
               </div>
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
                 {filteredCustomers.map((customer) => (
                   <Card
                     key={customer.id}
                     className="cursor-pointer hover:shadow-lg transition-all hover:-translate-y-1 border-2 hover:border-primary/50"
                     onClick={() => openCustomerModal(customer)}
                   >
-                    <CardContent className="p-6">
-                      <div className="flex items-start gap-4">
-                        <Avatar className="h-16 w-16 border-2 border-primary/20">
+                    <CardContent className="p-4 md:p-6">
+                      <div className="flex items-start gap-3 md:gap-4">
+                        <Avatar className="h-12 w-12 md:h-16 md:w-16 border-2 border-primary/20 flex-shrink-0">
                           <AvatarImage src={customer.avatar} />
-                          <AvatarFallback className="bg-gradient-to-br from-primary/20 to-primary/10 text-primary font-bold">
+                          <AvatarFallback className="bg-gradient-to-br from-primary/20 to-primary/10 text-primary font-bold text-sm md:text-base">
                             {customer.name
                               .split(" ")
                               .map((n) => n[0])
@@ -879,21 +891,21 @@ const CustomerRelationship = () => {
                         </Avatar>
                         <div className="flex-1 min-w-0">
                           <div className="flex items-start justify-between mb-2">
-                            <div>
-                              <h3 className="font-bold text-lg truncate">
+                            <div className="min-w-0 flex-1">
+                              <h3 className="font-bold text-base md:text-lg truncate">
                                 {customer.name}
                               </h3>
-                              <p className="text-sm text-muted-foreground">
+                              <p className="text-xs md:text-sm text-muted-foreground truncate">
                                 {customer.account}
                               </p>
                             </div>
-                            <Eye className="h-5 w-5 text-muted-foreground hover:text-primary transition-colors" />
+                            <Eye className="h-4 w-4 md:h-5 md:w-5 text-muted-foreground hover:text-primary transition-colors flex-shrink-0 ml-2" />
                           </div>
                           <div className="space-y-2">
-                            <div className="flex items-center gap-2">
+                            <div className="flex items-center gap-1 md:gap-2 flex-wrap">
                               <Badge
                                 variant="outline"
-                                className={`${
+                                className={`text-xs ${
                                   customer.segment === "Premium"
                                     ? "bg-yellow-500/10 text-yellow-700 dark:text-yellow-400 border-yellow-500/20"
                                     : "bg-blue-500/10 text-blue-700 dark:text-blue-400 border-blue-500/20"
@@ -903,7 +915,7 @@ const CustomerRelationship = () => {
                               </Badge>
                               <Badge
                                 variant="outline"
-                                className={`${
+                                className={`text-xs ${
                                   customer.riskLevel === "Low"
                                     ? "bg-green-500/10 text-green-700 dark:text-green-400 border-green-500/20"
                                     : customer.riskLevel === "Medium"
@@ -914,11 +926,11 @@ const CustomerRelationship = () => {
                                 {customer.riskLevel} Risk
                               </Badge>
                             </div>
-                            <div className="flex items-center justify-between text-sm">
+                            <div className="flex items-center justify-between text-xs md:text-sm">
                               <span className="text-muted-foreground">
                                 Balance:
                               </span>
-                              <span className="font-bold text-lg">
+                              <span className="font-bold text-sm md:text-lg">
                                 {customer.balance}
                               </span>
                             </div>
@@ -944,65 +956,65 @@ const CustomerRelationship = () => {
 
             {/* Customer Detail Modal */}
             <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-              <DialogContent className="max-w-4xl max-h-[90vh] overflow-y-auto">
-                <DialogHeader>
-                  <DialogTitle className="flex items-center gap-3">
-                    <Avatar className="h-12 w-12">
+              <DialogContent className="w-[95vw] max-w-4xl max-h-[90vh] overflow-y-auto p-4 md:p-6">
+                <DialogHeader className="space-y-2 md:space-y-3">
+                  <DialogTitle className="flex flex-col sm:flex-row sm:items-center gap-2 md:gap-3">
+                    <Avatar className="h-10 w-10 md:h-12 md:w-12 self-start">
                       <AvatarImage src={selectedCustomer?.avatar} />
-                      <AvatarFallback className="bg-gradient-to-br from-primary/20 to-primary/10 text-primary font-bold">
+                      <AvatarFallback className="bg-gradient-to-br from-primary/20 to-primary/10 text-primary font-bold text-sm md:text-base">
                         {selectedCustomer?.name
                           .split(" ")
                           .map((n) => n[0])
                           .join("")}
                       </AvatarFallback>
                     </Avatar>
-                    <div>
-                      <h2 className="text-2xl font-bold">
+                    <div className="min-w-0">
+                      <h2 className="text-lg md:text-2xl font-bold truncate">
                         {selectedCustomer?.name}
                       </h2>
-                      <p className="text-muted-foreground">
+                      <p className="text-sm md:text-base text-muted-foreground truncate">
                         {selectedCustomer?.account}
                       </p>
                     </div>
                   </DialogTitle>
-                  <DialogDescription>
+                  <DialogDescription className="text-sm md:text-base">
                     Complete customer profile and transaction history
                   </DialogDescription>
                 </DialogHeader>
 
                 {selectedCustomer && (
-                  <div className="space-y-6">
+                  <div className="space-y-4 md:space-y-6">
                     {/* Basic Info */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 md:gap-6">
                       <Card>
-                        <CardHeader>
-                          <CardTitle className="text-lg flex items-center gap-2">
-                            <User className="h-5 w-5" />
+                        <CardHeader className="pb-3 md:pb-4">
+                          <CardTitle className="text-base md:text-lg flex items-center gap-2">
+                            <User className="h-4 w-4 md:h-5 md:w-5" />
                             Personal Information
                           </CardTitle>
                         </CardHeader>
-                        <CardContent className="space-y-3">
-                          <div className="flex items-center gap-3">
-                            <Mail className="h-4 w-4 text-muted-foreground" />
-                            <span className="text-sm">
+                        <CardContent className="space-y-2 md:space-y-3">
+                          <div className="flex items-center gap-2 md:gap-3">
+                            <Mail className="h-3 w-3 md:h-4 md:w-4 text-muted-foreground flex-shrink-0" />
+                            <span className="text-xs md:text-sm break-all">
                               {selectedCustomer.email}
                             </span>
                           </div>
-                          <div className="flex items-center gap-3">
-                            <Phone className="h-4 w-4 text-muted-foreground" />
-                            <span className="text-sm">
+                          <div className="flex items-center gap-2 md:gap-3">
+                            <Phone className="h-3 w-3 md:h-4 md:w-4 text-muted-foreground flex-shrink-0" />
+                            <span className="text-xs md:text-sm">
                               {selectedCustomer.phone}
                             </span>
                           </div>
-                          <div className="flex items-center gap-3">
-                            <MapPin className="h-4 w-4 text-muted-foreground" />
-                            <span className="text-sm">
+                          <div className="flex items-start gap-2 md:gap-3">
+                            <MapPin className="h-3 w-3 md:h-4 md:w-4 text-muted-foreground flex-shrink-0 mt-0.5" />
+                            <span className="text-xs md:text-sm">
                               {selectedCustomer.address}
                             </span>
                           </div>
-                          <div className="flex items-center gap-3">
-                            <Calendar className="h-4 w-4 text-muted-foreground" />
-                            <span className="text-sm">
+                          <div className="flex items-center gap-2 md:gap-3">
+                            <Calendar className="h-3 w-3 md:h-4 md:w-4 text-muted-foreground flex-shrink-0" />
+                            <span className="text-xs md:text-sm">
                               Joined:{" "}
                               {new Date(
                                 selectedCustomer.joinDate
@@ -1013,44 +1025,44 @@ const CustomerRelationship = () => {
                       </Card>
 
                       <Card>
-                        <CardHeader>
-                          <CardTitle className="text-lg flex items-center gap-2">
-                            <DollarSign className="h-5 w-5" />
+                        <CardHeader className="pb-3 md:pb-4">
+                          <CardTitle className="text-base md:text-lg flex items-center gap-2">
+                            <DollarSign className="h-4 w-4 md:h-5 md:w-5" />
                             Financial Overview
                           </CardTitle>
                         </CardHeader>
-                        <CardContent className="space-y-3">
-                          <div className="flex justify-between">
-                            <span className="text-sm text-muted-foreground">
+                        <CardContent className="space-y-2 md:space-y-3">
+                          <div className="flex justify-between items-center">
+                            <span className="text-xs md:text-sm text-muted-foreground">
                               Current Balance:
                             </span>
-                            <span className="font-bold text-lg">
+                            <span className="font-bold text-base md:text-lg">
                               {selectedCustomer.balance}
                             </span>
                           </div>
-                          <div className="flex justify-between">
-                            <span className="text-sm text-muted-foreground">
+                          <div className="flex justify-between items-center">
+                            <span className="text-xs md:text-sm text-muted-foreground">
                               Profitability:
                             </span>
-                            <span className="font-semibold">
+                            <span className="font-semibold text-sm md:text-base">
                               {selectedCustomer.profitability}
                             </span>
                           </div>
-                          <div className="flex justify-between">
-                            <span className="text-sm text-muted-foreground">
+                          <div className="flex justify-between items-center">
+                            <span className="text-xs md:text-sm text-muted-foreground">
                               Engagement:
                             </span>
-                            <span className="font-semibold">
+                            <span className="font-semibold text-sm md:text-base">
                               {selectedCustomer.engagement}
                             </span>
                           </div>
-                          <div className="flex justify-between">
-                            <span className="text-sm text-muted-foreground">
+                          <div className="flex justify-between items-center">
+                            <span className="text-xs md:text-sm text-muted-foreground">
                               Risk Level:
                             </span>
                             <Badge
                               variant="outline"
-                              className={`${
+                              className={`text-xs ${
                                 selectedCustomer.riskLevel === "Low"
                                   ? "bg-green-500/10 text-green-700 dark:text-green-400 border-green-500/20"
                                   : selectedCustomer.riskLevel === "Medium"
@@ -1067,19 +1079,19 @@ const CustomerRelationship = () => {
 
                     {/* Products */}
                     <Card>
-                      <CardHeader>
-                        <CardTitle className="text-lg flex items-center gap-2">
-                          <CreditCard className="h-5 w-5" />
+                      <CardHeader className="pb-3 md:pb-4">
+                        <CardTitle className="text-base md:text-lg flex items-center gap-2">
+                          <CreditCard className="h-4 w-4 md:h-5 md:w-5" />
                           Active Products
                         </CardTitle>
                       </CardHeader>
                       <CardContent>
-                        <div className="flex flex-wrap gap-2">
+                        <div className="flex flex-wrap gap-1 md:gap-2">
                           {selectedCustomer.products.map((product, index) => (
                             <Badge
                               key={index}
                               variant="secondary"
-                              className="px-3 py-1"
+                              className="px-2 py-1 md:px-3 text-xs md:text-sm"
                             >
                               {product}
                             </Badge>
@@ -1090,19 +1102,19 @@ const CustomerRelationship = () => {
 
                     {/* Customer Insights */}
                     <Card>
-                      <CardHeader>
-                        <CardTitle className="text-lg flex items-center gap-2">
-                          <TrendingUp className="h-5 w-5" />
+                      <CardHeader className="pb-3 md:pb-4">
+                        <CardTitle className="text-base md:text-lg flex items-center gap-2">
+                          <TrendingUp className="h-4 w-4 md:h-5 md:w-5" />
                           Customer Insights
                         </CardTitle>
                       </CardHeader>
-                      <CardContent className="space-y-4">
-                        <div className="p-4 rounded-lg border bg-muted/30">
-                          <p className="text-sm">
+                      <CardContent className="space-y-3 md:space-y-4">
+                        <div className="p-3 md:p-4 rounded-lg border bg-muted/30">
+                          <p className="text-xs md:text-sm">
                             <span className="font-bold">Risk Level:</span>{" "}
                             <Badge
                               variant="outline"
-                              className={`${
+                              className={`text-xs ${
                                 selectedCustomer.riskLevel === "Low"
                                   ? "bg-green-500/10 text-green-700 dark:text-green-400 border-green-500/20"
                                   : selectedCustomer.riskLevel === "Medium"
@@ -1123,20 +1135,20 @@ const CustomerRelationship = () => {
                             </span>
                           </p>
                         </div>
-                        <div className="p-4 rounded-lg border bg-muted/30">
-                          <p className="text-sm">
+                        <div className="p-3 md:p-4 rounded-lg border bg-muted/30">
+                          <p className="text-xs md:text-sm">
                             <span className="font-bold">Last Activity:</span>{" "}
                             {new Date(
                               selectedCustomer.lastActivity
                             ).toLocaleDateString()}
                           </p>
                         </div>
-                        <div className="p-4 rounded-lg border bg-muted/30">
-                          <p className="text-sm">
+                        <div className="p-3 md:p-4 rounded-lg border bg-muted/30">
+                          <p className="text-xs md:text-sm">
                             <span className="font-bold">Customer Segment:</span>{" "}
                             <Badge
                               variant="outline"
-                              className={`${
+                              className={`text-xs ${
                                 selectedCustomer.segment === "Premium"
                                   ? "bg-yellow-500/10 text-yellow-700 dark:text-yellow-400 border-yellow-500/20"
                                   : "bg-blue-500/10 text-blue-700 dark:text-blue-400 border-blue-500/20"
