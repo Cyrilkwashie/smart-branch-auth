@@ -3,19 +3,44 @@ import { useNavigate } from "react-router-dom";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Eye, EyeOff, User, Lock } from "lucide-react";
+import { Eye, EyeOff, User, Lock, Scan, Fingerprint } from "lucide-react";
 import bankingHero from "@/assets/banking-hero.jpg";
 
 const Login = () => {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
+  const [isAuthenticating, setIsAuthenticating] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Login attempt:", { username, password });
     navigate("/dashboard");
+  };
+
+  const handleBiometricAuth = async (type: 'faceId' | 'fingerprint') => {
+    setIsAuthenticating(true);
+    
+    // Simulate biometric authentication process
+    try {
+      if (type === 'faceId') {
+        console.log("Initiating Face ID authentication...");
+        // In a real app, you would call the Web Authentication API or native biometric APIs
+        await new Promise(resolve => setTimeout(resolve, 2000)); // Simulate auth delay
+      } else {
+        console.log("Initiating Fingerprint authentication...");
+        await new Promise(resolve => setTimeout(resolve, 1500)); // Simulate auth delay
+      }
+      
+      // Simulate successful authentication
+      console.log(`${type} authentication successful`);
+      navigate("/dashboard");
+    } catch (error) {
+      console.error(`${type} authentication failed:`, error);
+    } finally {
+      setIsAuthenticating(false);
+    }
   };
 
   return (
@@ -111,10 +136,50 @@ const Login = () => {
               <Button 
                 type="submit" 
                 className="w-full h-12 text-base font-semibold button-primary mt-6"
+                disabled={isAuthenticating}
               >
-                Sign In
+                {isAuthenticating ? "Authenticating..." : "Sign In"}
               </Button>
             </form>
+
+            {/* Divider */}
+            <div className="relative">
+              <div className="absolute inset-0 flex items-center">
+                <span className="w-full border-t" />
+              </div>
+              <div className="relative flex justify-center text-xs uppercase">
+                <span className="bg-background px-2 text-muted-foreground">
+                  Or continue with
+                </span>
+              </div>
+            </div>
+
+            {/* Biometric Authentication Options */}
+            <div className="space-y-3">
+              {/* Face ID Button */}
+              <Button
+                type="button"
+                variant="outline"
+                className="w-full h-12 text-base font-medium border-2 hover:border-primary/50 transition-all duration-200"
+                onClick={() => handleBiometricAuth('faceId')}
+                disabled={isAuthenticating}
+              >
+                <Scan className="h-5 w-5 mr-3 text-primary" />
+                {isAuthenticating ? "Authenticating..." : "Sign in with Face ID"}
+              </Button>
+
+              {/* Fingerprint Button */}
+              <Button
+                type="button"
+                variant="outline"
+                className="w-full h-12 text-base font-medium border-2 hover:border-primary/50 transition-all duration-200"
+                onClick={() => handleBiometricAuth('fingerprint')}
+                disabled={isAuthenticating}
+              >
+                <Fingerprint className="h-5 w-5 mr-3 text-primary" />
+                {isAuthenticating ? "Authenticating..." : "Sign in with Fingerprint"}
+              </Button>
+            </div>
 
             {/* Footer */}
             <div className="pt-6 text-center">

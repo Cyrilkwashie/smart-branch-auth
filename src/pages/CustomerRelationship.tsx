@@ -44,14 +44,14 @@ const customers = [
     name: "Jane Doe",
     account: "ACC-2024-001234",
     products: ["Savings", "Loan"],
-    balance: "$60K",
+    balance: "₵60K",
     avatar:
       "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face&auto=format&q=80",
     email: "jane.doe@email.com",
     phone: "+1 (555) 123-4567",
     address: "123 Main St, Downtown",
     riskLevel: "Low",
-    profitability: "$2K/year",
+    profitability: "₵2K/year",
     engagement: "85/100",
     lastActivity: "2024-01-15",
     joinDate: "2022-03-10",
@@ -60,19 +60,19 @@ const customers = [
       {
         date: "2024-01-15",
         type: "Deposit",
-        amount: "+$2,500",
+        amount: "+₵2,500",
         description: "Salary Deposit",
       },
       {
         date: "2024-01-10",
         type: "Withdrawal",
-        amount: "-$500",
+        amount: "-₵500",
         description: "ATM Withdrawal",
       },
       {
         date: "2024-01-05",
         type: "Transfer",
-        amount: "+$1,200",
+        amount: "+₵1,200",
         description: "Transfer from Savings",
       },
     ],
@@ -82,14 +82,14 @@ const customers = [
     name: "John Smith",
     account: "ACC-2024-005678",
     products: ["Checking", "Credit Card"],
-    balance: "$45K",
+    balance: "₵45K",
     avatar:
       "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face&auto=format&q=80",
     email: "john.smith@email.com",
     phone: "+1 (555) 987-6543",
     address: "456 Oak Ave, Midtown",
     riskLevel: "Medium",
-    profitability: "$1.5K/year",
+    profitability: "₵1.5K/year",
     engagement: "72/100",
     lastActivity: "2024-01-14",
     joinDate: "2021-08-22",
@@ -98,19 +98,19 @@ const customers = [
       {
         date: "2024-01-14",
         type: "Payment",
-        amount: "-$150",
+        amount: "-₵150",
         description: "Credit Card Payment",
       },
       {
         date: "2024-01-12",
         type: "Deposit",
-        amount: "+$3,200",
+        amount: "+₵3,200",
         description: "Direct Deposit",
       },
       {
         date: "2024-01-08",
         type: "Purchase",
-        amount: "-$89",
+        amount: "-₵89",
         description: "Online Purchase",
       },
     ],
@@ -120,14 +120,14 @@ const customers = [
     name: "Sarah Wilson",
     account: "ACC-2024-009012",
     products: ["Savings", "Investment"],
-    balance: "$120K",
+    balance: "₵120K",
     avatar:
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face&auto=format&q=80",
     email: "sarah.wilson@email.com",
     phone: "+1 (555) 456-7890",
     address: "789 Pine St, Uptown",
     riskLevel: "Low",
-    profitability: "$5K/year",
+    profitability: "₵5K/year",
     engagement: "92/100",
     lastActivity: "2024-01-16",
     joinDate: "2020-11-05",
@@ -136,19 +136,19 @@ const customers = [
       {
         date: "2024-01-16",
         type: "Investment",
-        amount: "+$5,000",
+        amount: "+₵5,000",
         description: "Mutual Fund Purchase",
       },
       {
         date: "2024-01-13",
         type: "Transfer",
-        amount: "+$2,000",
+        amount: "+₵2,000",
         description: "Savings Transfer",
       },
       {
         date: "2024-01-09",
         type: "Dividend",
-        amount: "+$450",
+        amount: "+₵450",
         description: "Investment Dividend",
       },
     ],
@@ -158,14 +158,14 @@ const customers = [
     name: "Michael Johnson",
     account: "ACC-2024-003456",
     products: ["Checking", "Savings"],
-    balance: "$35K",
+    balance: "₵35K",
     avatar:
       "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face&auto=format&q=80",
     email: "michael.johnson@email.com",
     phone: "+1 (555) 234-5678",
     address: "321 Elm St, Riverside",
     riskLevel: "Low",
-    profitability: "$1.8K/year",
+    profitability: "₵1.8K/year",
     engagement: "78/100",
     lastActivity: "2024-01-13",
     joinDate: "2021-05-15",
@@ -174,19 +174,19 @@ const customers = [
       {
         date: "2024-01-13",
         type: "Deposit",
-        amount: "+$1,800",
+        amount: "+₵1,800",
         description: "Salary Deposit",
       },
       {
         date: "2024-01-10",
         type: "Transfer",
-        amount: "-$300",
+        amount: "-₵300",
         description: "Bill Payment",
       },
       {
         date: "2024-01-07",
         type: "Deposit",
-        amount: "+$500",
+        amount: "+₵500",
         description: "Bonus",
       },
     ],
@@ -196,14 +196,14 @@ const customers = [
     name: "Emily Davis",
     account: "ACC-2024-007890",
     products: ["Credit Card", "Loan"],
-    balance: "$28K",
+    balance: "₵28K",
     avatar:
       "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face&auto=format&q=80",
     email: "emily.davis@email.com",
     phone: "+1 (555) 345-6789",
     address: "654 Maple Ave, Hillside",
     riskLevel: "Medium",
-    profitability: "$1.2K/year",
+    profitability: "₵1.2K/year",
     engagement: "65/100",
     lastActivity: "2024-01-12",
     joinDate: "2022-01-20",
@@ -212,19 +212,19 @@ const customers = [
       {
         date: "2024-01-12",
         type: "Payment",
-        amount: "-$200",
+        amount: "-₵200",
         description: "Credit Card Payment",
       },
       {
         date: "2024-01-09",
         type: "Purchase",
-        amount: "-$150",
+        amount: "-₵150",
         description: "Grocery Shopping",
       },
       {
         date: "2024-01-06",
         type: "Deposit",
-        amount: "+$2,100",
+        amount: "+₵2,100",
         description: "Direct Deposit",
       },
     ],
@@ -234,14 +234,14 @@ const customers = [
     name: "David Brown",
     account: "ACC-2024-001122",
     products: ["Investment", "Savings"],
-    balance: "$95K",
+    balance: "₵95K",
     avatar:
       "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=150&h=150&fit=crop&crop=face&auto=format&q=80",
     email: "david.brown@email.com",
     phone: "+1 (555) 456-7891",
     address: "987 Cedar Ln, Valley",
     riskLevel: "Low",
-    profitability: "$4.2K/year",
+    profitability: "₵4.2K/year",
     engagement: "88/100",
     lastActivity: "2024-01-16",
     joinDate: "2019-09-12",
@@ -250,19 +250,19 @@ const customers = [
       {
         date: "2024-01-16",
         type: "Investment",
-        amount: "+$3,500",
+        amount: "+₵3,500",
         description: "Stock Purchase",
       },
       {
         date: "2024-01-14",
         type: "Dividend",
-        amount: "+$320",
+        amount: "+₵320",
         description: "Quarterly Dividend",
       },
       {
         date: "2024-01-11",
         type: "Transfer",
-        amount: "+$1,000",
+        amount: "+₵1,000",
         description: "Savings Transfer",
       },
     ],
@@ -272,14 +272,14 @@ const customers = [
     name: "Lisa Garcia",
     account: "ACC-2024-003344",
     products: ["Checking", "Credit Card", "Loan"],
-    balance: "$52K",
+    balance: "₵52K",
     avatar:
       "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=150&h=150&fit=crop&crop=face&auto=format&q=80",
     email: "lisa.garcia@email.com",
     phone: "+1 (555) 567-8901",
     address: "147 Birch St, Lakeside",
     riskLevel: "Low",
-    profitability: "$2.8K/year",
+    profitability: "₵2.8K/year",
     engagement: "82/100",
     lastActivity: "2024-01-15",
     joinDate: "2020-07-08",
@@ -288,19 +288,19 @@ const customers = [
       {
         date: "2024-01-15",
         type: "Deposit",
-        amount: "+$2,800",
+        amount: "+₵2,800",
         description: "Salary Deposit",
       },
       {
         date: "2024-01-13",
         type: "Payment",
-        amount: "-$180",
+        amount: "-₵180",
         description: "Loan Payment",
       },
       {
         date: "2024-01-10",
         type: "Purchase",
-        amount: "-$95",
+        amount: "-₵95",
         description: "Restaurant",
       },
     ],
@@ -310,14 +310,14 @@ const customers = [
     name: "Robert Miller",
     account: "ACC-2024-005566",
     products: ["Savings"],
-    balance: "$18K",
+    balance: "₵18K",
     avatar:
       "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d?w=150&h=150&fit=crop&crop=face&auto=format&q=80",
     email: "robert.miller@email.com",
     phone: "+1 (555) 678-9012",
     address: "258 Spruce Ave, Mountain",
     riskLevel: "High",
-    profitability: "$800/year",
+    profitability: "₵800/year",
     engagement: "45/100",
     lastActivity: "2024-01-08",
     joinDate: "2023-02-14",
@@ -326,19 +326,19 @@ const customers = [
       {
         date: "2024-01-08",
         type: "Deposit",
-        amount: "+$1,200",
+        amount: "+₵1,200",
         description: "Part-time Income",
       },
       {
         date: "2024-01-05",
         type: "Withdrawal",
-        amount: "-$200",
+        amount: "-₵200",
         description: "Cash Withdrawal",
       },
       {
         date: "2024-01-02",
         type: "Deposit",
-        amount: "+$800",
+        amount: "+₵800",
         description: "Gift",
       },
     ],
@@ -348,14 +348,14 @@ const customers = [
     name: "Jennifer Martinez",
     account: "ACC-2024-007788",
     products: ["Checking", "Savings", "Investment"],
-    balance: "$78K",
+    balance: "₵78K",
     avatar:
       "https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?w=150&h=150&fit=crop&crop=face&auto=format&q=80",
     email: "jennifer.martinez@email.com",
     phone: "+1 (555) 789-0123",
     address: "369 Willow Dr, Garden",
     riskLevel: "Low",
-    profitability: "$3.5K/year",
+    profitability: "₵3.5K/year",
     engagement: "90/100",
     lastActivity: "2024-01-16",
     joinDate: "2018-11-25",
@@ -364,19 +364,19 @@ const customers = [
       {
         date: "2024-01-16",
         type: "Investment",
-        amount: "+$2,000",
+        amount: "+₵2,000",
         description: "ETF Purchase",
       },
       {
         date: "2024-01-14",
         type: "Deposit",
-        amount: "+$3,500",
+        amount: "+₵3,500",
         description: "Salary Deposit",
       },
       {
         date: "2024-01-12",
         type: "Transfer",
-        amount: "-$500",
+        amount: "-₵500",
         description: "Investment Transfer",
       },
     ],
@@ -386,14 +386,14 @@ const customers = [
     name: "Christopher Lee",
     account: "ACC-2024-009900",
     products: ["Credit Card"],
-    balance: "$12K",
+    balance: "₵12K",
     avatar:
       "https://images.unsplash.com/photo-1519345182560-3f2917c472ef?w=150&h=150&fit=crop&crop=face&auto=format&q=80",
     email: "christopher.lee@email.com",
     phone: "+1 (555) 890-1234",
     address: "741 Oakwood Ln, Forest",
     riskLevel: "High",
-    profitability: "$600/year",
+    profitability: "₵600/year",
     engagement: "38/100",
     lastActivity: "2024-01-07",
     joinDate: "2023-06-30",
@@ -402,19 +402,19 @@ const customers = [
       {
         date: "2024-01-07",
         type: "Payment",
-        amount: "-$100",
+        amount: "-₵100",
         description: "Minimum Payment",
       },
       {
         date: "2024-01-04",
         type: "Purchase",
-        amount: "-$75",
+        amount: "-₵75",
         description: "Gas Station",
       },
       {
         date: "2024-01-01",
         type: "Purchase",
-        amount: "-$120",
+        amount: "-₵120",
         description: "Online Shopping",
       },
     ],
@@ -424,14 +424,14 @@ const customers = [
     name: "Amanda Taylor",
     account: "****-****-****-1123",
     products: ["Savings", "Loan", "Credit Card"],
-    balance: "$67K",
+    balance: "₵67K",
     avatar:
       "https://images.unsplash.com/photo-1494790108755-2616b612b786?w=150&h=150&fit=crop&crop=face&auto=format&q=80",
     email: "amanda.taylor@email.com",
     phone: "+1 (555) 901-2345",
     address: "852 Pinecrest Rd, Summit",
     riskLevel: "Low",
-    profitability: "$3.1K/year",
+    profitability: "₵3.1K/year",
     engagement: "86/100",
     lastActivity: "2024-01-15",
     joinDate: "2020-03-18",
@@ -440,19 +440,19 @@ const customers = [
       {
         date: "2024-01-15",
         type: "Deposit",
-        amount: "+$3,100",
+        amount: "+₵3,100",
         description: "Salary Deposit",
       },
       {
         date: "2024-01-13",
         type: "Payment",
-        amount: "-$250",
+        amount: "-₵250",
         description: "Loan Payment",
       },
       {
         date: "2024-01-10",
         type: "Purchase",
-        amount: "-$85",
+        amount: "-₵85",
         description: "Coffee Shop",
       },
     ],
@@ -462,14 +462,14 @@ const customers = [
     name: "Daniel Anderson",
     account: "****-****-****-4455",
     products: ["Checking", "Investment"],
-    balance: "$89K",
+    balance: "₵89K",
     avatar:
       "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&h=150&fit=crop&crop=face&auto=format&q=80",
     email: "daniel.anderson@email.com",
     phone: "+1 (555) 012-3456",
     address: "963 Redwood Blvd, Canyon",
     riskLevel: "Low",
-    profitability: "$4.0K/year",
+    profitability: "₵4.0K/year",
     engagement: "87/100",
     lastActivity: "2024-01-14",
     joinDate: "2019-12-05",
@@ -478,19 +478,19 @@ const customers = [
       {
         date: "2024-01-14",
         type: "Investment",
-        amount: "+$4,000",
+        amount: "+₵4,000",
         description: "Bond Purchase",
       },
       {
         date: "2024-01-12",
         type: "Deposit",
-        amount: "+$3,800",
+        amount: "+₵3,800",
         description: "Salary Deposit",
       },
       {
         date: "2024-01-09",
         type: "Dividend",
-        amount: "+$280",
+        amount: "+₵280",
         description: "Monthly Dividend",
       },
     ],
@@ -500,14 +500,14 @@ const customers = [
     name: "Rachel White",
     account: "****-****-****-6677",
     products: ["Savings", "Credit Card"],
-    balance: "$41K",
+    balance: "₵41K",
     avatar:
       "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=150&h=150&fit=crop&crop=face&auto=format&q=80",
     email: "rachel.white@email.com",
     phone: "+1 (555) 123-4568",
     address: "159 Aspen Way, Meadow",
     riskLevel: "Medium",
-    profitability: "$1.9K/year",
+    profitability: "₵1.9K/year",
     engagement: "74/100",
     lastActivity: "2024-01-13",
     joinDate: "2021-10-12",
@@ -516,19 +516,19 @@ const customers = [
       {
         date: "2024-01-13",
         type: "Deposit",
-        amount: "+$1,900",
+        amount: "+₵1,900",
         description: "Salary Deposit",
       },
       {
         date: "2024-01-10",
         type: "Purchase",
-        amount: "-$65",
+        amount: "-₵65",
         description: "Pharmacy",
       },
       {
         date: "2024-01-07",
         type: "Payment",
-        amount: "-$120",
+        amount: "-₵120",
         description: "Credit Card Payment",
       },
     ],
@@ -538,14 +538,14 @@ const customers = [
     name: "Kevin Thompson",
     account: "****-****-****-8899",
     products: ["Checking", "Savings", "Loan"],
-    balance: "$55K",
+    balance: "₵55K",
     avatar:
       "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=150&h=150&fit=crop&crop=face&auto=format&q=80",
     email: "kevin.thompson@email.com",
     phone: "+1 (555) 234-5679",
     address: "357 Cypress Ct, Grove",
     riskLevel: "Low",
-    profitability: "$2.5K/year",
+    profitability: "₵2.5K/year",
     engagement: "81/100",
     lastActivity: "2024-01-15",
     joinDate: "2020-08-20",
@@ -554,19 +554,19 @@ const customers = [
       {
         date: "2024-01-15",
         type: "Deposit",
-        amount: "+$2,500",
+        amount: "+₵2,500",
         description: "Salary Deposit",
       },
       {
         date: "2024-01-12",
         type: "Payment",
-        amount: "-$220",
+        amount: "-₵220",
         description: "Loan Payment",
       },
       {
         date: "2024-01-09",
         type: "Transfer",
-        amount: "+$800",
+        amount: "+₵800",
         description: "Savings Transfer",
       },
     ],
@@ -576,14 +576,14 @@ const customers = [
     name: "Michelle Clark",
     account: "****-****-****-0011",
     products: ["Investment", "Credit Card"],
-    balance: "$73K",
+    balance: "₵73K",
     avatar:
       "https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&h=150&fit=crop&crop=face&auto=format&q=80",
     email: "michelle.clark@email.com",
     phone: "+1 (555) 345-6780",
     address: "468 Magnolia Dr, Park",
     riskLevel: "Low",
-    profitability: "$3.3K/year",
+    profitability: "₵3.3K/year",
     engagement: "89/100",
     lastActivity: "2024-01-16",
     joinDate: "2019-04-15",
@@ -592,19 +592,19 @@ const customers = [
       {
         date: "2024-01-16",
         type: "Investment",
-        amount: "+$3,300",
+        amount: "+₵3,300",
         description: "Index Fund Purchase",
       },
       {
         date: "2024-01-14",
         type: "Purchase",
-        amount: "-$45",
+        amount: "-₵45",
         description: "Bookstore",
       },
       {
         date: "2024-01-11",
         type: "Dividend",
-        amount: "+$195",
+        amount: "+₵195",
         description: "Quarterly Dividend",
       },
     ],
@@ -710,7 +710,9 @@ const CustomerRelationship = () => {
   >(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [searchTerm, setSearchTerm] = useState("");
-  const [selectedSegment, setSelectedSegment] = useState("all");
+  const [leadsFilter, setLeadsFilter] = useState("all");
+  const [serviceFilter, setServiceFilter] = useState("all");
+  const [customerTypeFilter, setCustomerTypeFilter] = useState("all");
 
   const openCustomerModal = (customer: (typeof customers)[0]) => {
     setSelectedCustomer(customer);
@@ -723,7 +725,9 @@ const CustomerRelationship = () => {
 
   const handleClear = () => {
     setSearchTerm("");
-    setSelectedSegment("all");
+    setLeadsFilter("all");
+    setServiceFilter("all");
+    setCustomerTypeFilter("all");
   };
 
   const filteredCustomers = customers.filter((customer) => {
@@ -733,15 +737,24 @@ const CustomerRelationship = () => {
       customer.account.toLowerCase().includes(searchTerm.toLowerCase()) ||
       customer.email.toLowerCase().includes(searchTerm.toLowerCase());
 
-    const matchesSegment =
-      selectedSegment === "all" ||
-      (selectedSegment === "premium" && customer.segment === "Premium") ||
-      (selectedSegment === "standard" && customer.segment === "Standard") ||
-      (selectedSegment === "new" &&
-        new Date(customer.joinDate) >
-          new Date(Date.now() - 365 * 24 * 60 * 60 * 1000)); // New customers joined in last year
+    const matchesLeads = leadsFilter === "all" || 
+      (leadsFilter === "active" && customer.engagement.split("/")[0] > "80") ||
+      (leadsFilter === "inactive" && customer.engagement.split("/")[0] <= "80");
 
-    return matchesSearch && matchesSegment;
+    const matchesService = serviceFilter === "all" ||
+      (serviceFilter === "banking" && customer.products.some(product => 
+        ["Checking", "Savings"].includes(product))) ||
+      (serviceFilter === "investment" && customer.products.some(product => 
+        ["Investment", "Loan"].includes(product))) ||
+      (serviceFilter === "credit" && customer.products.includes("Credit Card"));
+
+    const matchesCustomerType = customerTypeFilter === "all" ||
+      (customerTypeFilter === "premium" && customer.segment === "Premium") ||
+      (customerTypeFilter === "standard" && customer.segment === "Standard") ||
+      (customerTypeFilter === "high-risk" && customer.riskLevel === "High") ||
+      (customerTypeFilter === "low-risk" && customer.riskLevel === "Low");
+
+    return matchesSearch && matchesLeads && matchesService && matchesCustomerType;
   });
 
   return (
@@ -778,17 +791,45 @@ const CustomerRelationship = () => {
                     onChange={(e) => setSearchTerm(e.target.value)}
                   />
                   <Select
-                    value={selectedSegment}
-                    onValueChange={setSelectedSegment}
+                    value={leadsFilter}
+                    onValueChange={setLeadsFilter}
                   >
-                    <SelectTrigger className="w-48 h-11">
-                      <SelectValue placeholder="Segment: All" />
+                    <SelectTrigger className="w-40 h-11">
+                      <SelectValue placeholder="All Leads" />
                     </SelectTrigger>
                     <SelectContent>
-                      <SelectItem value="all">Segment: All</SelectItem>
+                      <SelectItem value="all">All Leads</SelectItem>
+                      <SelectItem value="active">Active Leads</SelectItem>
+                      <SelectItem value="inactive">Inactive Leads</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <Select
+                    value={serviceFilter}
+                    onValueChange={setServiceFilter}
+                  >
+                    <SelectTrigger className="w-40 h-11">
+                      <SelectValue placeholder="All Service" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">All Service</SelectItem>
+                      <SelectItem value="banking">Banking</SelectItem>
+                      <SelectItem value="investment">Investment</SelectItem>
+                      <SelectItem value="credit">Credit Cards</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <Select
+                    value={customerTypeFilter}
+                    onValueChange={setCustomerTypeFilter}
+                  >
+                    <SelectTrigger className="w-48 h-11">
+                      <SelectValue placeholder="Customer Type" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">All Types</SelectItem>
                       <SelectItem value="premium">Premium</SelectItem>
                       <SelectItem value="standard">Standard</SelectItem>
-                      <SelectItem value="new">New Customers</SelectItem>
+                      <SelectItem value="high-risk">High Risk</SelectItem>
+                      <SelectItem value="low-risk">Low Risk</SelectItem>
                     </SelectContent>
                   </Select>
                   <Button className="h-11 px-8" onClick={handleSearch}>
