@@ -47,7 +47,7 @@ const Dashboard = () => {
             <div className="space-y-6 animate-fade-in">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
                 {/* RM Profile Card - Left Side */}
-                <div className="lg:col-span-4">
+                <div className="lg:col-span-3">
                   <Card className="overflow-hidden border-0 shadow-lg hover:shadow-xl transition-shadow min-h-[550px] flex flex-col">
                     <div className="relative flex-1">
                       {/* Header Background */}
@@ -140,17 +140,17 @@ const Dashboard = () => {
                 </div>
 
                 {/* Main Content - Right Side */}
-                <div className="lg:col-span-8 space-y-6">
+                <div className="lg:col-span-9 space-y-6">
                   {/* Performance Metrics Grid */}
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
                     <Card className="border-0 shadow-md hover:shadow-lg transition-all hover:-translate-y-1">
-                      <CardContent className="p-6">
+                      <CardContent className="p-4">
                         <div className="flex items-center justify-between">
                           <div className="space-y-2 flex-1">
                             <p className="text-sm font-medium text-muted-foreground">
                               Total Customers
                             </p>
-                            <p className="text-4xl font-bold">150</p>
+                            <p className="text-3xl font-bold">150</p>
                             <div className="flex items-center gap-1 text-sm text-green-600">
                               <ArrowUpRight className="h-4 w-4" />
                               <span className="font-medium">+8</span>
@@ -159,21 +159,21 @@ const Dashboard = () => {
                               </span>
                             </div>
                           </div>
-                          <div className="h-16 w-16 flex items-center justify-center">
-                            <Users className="h-8 w-8 text-blue-600" />
+                          <div className="h-12 w-12 flex items-center justify-center">
+                            <Users className="h-6 w-6 text-blue-600" />
                           </div>
                         </div>
                       </CardContent>
                     </Card>
 
                     <Card className="border-0 shadow-md hover:shadow-lg transition-all hover:-translate-y-1">
-                      <CardContent className="p-6">
+                      <CardContent className="p-4">
                         <div className="flex items-center justify-between">
                           <div className="space-y-2 flex-1">
                             <p className="text-sm font-medium text-muted-foreground">
                               Portfolio Value
                             </p>
-                            <p className="text-4xl font-bold">$5.2M</p>
+                            <p className="text-3xl font-bold">$5.2M</p>
                             <div className="flex items-center gap-1 text-sm text-green-600">
                               <ArrowUpRight className="h-4 w-4" />
                               <span className="font-medium">+12%</span>
@@ -182,15 +182,15 @@ const Dashboard = () => {
                               </span>
                             </div>
                           </div>
-                          <div className="h-16 w-16 flex items-center justify-center">
-                            <DollarSign className="h-8 w-8 text-green-600" />
+                          <div className="h-12 w-12 flex items-center justify-center">
+                            <DollarSign className="h-6 w-6 text-green-600" />
                           </div>
                         </div>
                       </CardContent>
                     </Card>
 
                     <Card className="border-0 shadow-md hover:shadow-lg transition-all hover:-translate-y-1">
-                      <CardContent className="p-6">
+                      <CardContent className="p-4">
                         <div className="space-y-4">
                           <div className="flex items-center justify-between">
                             <p className="text-sm font-medium text-muted-foreground">
@@ -209,13 +209,13 @@ const Dashboard = () => {
                     </Card>
 
                     <Card className="border-0 shadow-md hover:shadow-lg transition-all hover:-translate-y-1">
-                      <CardContent className="p-6">
+                      <CardContent className="p-4">
                         <div className="flex items-center justify-between">
                           <div className="space-y-2 flex-1">
                             <p className="text-sm font-medium text-muted-foreground">
                               Revenue Growth
                             </p>
-                            <p className="text-4xl font-bold">+12%</p>
+                            <p className="text-3xl font-bold">+12%</p>
                             <div className="flex items-center gap-1 text-sm text-green-600">
                               <TrendingUp className="h-4 w-4" />
                               <span className="text-muted-foreground">
@@ -223,8 +223,8 @@ const Dashboard = () => {
                               </span>
                             </div>
                           </div>
-                          <div className="h-16 w-16 flex items-center justify-center">
-                            <TrendingUp className="h-8 w-8 text-purple-600" />
+                          <div className="h-12 w-12 flex items-center justify-center">
+                            <TrendingUp className="h-6 w-6 text-purple-600" />
                           </div>
                         </div>
                       </CardContent>
