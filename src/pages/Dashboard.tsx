@@ -6,6 +6,11 @@ import { Badge } from "@/components/ui/badge";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Progress } from "@/components/ui/progress";
 import { Separator } from "@/components/ui/separator";
+import BarChart from "@/components/charts/BarChart";
+import AreaChart from "@/components/charts/AreaChart";
+import ProgressChart from "@/components/charts/ProgressChart";
+import LineChart from "@/components/charts/LineChart";
+import { useState } from "react";
 import {
   Bell,
   TrendingUp,
@@ -28,6 +33,50 @@ import {
 } from "lucide-react";
 
 const Dashboard = () => {
+  const [activeMetricTab, setActiveMetricTab] = useState("Deposit Book");
+
+  const metricTabs = [
+    "Deposit Book",
+    "Loan Book", 
+    "NPL Ratio",
+    "Cross-Sell Rate",
+    "Fee Income"
+  ];
+
+  // Chart data configurations
+  const depositBookData = [
+    { month: 'Jan', value: 1.2 },
+    { month: 'Feb', value: 2.9 },
+    { month: 'Mar', value: 4.9 },
+    { month: 'Apr', value: 2.5 },
+    { month: 'May', value: 2.8 },
+    { month: 'Jun', value: 2.5 },
+    { month: 'Jul', value: 0.6 },
+    { month: 'Aug', value: 1.6 },
+    { month: 'Sep', value: 3.7 },
+    { month: 'Oct', value: 3.2 },
+    { month: 'Nov', value: 2.0 },
+    { month: 'Dec', value: 2.0 }
+  ];
+
+  const loanBookData = [
+    { month: 'Jan', value: 1.4 },
+    { month: 'Feb', value: 2.4 },
+    { month: 'Mar', value: 3.4 },
+    { month: 'Apr', value: 2.0 },
+    { month: 'May', value: 2.3 },
+    { month: 'Jun', value: 2.6 },
+    { month: 'Jul', value: 1.8 },
+    { month: 'Aug', value: 2.2 },
+    { month: 'Sep', value: 3.0 },
+    { month: 'Oct', value: 4.8 },
+    { month: 'Nov', value: 1.7 },
+    { month: 'Dec', value: 1.9 }
+  ];
+
+  const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const feeIncomeMonths = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'July', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+
   return (
     <SidebarProvider defaultOpen={true}>
       <div className="flex min-h-screen w-full bg-gradient-to-br from-background via-muted/20 to-background">
@@ -231,81 +280,109 @@ const Dashboard = () => {
                     </Card>
                   </div>
 
-                  {/* Financial Metrics */}
+                  {/* Key Metrics */}
                   <Card className="border-0 shadow-md">
-                    <CardHeader className="border-b bg-gradient-to-r from-muted/50 to-muted/20">
-                      <CardTitle className="text-lg flex items-center gap-2">
-                        <DollarSign className="h-5 w-5 text-primary" />
-                        Key Financial Metrics
-                      </CardTitle>
+                    <CardHeader className="pb-4">
+                      <div className="flex items-center justify-between">
+                        <CardTitle className="text-lg font-semibold">
+                          Key Metrics
+                        </CardTitle>
+                        {/* Metric Tabs - Segmented Control */}
+                        <div className="flex items-center bg-muted/50 rounded-xl p-1 w-[750px] h-9">
+                          {metricTabs.map((tab, index) => (
+                            <div key={tab} className="flex items-center flex-1">
+                              {index > 0 && (
+                                <div className="w-px h-7 bg-border/30 rounded-[0.5px]"></div>
+                              )}
+                              <button
+                                onClick={() => setActiveMetricTab(tab)}
+                                className={`relative flex items-center justify-center px-2.5 py-[3px] h-7 flex-1 text-sm transition-all ${
+                                  activeMetricTab === tab
+                                    ? "text-foreground/80"
+                                    : "text-muted-foreground hover:text-foreground/70"
+                                }`}
+                              >
+                                {activeMetricTab === tab && (
+                                  <div className="absolute inset-0 bg-background shadow-md dark:shadow-lg rounded-[6px] border border-border/20"></div>
+                                )}
+                                <span className="relative z-10 text-center leading-[17px]">
+                                  {tab}
+                                </span>
+                              </button>
+                            </div>
+                          ))}
+                        </div>
+                      </div>
                     </CardHeader>
-                    <CardContent className="p-6">
-                      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
-                        <div className="space-y-3">
-                          <div className="flex items-center justify-between">
-                            <p className="text-sm text-muted-foreground">
-                              Deposits
-                            </p>
-                            <TrendingUp className="h-4 w-4 text-green-500" />
+                    <CardContent className="p-6 pt-0">
+                      <div className="space-y-6">
+                        
+                        {/* Chart Area for Deposit Book */}
+                        {activeMetricTab === "Deposit Book" && (
+                          <BarChart
+                            data={depositBookData}
+                            yAxisLabels={['3.0', '2.5', '2.0', '1.5', '1.0', '0']}
+                            maxValue={5}
+                            defaultHighlightMonth="Oct"
+                          />
+                        )}
+                        
+                        {/* Chart Area for Loan Book */}
+                        {activeMetricTab === "Loan Book" && (
+                          <BarChart
+                            data={loanBookData}
+                            yAxisLabels={['3.0', '2.5', '2.0', '1.5', '1.0', '0']}
+                            maxValue={5}
+                            defaultHighlightMonth="Oct"
+                          />
+                        )}
+                        
+                        {/* Chart Area for NPL Ratio */}
+                        {activeMetricTab === "NPL Ratio" && (
+                          <AreaChart
+                            gradientId="nplGradient"
+                            gradientColor="#9CCBF8"
+                            strokeColor="#9CCBF8"
+                            strokeWidth={2}
+                            yAxisLabels={['10%', '8%', '6%', '4%', '2%', '0']}
+                            months={months}
+                            pathData="M 47 155 Q 150 150 250 145 Q 350 140 450 150 Q 550 160 650 155 Q 750 150 850 145 Q 950 140 1040 155"
+                            defaultHighlightMonth="Sep"
+                          />
+                        )}
+
+                        {/* Chart Area for Cross-Sell Rate */}
+                        {activeMetricTab === "Cross-Sell Rate" && (
+                          <ProgressChart
+                            percentage={15}
+                            target={100}
+                            title="Cross-sell rate"
+                            improvementText="Cross-sell rate improved by 2% MoM"
+                            changePercentage="2%"
+                            isPositive={true}
+                          />
+                        )}
+
+                        {/* Chart Area for Fee Income */}
+                        {activeMetricTab === "Fee Income" && (
+                          <LineChart
+                            gradientId="feeIncomeGradient"
+                            gradientColor="#FA862E"
+                            strokeColor="#FA862E"
+                            strokeWidth={5}
+                            yAxisLabels={['10%', '8%', '6%', '4%', '2%', '0']}
+                            months={feeIncomeMonths}
+                            pathData="M 0 120 Q 100 100 200 85 Q 300 70 400 60 Q 500 50 600 45 Q 700 40 800 35 Q 900 30 1036 25"
+                            areaPathData="M 0 120 Q 100 100 200 85 Q 300 70 400 60 Q 500 50 600 45 Q 700 40 800 35 Q 900 30 1036 25 L 1036 214 L 0 214 Z"
+                          />
+                        )}
+
+                        {/* Placeholder content for other tabs */}
+                        {activeMetricTab !== "NPL Ratio" && activeMetricTab !== "Deposit Book" && activeMetricTab !== "Loan Book" && activeMetricTab !== "Cross-Sell Rate" && activeMetricTab !== "Fee Income" && (
+                          <div className="h-48 flex items-center justify-center text-muted-foreground">
+                            <p>Chart data for {activeMetricTab} will be displayed here</p>
                           </div>
-                          <p className="text-2xl font-bold">$2.2M</p>
-                          <Progress value={73} className="h-2" />
-                          <p className="text-xs text-green-600">
-                            +5.2% vs target
-                          </p>
-                        </div>
-                        <div className="space-y-3">
-                          <div className="flex items-center justify-between">
-                            <p className="text-sm text-muted-foreground">
-                              Loans
-                            </p>
-                            <TrendingUp className="h-4 w-4 text-blue-500" />
-                          </div>
-                          <p className="text-2xl font-bold">$3.0M</p>
-                          <Progress value={85} className="h-2" />
-                          <p className="text-xs text-green-600">
-                            +8.5% vs target
-                          </p>
-                        </div>
-                        <div className="space-y-3">
-                          <div className="flex items-center justify-between">
-                            <p className="text-sm text-muted-foreground">
-                              NPL Ratio
-                            </p>
-                            <CheckCircle2 className="h-4 w-4 text-green-500" />
-                          </div>
-                          <p className="text-2xl font-bold">2.5%</p>
-                          <div className="h-2 w-full bg-green-100 dark:bg-green-950 rounded-full"></div>
-                          <p className="text-xs text-green-600">
-                            Within limits
-                          </p>
-                        </div>
-                        <div className="space-y-3">
-                          <div className="flex items-center justify-between">
-                            <p className="text-sm text-muted-foreground">
-                              Cross-Sell
-                            </p>
-                            <Target className="h-4 w-4 text-purple-500" />
-                          </div>
-                          <p className="text-2xl font-bold">15%</p>
-                          <Progress value={60} className="h-2" />
-                          <p className="text-xs text-muted-foreground">
-                            60% of target
-                          </p>
-                        </div>
-                        <div className="space-y-3">
-                          <div className="flex items-center justify-between">
-                            <p className="text-sm text-muted-foreground">
-                              Fee Income
-                            </p>
-                            <DollarSign className="h-4 w-4 text-green-500" />
-                          </div>
-                          <p className="text-2xl font-bold">$10K</p>
-                          <Progress value={105} className="h-2" />
-                          <p className="text-xs text-green-600">
-                            +5% vs target
-                          </p>
-                        </div>
+                        )}
                       </div>
                     </CardContent>
                   </Card>
