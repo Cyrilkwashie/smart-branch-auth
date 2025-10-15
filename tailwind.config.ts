@@ -102,5 +102,20 @@ export default {
       },
     },
   },
-  plugins: [require("tailwindcss-animate")],
+  plugins: [
+    require("tailwindcss-animate"), 
+    require("@tailwindcss/line-clamp"),
+    function({ addUtilities }: any) {
+      addUtilities({
+        '.scrollbar-hide': {
+          /* Firefox */
+          'scrollbar-width': 'none',
+          /* Safari and Chrome */
+          '&::-webkit-scrollbar': {
+            display: 'none'
+          }
+        }
+      });
+    }
+  ],
 } satisfies Config;
