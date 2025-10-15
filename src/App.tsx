@@ -29,7 +29,7 @@ const App = () => (
             <Route path="/" element={<Login />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/customers" element={<CustomerRelationship />} />
-            <Route path="/account-creation/individual-joint" element={<IndividualJointAccountCreation />} />
+            <Route path="/account-creation/individual" element={<IndividualJointAccountCreation />} />
             <Route path="/home" element={<Index />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
