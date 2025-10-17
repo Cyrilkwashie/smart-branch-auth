@@ -38,7 +38,7 @@ import {
 
 const menuItems = [
   { title: "Dashboard", url: "/dashboard", icon: Home },
-  { title: "Customer Relationship", url: "/customers", icon: Users },
+  { title: "Customer Management", url: "/customers", icon: Users },
   {
     title: "Account Creation",
     icon: UserPlus,

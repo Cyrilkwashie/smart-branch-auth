@@ -7,8 +7,9 @@ import { ThemeProvider } from "next-themes";
 import Index from "./pages/Index";
 import Login from "./pages/Login";
 import Dashboard from "./pages/Dashboard";
-import CustomerRelationship from "./pages/CustomerRelationship";
+import CustomerManagement from "./pages/CustomerManagement";
 import IndividualJointAccountCreation from "./pages/IndividualJointAccountCreation";
+import CorporateAccountCreation from "./pages/CorporateAccountCreation";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -28,8 +29,9 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Login />} />
             <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/customers" element={<CustomerRelationship />} />
+            <Route path="/customers" element={<CustomerManagement />} />
             <Route path="/account-creation/individual" element={<IndividualJointAccountCreation />} />
+            <Route path="/account-creation/corporate" element={<CorporateAccountCreation />} />
             <Route path="/home" element={<Index />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />

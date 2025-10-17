@@ -704,7 +704,7 @@ const opportunities = [
   },
 ];
 
-const CustomerRelationship = () => {
+const CustomerManagement = () => {
   const [selectedCustomer, setSelectedCustomer] = useState<
     (typeof customers)[0] | null
   >(null);
@@ -765,7 +765,7 @@ const CustomerRelationship = () => {
           <AppHeader>
             <SidebarTrigger />
             <div className="flex-1 min-w-0">
-              <h1 className="text-xl md:text-2xl font-bold truncate">Customer Relationship</h1>
+              <h1 className="text-xl md:text-2xl font-bold truncate">Customer Management</h1>
               <p className="text-xs md:text-sm text-muted-foreground truncate">
                 Manage customer interactions and opportunities
               </p>
@@ -1232,4 +1232,4 @@ const CustomerRelationship = () => {
   );
 };
 
-export default CustomerRelationship;
+export default CustomerManagement;
