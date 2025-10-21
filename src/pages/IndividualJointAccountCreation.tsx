@@ -476,42 +476,44 @@ const IndividualJointAccountCreation = () => {
 
   return (
     <SidebarProvider defaultOpen={true}>
-      <div className="flex min-h-screen w-full bg-gradient-to-br from-background via-muted/20 to-background">
+      <div className="flex min-h-screen w-full bg-gradient-to-br from-background via-muted/20 to-background overflow-x-hidden">
         <AppSidebar />
-        <div className="flex-1 flex flex-col">
+        <div className="flex-1 flex flex-col min-w-0">
           <AppHeader>
             <SidebarTrigger />
             <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 min-w-0">
-              <h1 className="text-lg sm:text-xl font-semibold truncate">Customer & Account Creation</h1>
+              <h1 className="text-base sm:text-lg md:text-xl font-semibold truncate">Customer & Account Creation</h1>
               <p className="text-xs sm:text-sm text-muted-foreground truncate">
                 Individual/Joint Account Creation
               </p>
             </div>
           </AppHeader>
 
-          <main className="flex-1 p-3 sm:p-6 overflow-auto">
-            <div className="max-w-6xl mx-auto space-y-4 sm:space-y-6 animate-fade-in">
+          <main className="flex-1 p-3 sm:p-4 md:p-6 overflow-auto overflow-x-hidden">
+            <div className="max-w-6xl mx-auto space-y-3 sm:space-y-4 md:space-y-6 animate-fade-in">
               {/* Account Mode Selection */}
-              <Card className="border-0 shadow-lg">
-                <CardHeader className="pb-3 sm:pb-6">
-                  <CardTitle className="flex items-center gap-2 text-base sm:text-lg">
-                    <Users className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
-                    Account Type Selection
+              <Card className="border-0 shadow-lg overflow-hidden">
+                <CardHeader className="pb-3 sm:pb-4 md:pb-6 px-3 sm:px-4 md:px-6">
+                  <CardTitle className="flex items-center gap-2 text-sm sm:text-base md:text-lg">
+                    <Users className="h-4 w-4 sm:h-5 sm:w-5 text-primary flex-shrink-0" />
+                    <span className="truncate">Account Type Selection</span>
                   </CardTitle>
-                  <CardDescription className="text-sm">
+                  <CardDescription className="text-xs sm:text-sm">
                     Choose whether to create an individual or joint account
                   </CardDescription>
                 </CardHeader>
-                <CardContent className="pt-0">
+                <CardContent className="pt-0 px-3 sm:px-4 md:px-6 pb-3 sm:pb-4 md:pb-6">
                   <Tabs value={accountMode} onValueChange={(v) => currentStep === 1 && setAccountMode(v as "individual" | "joint")}>
-                    <TabsList className="grid w-full grid-cols-2 h-10 sm:h-11">
-                      <TabsTrigger value="individual" className="flex items-center gap-2 text-xs sm:text-sm" disabled={currentStep > 1}>
-                        <User className="h-3 w-3 sm:h-4 sm:w-4" />
-                        Individual Account
+                    <TabsList className="grid w-full grid-cols-2 h-9 sm:h-10 md:h-11">
+                      <TabsTrigger value="individual" className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm px-2" disabled={currentStep > 1}>
+                        <User className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
+                        <span className="truncate">Individual</span>
+                        <span className="hidden sm:inline">Account</span>
                       </TabsTrigger>
-                      <TabsTrigger value="joint" className="flex items-center gap-2 text-xs sm:text-sm" disabled={currentStep > 1}>
-                        <Users className="h-3 w-3 sm:h-4 sm:w-4" />
-                        Joint Account
+                      <TabsTrigger value="joint" className="flex items-center gap-1 sm:gap-2 text-xs sm:text-sm px-2" disabled={currentStep > 1}>
+                        <Users className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
+                        <span className="truncate">Joint</span>
+                        <span className="hidden sm:inline">Account</span>
                       </TabsTrigger>
                     </TabsList>
                   </Tabs>
@@ -519,42 +521,42 @@ const IndividualJointAccountCreation = () => {
               </Card>
 
               {/* Progress Steps */}
-              <Card className="border-0 shadow-lg">
-                <CardContent className="pt-4 sm:pt-6 px-4 sm:px-6">
+              <Card className="border-0 shadow-lg overflow-hidden">
+                <CardContent className="pt-3 sm:pt-4 md:pt-6 px-3 sm:px-4 md:px-6 pb-3 sm:pb-4 md:pb-6">
                   {/* Progress Bar */}
-                  <div className="mb-4 sm:mb-6">
+                  <div className="mb-3 sm:mb-4 md:mb-6">
                     <div className="flex items-center justify-between mb-2">
-                      <span className="text-sm font-medium text-muted-foreground">Progress</span>
-                      <span className="text-sm font-medium text-primary">{Math.round((currentStep / steps.length) * 100)}%</span>
+                      <span className="text-xs sm:text-sm font-medium text-muted-foreground">Progress</span>
+                      <span className="text-xs sm:text-sm font-medium text-primary">{Math.round((currentStep / steps.length) * 100)}%</span>
                     </div>
-                    <div className="w-full bg-muted/30 rounded-full h-2">
+                    <div className="w-full bg-muted/30 rounded-full h-1.5 sm:h-2">
                       <div
-                        className="bg-gradient-to-r from-primary to-primary/80 h-2 rounded-full transition-all duration-500 ease-out"
+                        className="bg-gradient-to-r from-primary to-primary/80 h-1.5 sm:h-2 rounded-full transition-all duration-500 ease-out"
                         style={{ width: `${(currentStep / steps.length) * 100}%` }}
                       ></div>
                     </div>
                   </div>
 
-                  <div className="flex items-center justify-between overflow-x-auto pb-2 scrollbar-hide gap-1 sm:gap-2">
+                  <div className="flex items-center justify-between overflow-x-auto pb-2 scrollbar-hide gap-0.5 sm:gap-1 md:gap-2 -mx-3 sm:-mx-4 md:-mx-0 px-3 sm:px-4 md:px-0">
                     {steps.map((step, index) => (
                       <div key={step.number} className="flex items-center flex-shrink-0">
-                        <div className="flex flex-col items-center">
+                        <div className="flex flex-col items-center min-w-0">
                           <div
-                            className={`h-8 w-8 sm:h-10 sm:w-10 md:h-12 md:w-12 rounded-full flex items-center justify-center border-2 transition-all ${
+                            className={`h-7 w-7 sm:h-9 sm:w-9 md:h-10 md:w-10 lg:h-12 lg:w-12 rounded-full flex items-center justify-center border-2 transition-all ${
                               currentStep >= step.number
                                 ? "bg-primary border-primary text-primary-foreground"
                                 : "border-muted-foreground/30 text-muted-foreground"
                             }`}
                           >
-                            <step.icon className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5" />
+                            <step.icon className="h-3 w-3 sm:h-4 sm:w-4 md:h-4 md:w-4 lg:h-5 lg:w-5" />
                           </div>
-                          <p className="text-xs mt-1 sm:mt-2 font-medium text-center max-w-[50px] sm:max-w-[60px] md:max-w-[80px] leading-tight">
-                            {step.title}
+                          <p className="text-[10px] sm:text-xs mt-1 sm:mt-1.5 md:mt-2 font-medium text-center max-w-[45px] sm:max-w-[55px] md:max-w-[70px] lg:max-w-[80px] leading-tight truncate">
+                            {step.title.split(" ").slice(0, 2).join(" ")}
                           </p>
                         </div>
                         {index < steps.length - 1 && (
                           <div
-                            className={`h-0.5 w-6 sm:w-8 md:w-12 mx-0.5 sm:mx-1 md:mx-2 transition-all ${
+                            className={`h-0.5 w-4 sm:w-6 md:w-8 lg:w-12 mx-0.5 sm:mx-1 md:mx-1.5 lg:mx-2 transition-all flex-shrink-0 ${
                               currentStep > step.number ? "bg-primary" : "bg-muted-foreground/30"
                             }`}
                           />
@@ -571,36 +573,36 @@ const IndividualJointAccountCreation = () => {
                   {/* Step 1: Member Info */}
                   {currentStep === 1 && (
                     <Card className="border-0 shadow-lg bg-gradient-to-br from-card via-card to-muted/5">
-                      <CardHeader className="bg-gradient-to-r from-primary/5 to-transparent border-b border-border/50 pb-3 sm:pb-6 px-4 sm:px-6">
-                        <CardTitle className="flex items-center gap-3 text-base sm:text-lg">
-                          <div className="h-8 w-8 sm:h-10 sm:w-10 rounded-full bg-primary/10 flex items-center justify-center">
-                            <IdCard className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
+                      <CardHeader className="bg-gradient-to-r from-primary/5 to-transparent border-b border-border/50 pb-3 sm:pb-4 md:pb-6 px-3 sm:px-4 md:px-6">
+                        <CardTitle className="flex items-center gap-2 sm:gap-3 text-sm sm:text-base md:text-lg">
+                          <div className="h-7 w-7 sm:h-8 sm:w-8 md:h-10 md:w-10 rounded-full bg-primary/10 flex items-center justify-center flex-shrink-0">
+                            <IdCard className="h-3.5 w-3.5 sm:h-4 sm:w-4 md:h-5 md:w-5 text-primary" />
                           </div>
-                          Member Information
+                          <span className="truncate">Member Information</span>
                         </CardTitle>
-                        <CardDescription className="text-sm">
+                        <CardDescription className="text-xs sm:text-sm">
                           Basic member account information and account type selection
                         </CardDescription>
                       </CardHeader>
-                      <CardContent className="space-y-4 sm:space-y-6 p-4 sm:p-6">
-                        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6">
+                      <CardContent className="space-y-3 sm:space-y-4 md:space-y-6 p-3 sm:p-4 md:p-6">
+                        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 sm:gap-4 md:gap-6">
                           <FormField
                             control={form.control}
                             name="memberAccountName"
                             render={({ field }) => (
                               <FormItem>
-                                <FormLabel className="text-sm font-medium text-foreground/90 flex items-center gap-2">
-                                  <IdCard className="h-4 w-4 text-primary/70" />
-                                  Member Account Name *
+                                <FormLabel className="text-xs sm:text-sm font-medium text-foreground/90 flex items-center gap-1.5 sm:gap-2">
+                                  <IdCard className="h-3 w-3 sm:h-4 sm:w-4 text-primary/70 flex-shrink-0" />
+                                  <span className="truncate">Member Account Name *</span>
                                 </FormLabel>
                                 <FormControl>
                                   <Input
                                     placeholder="Enter member account name"
                                     {...field}
-                                    className="transition-all duration-200 border-2 border-border/50 hover:border-primary/30 focus:border-primary focus:ring-2 focus:ring-primary/20 bg-gradient-to-r from-background to-muted/20 h-10 sm:h-11 text-sm sm:text-base"
+                                    className="transition-all duration-200 border-2 border-border/50 hover:border-primary/30 focus:border-primary focus:ring-2 focus:ring-primary/20 bg-gradient-to-r from-background to-muted/20 h-9 sm:h-10 md:h-11 text-sm"
                                   />
                                 </FormControl>
-                                <FormMessage className="text-red-500 text-sm mt-1" />
+                                <FormMessage className="text-red-500 text-xs sm:text-sm mt-1" />
                               </FormItem>
                             )}
                           />

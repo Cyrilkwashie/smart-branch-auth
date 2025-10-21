@@ -759,9 +759,9 @@ const CustomerManagement = () => {
 
   return (
     <SidebarProvider defaultOpen={true}>
-      <div className="min-h-screen flex w-full bg-gradient-to-br from-background via-background to-muted/20">
+      <div className="min-h-screen flex w-full bg-gradient-to-br from-background via-background to-muted/20 overflow-x-hidden">
         <AppSidebar />
-        <main className="flex-1 flex flex-col">
+        <main className="flex-1 flex flex-col min-w-0">
           <AppHeader>
             <SidebarTrigger />
             <div className="flex-1 min-w-0">
@@ -773,87 +773,87 @@ const CustomerManagement = () => {
           </AppHeader>
 
           {/* Content */}
-          <div className="flex-1 p-3 md:p-6 space-y-4 md:space-y-6">
+          <div className="flex-1 p-3 md:p-6 space-y-4 md:space-y-6 overflow-x-hidden">
             {/* Search & Filter Section */}
             <Card className="shadow-lg border-2">
               <CardHeader className="pb-3 md:pb-4">
-                <CardTitle className="flex items-center gap-2 text-lg md:text-xl">
-                  <Search className="h-4 w-4 md:h-5 md:w-5 text-primary" />
+                <CardTitle className="flex items-center gap-2 text-base md:text-lg lg:text-xl">
+                  <Search className="h-4 w-4 md:h-5 md:w-5 text-primary flex-shrink-0" />
                   <span className="truncate">Customer Search & Filter</span>
                 </CardTitle>
               </CardHeader>
-              <CardContent>
-                <div className="space-y-3 md:space-y-0">
-                  {/* Search Input - Full width on mobile */}
+              <CardContent className="space-y-3">
+                {/* Search Input - Full width on mobile */}
+                <div className="w-full">
                   <Input
                     placeholder="Search by name, phone, account..."
                     className="w-full h-10 md:h-11 text-sm md:text-base"
                     value={searchTerm}
                     onChange={(e) => setSearchTerm(e.target.value)}
                   />
-                  
-                  {/* Filters - Stack on mobile, flex on desktop */}
-                  <div className="flex flex-col sm:flex-row gap-2 md:gap-3">
-                    <Select
-                      value={leadsFilter}
-                      onValueChange={setLeadsFilter}
-                    >
-                      <SelectTrigger className="w-full sm:w-32 md:w-40 h-10 md:h-11 text-sm md:text-base">
-                        <SelectValue placeholder="All Leads" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="all">All Leads</SelectItem>
-                        <SelectItem value="active">Active Leads</SelectItem>
-                        <SelectItem value="inactive">Inactive Leads</SelectItem>
-                      </SelectContent>
-                    </Select>
-                    <Select
-                      value={serviceFilter}
-                      onValueChange={setServiceFilter}
-                    >
-                      <SelectTrigger className="w-full sm:w-32 md:w-40 h-10 md:h-11 text-sm md:text-base">
-                        <SelectValue placeholder="All Service" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="all">All Service</SelectItem>
-                        <SelectItem value="banking">Banking</SelectItem>
-                        <SelectItem value="investment">Investment</SelectItem>
-                        <SelectItem value="credit">Credit Cards</SelectItem>
-                      </SelectContent>
-                    </Select>
-                    <Select
-                      value={customerTypeFilter}
-                      onValueChange={setCustomerTypeFilter}
-                    >
-                      <SelectTrigger className="w-full sm:w-36 md:w-48 h-10 md:h-11 text-sm md:text-base">
-                        <SelectValue placeholder="Customer Type" />
-                      </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="all">All Types</SelectItem>
-                        <SelectItem value="premium">Premium</SelectItem>
-                        <SelectItem value="standard">Standard</SelectItem>
-                        <SelectItem value="high-risk">High Risk</SelectItem>
-                        <SelectItem value="low-risk">Low Risk</SelectItem>
-                      </SelectContent>
-                    </Select>
-                  </div>
-                  
-                  {/* Action Buttons - Stack on mobile */}
-                  <div className="flex flex-col sm:flex-row gap-2 md:gap-3 pt-2 md:pt-0">
-                    <Button 
-                      className="w-full sm:w-auto h-10 md:h-11 px-4 md:px-8 text-sm md:text-base" 
-                      onClick={handleSearch}
-                    >
-                      Search
-                    </Button>
-                    <Button
-                      variant="outline"
-                      className="w-full sm:w-auto h-10 md:h-11 px-4 md:px-8 text-sm md:text-base"
-                      onClick={handleClear}
-                    >
-                      Clear
-                    </Button>
-                  </div>
+                </div>
+                
+                {/* Filters - Stack on mobile, 2 columns on small screens, flex on desktop */}
+                <div className="grid grid-cols-1 sm:grid-cols-2 lg:flex lg:flex-row gap-2 md:gap-3">
+                  <Select
+                    value={leadsFilter}
+                    onValueChange={setLeadsFilter}
+                  >
+                    <SelectTrigger className="w-full lg:w-40 h-10 md:h-11 text-sm md:text-base">
+                      <SelectValue placeholder="All Leads" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">All Leads</SelectItem>
+                      <SelectItem value="active">Active Leads</SelectItem>
+                      <SelectItem value="inactive">Inactive Leads</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <Select
+                    value={serviceFilter}
+                    onValueChange={setServiceFilter}
+                  >
+                    <SelectTrigger className="w-full lg:w-40 h-10 md:h-11 text-sm md:text-base">
+                      <SelectValue placeholder="All Service" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">All Service</SelectItem>
+                      <SelectItem value="banking">Banking</SelectItem>
+                      <SelectItem value="investment">Investment</SelectItem>
+                      <SelectItem value="credit">Credit Cards</SelectItem>
+                    </SelectContent>
+                  </Select>
+                  <Select
+                    value={customerTypeFilter}
+                    onValueChange={setCustomerTypeFilter}
+                  >
+                    <SelectTrigger className="w-full sm:col-span-2 lg:col-span-1 lg:w-48 h-10 md:h-11 text-sm md:text-base">
+                      <SelectValue placeholder="Customer Type" />
+                    </SelectTrigger>
+                    <SelectContent>
+                      <SelectItem value="all">All Types</SelectItem>
+                      <SelectItem value="premium">Premium</SelectItem>
+                      <SelectItem value="standard">Standard</SelectItem>
+                      <SelectItem value="high-risk">High Risk</SelectItem>
+                      <SelectItem value="low-risk">Low Risk</SelectItem>
+                    </SelectContent>
+                  </Select>
+                </div>
+                
+                {/* Action Buttons - Stack on mobile, inline on tablet+ */}
+                <div className="flex flex-col sm:flex-row gap-2 md:gap-3">
+                  <Button 
+                    className="w-full sm:w-auto h-10 md:h-11 px-6 md:px-8 text-sm md:text-base" 
+                    onClick={handleSearch}
+                  >
+                    Search
+                  </Button>
+                  <Button
+                    variant="outline"
+                    className="w-full sm:w-auto h-10 md:h-11 px-6 md:px-8 text-sm md:text-base"
+                    onClick={handleClear}
+                  >
+                    Clear
+                  </Button>
                 </div>
               </CardContent>
             </Card>
@@ -871,18 +871,18 @@ const CustomerManagement = () => {
                   </p>
                 )}
               </div>
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 md:gap-4 lg:gap-6">
                 {filteredCustomers.map((customer) => (
                   <Card
                     key={customer.id}
-                    className="cursor-pointer hover:shadow-lg transition-all hover:-translate-y-1 border-2 hover:border-primary/50"
+                    className="cursor-pointer hover:shadow-lg transition-all hover:-translate-y-1 border-2 hover:border-primary/50 overflow-hidden"
                     onClick={() => openCustomerModal(customer)}
                   >
-                    <CardContent className="p-4 md:p-6">
-                      <div className="flex items-start gap-3 md:gap-4">
-                        <Avatar className="h-12 w-12 md:h-16 md:w-16 border-2 border-primary/20 flex-shrink-0">
+                    <CardContent className="p-3 md:p-4 lg:p-6">
+                      <div className="flex items-start gap-2 md:gap-3 lg:gap-4">
+                        <Avatar className="h-10 w-10 md:h-12 md:w-12 lg:h-16 lg:w-16 border-2 border-primary/20 flex-shrink-0">
                           <AvatarImage src={customer.avatar} />
-                          <AvatarFallback className="bg-gradient-to-br from-primary/20 to-primary/10 text-primary font-bold text-sm md:text-base">
+                          <AvatarFallback className="bg-gradient-to-br from-primary/20 to-primary/10 text-primary font-bold text-xs md:text-sm lg:text-base">
                             {customer.name
                               .split(" ")
                               .map((n) => n[0])
@@ -890,22 +890,22 @@ const CustomerManagement = () => {
                           </AvatarFallback>
                         </Avatar>
                         <div className="flex-1 min-w-0">
-                          <div className="flex items-start justify-between mb-2">
+                          <div className="flex items-start justify-between mb-1.5 md:mb-2 gap-1">
                             <div className="min-w-0 flex-1">
-                              <h3 className="font-bold text-base md:text-lg truncate">
+                              <h3 className="font-bold text-sm md:text-base lg:text-lg truncate">
                                 {customer.name}
                               </h3>
-                              <p className="text-xs md:text-sm text-muted-foreground truncate">
+                              <p className="text-xs text-muted-foreground truncate">
                                 {customer.account}
                               </p>
                             </div>
-                            <Eye className="h-4 w-4 md:h-5 md:w-5 text-muted-foreground hover:text-primary transition-colors flex-shrink-0 ml-2" />
+                            <Eye className="h-4 w-4 md:h-5 md:w-5 text-muted-foreground hover:text-primary transition-colors flex-shrink-0" />
                           </div>
-                          <div className="space-y-2">
-                            <div className="flex items-center gap-1 md:gap-2 flex-wrap">
+                          <div className="space-y-1.5 md:space-y-2">
+                            <div className="flex items-center gap-1 flex-wrap">
                               <Badge
                                 variant="outline"
-                                className={`text-xs ${
+                                className={`text-[10px] md:text-xs px-1.5 py-0.5 ${
                                   customer.segment === "Premium"
                                     ? "bg-yellow-500/10 text-yellow-700 dark:text-yellow-400 border-yellow-500/20"
                                     : "bg-blue-500/10 text-blue-700 dark:text-blue-400 border-blue-500/20"
@@ -915,7 +915,7 @@ const CustomerManagement = () => {
                               </Badge>
                               <Badge
                                 variant="outline"
-                                className={`text-xs ${
+                                className={`text-[10px] md:text-xs px-1.5 py-0.5 ${
                                   customer.riskLevel === "Low"
                                     ? "bg-green-500/10 text-green-700 dark:text-green-400 border-green-500/20"
                                     : customer.riskLevel === "Medium"
@@ -926,11 +926,11 @@ const CustomerManagement = () => {
                                 {customer.riskLevel} Risk
                               </Badge>
                             </div>
-                            <div className="flex items-center justify-between text-xs md:text-sm">
-                              <span className="text-muted-foreground">
+                            <div className="flex items-center justify-between text-xs">
+                              <span className="text-muted-foreground text-[11px] md:text-xs">
                                 Balance:
                               </span>
-                              <span className="font-bold text-sm md:text-lg">
+                              <span className="font-bold text-xs md:text-sm lg:text-base">
                                 {customer.balance}
                               </span>
                             </div>
@@ -939,7 +939,7 @@ const CustomerManagement = () => {
                                 <Badge
                                   key={index}
                                   variant="secondary"
-                                  className="text-xs"
+                                  className="text-[10px] md:text-xs px-1.5 py-0.5"
                                 >
                                   {product}
                                 </Badge>
@@ -956,10 +956,10 @@ const CustomerManagement = () => {
 
             {/* Customer Detail Modal */}
             <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-              <DialogContent className="w-[95vw] max-w-4xl max-h-[90vh] overflow-y-auto p-4 md:p-6">
-                <DialogHeader className="space-y-2 md:space-y-3">
-                  <DialogTitle className="flex flex-col sm:flex-row sm:items-center gap-2 md:gap-3">
-                    <Avatar className="h-10 w-10 md:h-12 md:w-12 self-start">
+              <DialogContent className="w-[96vw] sm:w-[90vw] max-w-4xl max-h-[92vh] overflow-y-auto p-3 sm:p-4 md:p-6">
+                <DialogHeader className="space-y-2 md:space-y-3 pb-2">
+                  <DialogTitle className="flex flex-row items-start gap-2 md:gap-3">
+                    <Avatar className="h-10 w-10 md:h-12 md:w-12 flex-shrink-0">
                       <AvatarImage src={selectedCustomer?.avatar} />
                       <AvatarFallback className="bg-gradient-to-br from-primary/20 to-primary/10 text-primary font-bold text-sm md:text-base">
                         {selectedCustomer?.name
@@ -968,16 +968,16 @@ const CustomerManagement = () => {
                           .join("")}
                       </AvatarFallback>
                     </Avatar>
-                    <div className="min-w-0">
-                      <h2 className="text-lg md:text-2xl font-bold truncate">
+                    <div className="min-w-0 flex-1">
+                      <h2 className="text-base sm:text-lg md:text-2xl font-bold truncate">
                         {selectedCustomer?.name}
                       </h2>
-                      <p className="text-sm md:text-base text-muted-foreground truncate">
+                      <p className="text-xs sm:text-sm md:text-base text-muted-foreground truncate">
                         {selectedCustomer?.account}
                       </p>
                     </div>
                   </DialogTitle>
-                  <DialogDescription className="text-sm md:text-base">
+                  <DialogDescription className="text-xs sm:text-sm md:text-base">
                     Complete customer profile and transaction history
                   </DialogDescription>
                 </DialogHeader>
@@ -1163,14 +1163,14 @@ const CustomerManagement = () => {
 
                     {/* Lead & Opportunity Tracker */}
                     <Card>
-                      <CardHeader>
-                        <CardTitle className="text-lg flex items-center gap-2">
-                          <Target className="h-5 w-5" />
-                          Opportunities & Leads
+                      <CardHeader className="pb-3 md:pb-4">
+                        <CardTitle className="text-base md:text-lg flex items-center gap-2">
+                          <Target className="h-4 w-4 md:h-5 md:w-5 flex-shrink-0" />
+                          <span className="truncate">Opportunities & Leads</span>
                         </CardTitle>
                       </CardHeader>
                       <CardContent>
-                        <div className="space-y-4">
+                        <div className="space-y-3 md:space-y-4">
                           {opportunities
                             .filter(
                               (opp) => opp.customer === selectedCustomer.name
@@ -1180,14 +1180,14 @@ const CustomerManagement = () => {
                                 key={index}
                                 className="hover:shadow-md transition-all cursor-pointer border-2 hover:border-primary/50"
                               >
-                                <CardContent className="p-4">
-                                  <div className="space-y-3">
-                                    <div className="flex items-start justify-between">
-                                      <div className="flex-1">
-                                        <h4 className="font-semibold text-sm mb-1">
+                                <CardContent className="p-3 md:p-4">
+                                  <div className="space-y-2 md:space-y-3">
+                                    <div className="flex items-start justify-between gap-2">
+                                      <div className="flex-1 min-w-0">
+                                        <h4 className="font-semibold text-xs sm:text-sm mb-1 truncate">
                                           {opp.opportunity}
                                         </h4>
-                                        <p className="text-xs text-muted-foreground">
+                                        <p className="text-xs text-muted-foreground truncate">
                                           {opp.customer}
                                         </p>
                                       </div>
@@ -1197,14 +1197,14 @@ const CustomerManagement = () => {
                                             ? "default"
                                             : "secondary"
                                         }
-                                        className="text-xs"
+                                        className="text-xs flex-shrink-0"
                                       >
                                         {opp.status}
                                       </Badge>
                                     </div>
                                     <div className="flex items-center gap-2 text-xs text-muted-foreground">
-                                      <Calendar className="h-3 w-3" />
-                                      <span>{opp.nextAction}</span>
+                                      <Calendar className="h-3 w-3 flex-shrink-0" />
+                                      <span className="truncate">{opp.nextAction}</span>
                                     </div>
                                   </div>
                                 </CardContent>
@@ -1213,9 +1213,9 @@ const CustomerManagement = () => {
                           {opportunities.filter(
                             (opp) => opp.customer === selectedCustomer.name
                           ).length === 0 && (
-                            <div className="text-center py-8 text-muted-foreground">
-                              <Target className="h-12 w-12 mx-auto mb-2 opacity-50" />
-                              <p>No active opportunities for this customer</p>
+                            <div className="text-center py-6 md:py-8 text-muted-foreground">
+                              <Target className="h-10 w-10 md:h-12 md:w-12 mx-auto mb-2 opacity-50" />
+                              <p className="text-sm md:text-base">No active opportunities for this customer</p>
                             </div>
                           )}
                         </div>

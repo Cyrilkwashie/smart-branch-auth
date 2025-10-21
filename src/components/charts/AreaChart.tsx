@@ -56,7 +56,7 @@ const AreaChart: React.FC<AreaChartProps> = ({
   };
 
   return (
-    <div className={`box-border w-full h-[341px] border border-black/10 dark:border-white/10 rounded-2xl relative ${className}`}>
+    <div className={`box-border w-full min-w-[1150px] h-[341px] border border-black/10 dark:border-white/10 rounded-2xl relative ${className}`}>
       
       {/* Y-axis labels */}
       <div className="absolute left-[20.91px] top-[75px]">
@@ -72,11 +72,11 @@ const AreaChart: React.FC<AreaChartProps> = ({
       </div>
 
       {/* Grid lines */}
-      <div className="absolute left-[60px] top-[75px]">
+      <div className="absolute left-[60px] top-[75px] right-4">
         {yAxisLabels.map((_, index) => (
           <div
             key={index}
-            className="absolute w-[1043px] h-px bg-black/5 dark:bg-white/5"
+            className="absolute w-full h-px bg-black/5 dark:bg-white/5"
             style={{ top: `${index * 41}px` }}
           />
         ))}
@@ -156,9 +156,9 @@ const AreaChart: React.FC<AreaChartProps> = ({
       )}
 
       {/* Month labels */}
-      <div className="absolute flex flex-row justify-between items-center px-0 gap-[14px] w-[1043px] h-[13px] left-[60px] top-[314px]">
+      <div className="absolute flex flex-row justify-between items-center left-[60px] right-4 top-[314px] h-[13px]">
         {months.map((month) => (
-          <span key={month} className="w-[30px] h-[13px] text-xs font-normal leading-[15px] text-center text-black/40 dark:text-white/40">
+          <span key={month} className="text-xs font-normal leading-[15px] text-center text-black/40 dark:text-white/40">
             {month}
           </span>
         ))}

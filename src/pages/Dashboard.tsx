@@ -283,98 +283,110 @@ const Dashboard = () => {
                   {/* Key Metrics */}
                   <Card className="border-0 shadow-md">
                     <CardHeader className="pb-4">
-                      <div className="flex items-center justify-between">
+                      <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
                         <CardTitle className="text-lg font-semibold">
                           Key Metrics
                         </CardTitle>
                         {/* Metric Tabs - Segmented Control */}
-                        <div className="flex items-center bg-muted/50 rounded-xl p-1 w-[750px] h-9">
-                          {metricTabs.map((tab, index) => (
-                            <div key={tab} className="flex items-center flex-1">
-                              {index > 0 && (
-                                <div className="w-px h-7 bg-border/30 rounded-[0.5px]"></div>
-                              )}
-                              <button
-                                onClick={() => setActiveMetricTab(tab)}
-                                className={`relative flex items-center justify-center px-2.5 py-[3px] h-7 flex-1 text-sm transition-all ${
-                                  activeMetricTab === tab
-                                    ? "text-foreground/80"
-                                    : "text-muted-foreground hover:text-foreground/70"
-                                }`}
-                              >
-                                {activeMetricTab === tab && (
-                                  <div className="absolute inset-0 bg-background shadow-md dark:shadow-lg rounded-[6px] border border-border/20"></div>
+                        <div className="bg-muted/50 rounded-xl p-1 w-full md:w-auto md:min-w-[500px] lg:w-[750px] h-auto md:h-9 overflow-x-auto">
+                          <div className="flex items-center min-w-max md:min-w-0">
+                            {metricTabs.map((tab, index) => (
+                              <div key={tab} className="flex items-center flex-1 min-w-fit">
+                                {index > 0 && (
+                                  <div className="w-px h-7 bg-border/30 rounded-[0.5px]"></div>
                                 )}
-                                <span className="relative z-10 text-center leading-[17px]">
-                                  {tab}
-                                </span>
-                              </button>
-                            </div>
-                          ))}
+                                <button
+                                  onClick={() => setActiveMetricTab(tab)}
+                                  className={`relative flex items-center justify-center px-2 md:px-2.5 py-[3px] h-7 flex-1 text-xs md:text-sm transition-all whitespace-nowrap ${
+                                    activeMetricTab === tab
+                                      ? "text-foreground/80"
+                                      : "text-muted-foreground hover:text-foreground/70"
+                                  }`}
+                                >
+                                  {activeMetricTab === tab && (
+                                    <div className="absolute inset-0 bg-background shadow-md dark:shadow-lg rounded-[6px] border border-border/20"></div>
+                                  )}
+                                  <span className="relative z-10 text-center leading-[17px]">
+                                    {tab}
+                                  </span>
+                                </button>
+                              </div>
+                            ))}
+                          </div>
                         </div>
                       </div>
                     </CardHeader>
-                    <CardContent className="p-6 pt-0">
-                      <div className="space-y-6">
+                    <CardContent className="p-4 md:p-6 pt-0">
+                      <div className="space-y-6 overflow-hidden">
                         
                         {/* Chart Area for Deposit Book */}
                         {activeMetricTab === "Deposit Book" && (
-                          <BarChart
-                            data={depositBookData}
-                            yAxisLabels={['3.0', '2.5', '2.0', '1.5', '1.0', '0']}
-                            maxValue={5}
-                            defaultHighlightMonth="Oct"
-                          />
+                          <div className="w-full -mx-4 md:-mx-6 px-4 md:px-6 overflow-x-auto">
+                            <BarChart
+                              data={depositBookData}
+                              yAxisLabels={['3.0', '2.5', '2.0', '1.5', '1.0', '0']}
+                              maxValue={5}
+                              defaultHighlightMonth="Oct"
+                            />
+                          </div>
                         )}
                         
                         {/* Chart Area for Loan Book */}
                         {activeMetricTab === "Loan Book" && (
-                          <BarChart
-                            data={loanBookData}
-                            yAxisLabels={['3.0', '2.5', '2.0', '1.5', '1.0', '0']}
-                            maxValue={5}
-                            defaultHighlightMonth="Oct"
-                          />
+                          <div className="w-full -mx-4 md:-mx-6 px-4 md:px-6 overflow-x-auto">
+                            <BarChart
+                              data={loanBookData}
+                              yAxisLabels={['3.0', '2.5', '2.0', '1.5', '1.0', '0']}
+                              maxValue={5}
+                              defaultHighlightMonth="Oct"
+                            />
+                          </div>
                         )}
                         
                         {/* Chart Area for NPL Ratio */}
                         {activeMetricTab === "NPL Ratio" && (
-                          <AreaChart
-                            gradientId="nplGradient"
-                            gradientColor="#9CCBF8"
-                            strokeColor="#9CCBF8"
-                            strokeWidth={2}
-                            yAxisLabels={['10%', '8%', '6%', '4%', '2%', '0']}
-                            months={months}
-                            pathData="M 47 155 Q 150 150 250 145 Q 350 140 450 150 Q 550 160 650 155 Q 750 150 850 145 Q 950 140 1040 155"
-                            defaultHighlightMonth="Sep"
-                          />
+                          <div className="w-full -mx-4 md:-mx-6 px-4 md:px-6 overflow-x-auto">
+                            <AreaChart
+                              gradientId="nplGradient"
+                              gradientColor="#9CCBF8"
+                              strokeColor="#9CCBF8"
+                              strokeWidth={2}
+                              yAxisLabels={['10%', '8%', '6%', '4%', '2%', '0']}
+                              months={months}
+                              pathData="M 47 155 Q 150 150 250 145 Q 350 140 450 150 Q 550 160 650 155 Q 750 150 850 145 Q 950 140 1040 155"
+                              defaultHighlightMonth="Sep"
+                            />
+                          </div>
                         )}
 
                         {/* Chart Area for Cross-Sell Rate */}
                         {activeMetricTab === "Cross-Sell Rate" && (
-                          <ProgressChart
-                            percentage={15}
-                            target={100}
-                            title="Cross-sell rate"
-                            improvementText="Cross-sell rate improved by 2% MoM"
-                            changePercentage="2%"
-                            isPositive={true}
-                          />
+                          <div className="w-full">
+                            <ProgressChart
+                              percentage={15}
+                              target={100}
+                              title="Cross-sell rate"
+                              improvementText="Cross-sell rate improved by 2% MoM"
+                              changePercentage="2%"
+                              isPositive={true}
+                            />
+                          </div>
                         )}
 
                         {/* Chart Area for Fee Income */}
                         {activeMetricTab === "Fee Income" && (
-                          <LineChart
-                            gradientId="feeIncomeGradient"
-                            gradientColor="#FA862E"
-                            strokeColor="#FA862E"
-                            strokeWidth={5}
-                            yAxisLabels={['10%', '8%', '6%', '4%', '2%', '0']}
-                            months={feeIncomeMonths}
-                            pathData="M 0 120 Q 100 100 200 85 Q 300 70 400 60 Q 500 50 600 45 Q 700 40 800 35 Q 900 30 1036 25"
-                            areaPathData="M 0 120 Q 100 100 200 85 Q 300 70 400 60 Q 500 50 600 45 Q 700 40 800 35 Q 900 30 1036 25 L 1036 214 L 0 214 Z"
-                          />
+                          <div className="w-full -mx-4 md:-mx-6 px-4 md:px-6 overflow-x-auto">
+                            <LineChart
+                              gradientId="feeIncomeGradient"
+                              gradientColor="#FA862E"
+                              strokeColor="#FA862E"
+                              strokeWidth={5}
+                              yAxisLabels={['10%', '8%', '6%', '4%', '2%', '0']}
+                              months={feeIncomeMonths}
+                              pathData="M 0 120 Q 100 100 200 85 Q 300 70 400 60 Q 500 50 600 45 Q 700 40 800 35 Q 900 30 1036 25"
+                              areaPathData="M 0 120 Q 100 100 200 85 Q 300 70 400 60 Q 500 50 600 45 Q 700 40 800 35 Q 900 30 1036 25 L 1036 214 L 0 214 Z"
+                            />
+                          </div>
                         )}
 
                         {/* Placeholder content for other tabs */}
