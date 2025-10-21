@@ -2506,25 +2506,24 @@ const CorporateAccountCreation = () => {
                           </div>
 
                           <div className="overflow-x-auto border rounded-lg bg-card shadow-sm -mx-2 sm:mx-0 scrollbar-thin scrollbar-thumb-muted scrollbar-track-transparent">
-                            <div className="min-w-0 sm:min-w-[600px]">
-                              <table className="w-full">
-                                <thead className="bg-muted/50">
-                                  <tr>
-                                    <th className="px-2 sm:px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
-                                      Code
-                                    </th>
-                                    <th className="px-2 sm:px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
-                                      Description
-                                    </th>
-                                    <th className="px-2 sm:px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
-                                      Wealth Value
-                                    </th>
-                                    <th className="px-2 sm:px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
-                                      Actions
-                                    </th>
-                                  </tr>
-                                </thead>
-                                <tbody className="divide-y divide-border">
+                            <table className="w-full min-w-[600px]">
+                              <thead className="bg-muted/50">
+                                <tr>
+                                  <th className="px-2 sm:px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                                    Code
+                                  </th>
+                                  <th className="px-2 sm:px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                                    Description
+                                  </th>
+                                  <th className="px-2 sm:px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                                    Wealth Value
+                                  </th>
+                                  <th className="px-2 sm:px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
+                                    Actions
+                                  </th>
+                                </tr>
+                              </thead>
+                              <tbody className="divide-y divide-border">
                                   {sourceOfWealthFields.map((field, index) => (
                                     <tr key={field.id} className="hover:bg-muted/30 transition-colors">
                                       <td className="px-2 sm:px-4 py-3 text-sm font-medium">
@@ -2622,7 +2621,6 @@ const CorporateAccountCreation = () => {
                                   ))}
                                 </tbody>
                               </table>
-                            </div>
                           </div>
 
                           {/* Add Source of Wealth Button */}
