@@ -10,6 +10,8 @@ import Dashboard from "./pages/Dashboard";
 import CustomerManagement from "./pages/CustomerManagement";
 import IndividualJointAccountCreation from "./pages/IndividualJointAccountCreation";
 import CorporateAccountCreation from "./pages/CorporateAccountCreation";
+import LienCreation from "./pages/account-mgmt/LienCreation";
+import LienCancellation from "./pages/account-mgmt/LienCancellation";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -32,6 +34,8 @@ const App = () => (
             <Route path="/customers" element={<CustomerManagement />} />
             <Route path="/account-creation/individual" element={<IndividualJointAccountCreation />} />
             <Route path="/account-creation/corporate" element={<CorporateAccountCreation />} />
+            <Route path="/account-mgmt/lien-creation" element={<LienCreation />} />
+            <Route path="/account-mgmt/lien-cancellation" element={<LienCancellation />} />
             <Route path="/home" element={<Index />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
