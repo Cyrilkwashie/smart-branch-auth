@@ -84,7 +84,7 @@ const DormantAccountReactivation = () => {
             </div>
           </AppHeader>
 
-          <main className="flex-1 p-6 overflow-auto">
+          <main className="flex-1 p-4 sm:p-6 overflow-auto">
             <div className="max-w-5xl mx-auto space-y-6 animate-fade-in">
               {/* Search Account */}
               <Card className="border-0 shadow-md">
@@ -95,7 +95,7 @@ const DormantAccountReactivation = () => {
                   </CardTitle>
                 </CardHeader>
                 <CardContent className="p-6">
-                  <div className="flex gap-3">
+                  <div className="flex flex-col gap-3 sm:flex-row">
                     <div className="flex-1">
                       <Input
                         placeholder="Enter account number"
@@ -106,7 +106,7 @@ const DormantAccountReactivation = () => {
                         }}
                       />
                     </div>
-                    <Button onClick={handleSearch} disabled={!accountNumber || isSearching}>
+                    <Button onClick={handleSearch} disabled={!accountNumber || isSearching} className="w-full sm:w-auto">
                       <Search className="mr-2 h-4 w-4" />
                       {isSearching ? "Searching..." : "Search"}
                     </Button>
@@ -253,43 +253,45 @@ const DormantAccountReactivation = () => {
                       <CardTitle className="text-lg">Recent Transactions</CardTitle>
                     </CardHeader>
                     <CardContent className="p-6">
-                      <Table>
-                        <TableHeader>
-                          <TableRow>
-                            <TableHead>Change Code</TableHead>
-                            <TableHead>Fee Amount</TableHead>
-                            <TableHead className="text-right">Fee Amount Description</TableHead>
-                            <TableHead className="text-right">Fee Description</TableHead>
-                            <TableHead className="text-right">Fee Amount Per Book</TableHead>
-                            <TableHead className="text-right">Currency</TableHead>
-                          </TableRow>
-                        </TableHeader>
-                        <TableBody>
-                          {accountData.transactions.map((txn: any, idx: number) => (
-                            <TableRow key={idx}>
-                              <TableCell>{txn.date}</TableCell>
-                              <TableCell>{txn.description}</TableCell>
-                              <TableCell className="text-right text-red-600">
-                                {txn.debit || "-"}
-                              </TableCell>
-                              <TableCell className="text-right text-green-600">
-                                {txn.credit || "-"}
-                              </TableCell>
-                              <TableCell className="text-right font-medium">
-                                {txn.balance}
-                              </TableCell>
+                      <div className="overflow-x-auto">
+                        <Table className="min-w-[600px]">
+                          <TableHeader>
+                            <TableRow>
+                              <TableHead>Change Code</TableHead>
+                              <TableHead>Fee Amount</TableHead>
+                              <TableHead className="text-right">Fee Amount Description</TableHead>
+                              <TableHead className="text-right">Fee Description</TableHead>
+                              <TableHead className="text-right">Fee Amount Per Book</TableHead>
+                              <TableHead className="text-right">Currency</TableHead>
                             </TableRow>
-                          ))}
-                          <TableRow className="bg-muted/50 font-semibold">
-                            <TableCell colSpan={2} className="text-right">Total:</TableCell>
-                            <TableCell className="text-right text-red-600">
-                              {calculateTotalDebit()}
-                            </TableCell>
-                            <TableCell></TableCell>
-                            <TableCell></TableCell>
-                          </TableRow>
-                        </TableBody>
-                      </Table>
+                          </TableHeader>
+                          <TableBody>
+                            {accountData.transactions.map((txn: any, idx: number) => (
+                              <TableRow key={idx}>
+                                <TableCell>{txn.date}</TableCell>
+                                <TableCell>{txn.description}</TableCell>
+                                <TableCell className="text-right text-red-600">
+                                  {txn.debit || "-"}
+                                </TableCell>
+                                <TableCell className="text-right text-green-600">
+                                  {txn.credit || "-"}
+                                </TableCell>
+                                <TableCell className="text-right font-medium">
+                                  {txn.balance}
+                                </TableCell>
+                              </TableRow>
+                            ))}
+                            <TableRow className="bg-muted/50 font-semibold">
+                              <TableCell colSpan={2} className="text-right">Total:</TableCell>
+                              <TableCell className="text-right text-red-600">
+                                {calculateTotalDebit()}
+                              </TableCell>
+                              <TableCell></TableCell>
+                              <TableCell></TableCell>
+                            </TableRow>
+                          </TableBody>
+                        </Table>
+                      </div>
                     </CardContent>
                   </Card>
 
