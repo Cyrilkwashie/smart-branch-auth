@@ -45,54 +45,7 @@ const LienCreation = () => {
 
           <main className="flex-1 p-6 overflow-auto">
             <div className="max-w-5xl mx-auto space-y-6 animate-fade-in">
-              {/* Welcome Section
-              <Card className="border-0 shadow-md bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/30">
-                <CardContent className="p-6">
-                  <div className="flex items-start gap-4">
-                    <div className="flex-1">
-                      <h2 className="text-2xl font-bold mb-2">Welcome to Lien Creation</h2>
-                      <p className="text-muted-foreground mb-4">
-                        Create and manage account liens efficiently. A lien is a legal claim or restriction placed on an account 
-                        that prevents the customer from accessing a specified amount until certain conditions are met.
-                      </p>
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-4">
-                        <div className="flex items-start gap-2">
-                          <div className="h-8 w-8 rounded-lg bg-blue-100 dark:bg-blue-900 flex items-center justify-center flex-shrink-0">
-                            <span className="text-blue-600 dark:text-blue-400 font-bold">1</span>
-                          </div>
-                          <div>
-                            <p className="font-semibold text-sm">Enter Account Details</p>
-                            <p className="text-xs text-muted-foreground">Specify the account number</p>
-                          </div>
-                        </div>
-                        <div className="flex items-start gap-2">
-                          <div className="h-8 w-8 rounded-lg bg-blue-100 dark:bg-blue-900 flex items-center justify-center flex-shrink-0">
-                            <span className="text-blue-600 dark:text-blue-400 font-bold">2</span>
-                          </div>
-                          <div>
-                            <p className="font-semibold text-sm">Define Lien Terms</p>
-                            <p className="text-xs text-muted-foreground">Set amount, type, and dates</p>
-                          </div>
-                        </div>
-                        <div className="flex items-start gap-2">
-                          <div className="h-8 w-8 rounded-lg bg-blue-100 dark:bg-blue-900 flex items-center justify-center flex-shrink-0">
-                            <span className="text-blue-600 dark:text-blue-400 font-bold">3</span>
-                          </div>
-                          <div>
-                            <p className="font-semibold text-sm">Submit Request</p>
-                            <p className="text-xs text-muted-foreground">Review and create the lien</p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card> */}
-
               <Card className="border-0 shadow-lg">
-                {/* <CardHeader className="border-b bg-gradient-to-r from-primary/10 to-primary/5">
-                  <CardTitle className="text-lg">Lien Information</CardTitle>
-                </CardHeader> */}
                 <CardContent className="p-6">
                   <form className="space-y-6">
                     {/* Account Information Section */}
@@ -127,22 +80,6 @@ const LienCreation = () => {
                         Lien Details
                       </h3>
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        {/* <div className="space-y-2">
-                          <Label htmlFor="lienType">Lien Type *</Label>
-                          <Select>
-                            <SelectTrigger id="lienType">
-                              <SelectValue placeholder="Select lien type" />
-                            </SelectTrigger>
-                            <SelectContent>
-                              <SelectItem value="legal">Legal Lien</SelectItem>
-                              <SelectItem value="collateral">Collateral Lien</SelectItem>
-                              <SelectItem value="deposit">Deposit Lien</SelectItem>
-                              <SelectItem value="court">Court Order Lien</SelectItem>
-                              <SelectItem value="other">Other</SelectItem>
-                            </SelectContent>
-                          </Select>
-                        </div> */}
-
                         <div className="space-y-2">
                           <Label htmlFor="lienAmount">Lien Amount *</Label>
                           <Input
@@ -153,21 +90,7 @@ const LienCreation = () => {
                             required
                           />
                         </div>
-{/* 
-                        <div className="space-y-2">
-                          <Label htmlFor="currency">Currency *</Label>
-                          <Select>
-                            <SelectTrigger id="currency">
-                              <SelectValue placeholder="Select currency" />
-                            </SelectTrigger>
-                            <SelectContent>
-                              <SelectItem value="ghs">GHS - Ghana Cedis</SelectItem>
-                              <SelectItem value="usd">USD - US Dollar</SelectItem>
-                              <SelectItem value="eur">EUR - Euro</SelectItem>
-                              <SelectItem value="gbp">GBP - British Pound</SelectItem>
-                            </SelectContent>
-                          </Select>
-                        </div> */}
+
 
                         <div className="space-y-2">
                           <Label>Effecttive Date *</Label>

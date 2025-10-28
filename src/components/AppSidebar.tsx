@@ -52,7 +52,13 @@ const menuItems = [
     icon: Building2,
     subItems: [
       { title: "Static Data Amendment", url: "/account-mgmt/static-data" },
-      { title: "Additional Account", url: "/account-mgmt/additional" },
+      {
+        title: "Additional Account",
+        subItems: [
+          { title: "Create Additional CM Account", url: "/additional-account/create-cm" },
+          { title: "Amend Additional CM Account", url: "/additional-account/amend-cm" },
+        ]
+      },
       { title: "Lien Creation", url: "/account-mgmt/lien-creation" },
       { title: "Lien Cancellation", url: "/account-mgmt/lien-cancellation" },
       { title: "Account Closure", url: "/account-mgmt/closure" },
