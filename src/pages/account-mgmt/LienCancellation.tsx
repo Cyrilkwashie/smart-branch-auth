@@ -127,10 +127,10 @@ const LienCancellation = () => {
   };
 
   return (
-    <SidebarProvider defaultOpen={true}>
-      <div className="flex min-h-screen w-full bg-gradient-to-br from-background via-muted/20 to-background">
+    <SidebarProvider defaultOpen={false}>
+      <div className="flex min-h-screen w-full bg-gradient-to-br from-background via-muted/20 to-background overflow-x-hidden">
         <AppSidebar />
-        <div className="flex-1 flex flex-col">
+        <div className="flex-1 flex flex-col min-w-0">
           <AppHeader>
             <SidebarTrigger />
             <div>
@@ -139,39 +139,48 @@ const LienCancellation = () => {
             </div>
           </AppHeader>
 
-          <main className="flex-1 p-6 overflow-auto">
-            <div className="max-w-6xl mx-auto space-y-6 animate-fade-in">
+          <main className="flex-1 p-3 overflow-x-hidden">
+            <div className="w-full max-w-none space-y-4 animate-fade-in">
               {/* Search Bar */}
-              <Card className="border-0 shadow-md">
+              <Card className="border-0 shadow-md w-full">
                 <CardHeader className="pb-2">
                   <CardTitle className="text-base">Search</CardTitle>
                 </CardHeader>
-                <CardContent className="p-4 pt-0">
-                  <div className="grid grid-cols-1 md:grid-cols-12 gap-3">
-                    <div className="md:col-span-6">
-                      <div className="flex items-center gap-2">
-                        <div className="relative w-full">
-                          <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
-                          <Input
-                            value={accountQuery}
-                            onChange={(e) => setAccountQuery(e.target.value)}
-                            placeholder="Search by account number"
-                            className="pl-9"
-                            aria-label="Search by account number"
-                          />
-                        </div>
+                <CardContent className="p-3">
+                  <div className="space-y-3 w-full">
+                    {/* Account Search Field */}
+                    <div className="w-full">
+                      <div className="relative w-full">
+                        <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-muted-foreground" />
+                        <Input
+                          value={accountQuery}
+                          onChange={(e) => setAccountQuery(e.target.value)}
+                          placeholder="Account number"
+                          className="pl-9 w-full min-w-0"
+                          aria-label="Search by account number"
+                        />
                       </div>
                     </div>
-                    <div className="md:col-span-4">
+                    
+                    {/* Amount Field */}
+                    <div className="w-full">
                       <Input
                         value={amountQuery}
                         onChange={(e) => setAmountQuery(e.target.value)}
-                        placeholder="Amount (e.g. 1200 or 1000-5000)"
+                        placeholder="Amount range"
+                        className="w-full min-w-0"
                         aria-label="Search by amount"
                       />
                     </div>
-                    <div className="md:col-span-2 flex gap-2">
-                      <Button variant="secondary" type="button" onClick={onClear} className="w-full md:w-auto">
+                    
+                    {/* Clear Button */}
+                    <div className="w-full">
+                      <Button 
+                        variant="secondary" 
+                        type="button" 
+                        onClick={onClear} 
+                        className="w-full"
+                      >
                         <X className="mr-2 h-4 w-4" /> Clear
                       </Button>
                     </div>
