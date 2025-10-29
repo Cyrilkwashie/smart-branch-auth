@@ -1,3 +1,5 @@
+import CloseAccount from "./pages/close-account/CloseAccount";
+import CloseAccountByDraft from "./pages/close-account/CloseAccountByDraft";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -14,8 +16,6 @@ import LienCreation from "./pages/account-mgmt/LienCreation";
 import LienCancellation from "./pages/account-mgmt/LienCancellation";
 import AccountBlockage from "@/pages/account-mgmt/AccountBlockage";
 import DormantAccountReactivation from "@/pages/account-mgmt/DormantAccountReactivation";
-import CreateAdditionalAccount from "@/pages/additional-account/CreateAdditionalAccount";
-import AmendAdditionalAccount from "@/pages/additional-account/AmendAdditionalAccount";
 import CreateAdditionalCMAccount from "@/pages/additional-account/CreateAdditionalCMAccount";
 import AmendAdditionalCMAccount from "@/pages/additional-account/AmendAdditionalCMAccount";
 import NotFound from "./pages/NotFound";
@@ -44,11 +44,12 @@ const App = () => (
             <Route path="/account-mgmt/lien-cancellation" element={<LienCancellation />} />
             <Route path="/account-mgmt/blockage" element={<AccountBlockage />} />
             <Route path="/account-mgmt/reactivation" element={<DormantAccountReactivation />} />
-            <Route path="/additional-account/create" element={<CreateAdditionalAccount />} />
-            <Route path="/additional-account/amend" element={<AmendAdditionalAccount />} />
             <Route path="/additional-account/create-cm" element={<CreateAdditionalCMAccount />} />
             <Route path="/additional-account/amend-cm" element={<AmendAdditionalCMAccount />} />
             <Route path="/home" element={<Index />} />
+            <Route path="/close-account/close" element={<CloseAccount />} />
+            <Route path="/close-account/by-draft" element={<CloseAccountByDraft />} />
+            <Route path="/close-account/cash-transfer-enquiry" element={<div>Account Close Cash Transfer Enquiry (Coming Soon)</div>} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

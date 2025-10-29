@@ -45,14 +45,19 @@ const CreateAdditionalCMAccount = () => {
     <SidebarProvider>
       <div className="flex min-h-screen w-full">
         <AppSidebar />
-        <div className="flex-1">
-          <AppHeader />
+        <div className="flex-1 flex flex-col min-w-0">
+          <AppHeader>
+            <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 min-w-0">
+              <a href="/individual-joint-account-creation" className="text-base sm:text-lg md:text-xl font-semibold truncate text-primary hover:underline">
+                Addtional Account
+              </a>
+              <span className="text-xs sm:text-sm text-muted-foreground truncate">
+                Create Additional CM Account
+              </span>
+            </div>
+          </AppHeader>
           <main className="p-6">
             <div className="max-w-7xl mx-auto space-y-6">
-              <div className="flex items-center justify-between">
-                <h1 className="text-3xl font-bold tracking-tight">Create Additional CM Account</h1>
-              </div>
-
               {/* Search Section */}
               <Card>
                 <CardContent className="pt-6">

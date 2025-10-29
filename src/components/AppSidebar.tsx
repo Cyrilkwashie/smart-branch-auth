@@ -61,7 +61,15 @@ const menuItems = [
       },
       { title: "Lien Creation", url: "/account-mgmt/lien-creation" },
       { title: "Lien Cancellation", url: "/account-mgmt/lien-cancellation" },
-      { title: "Account Closure", url: "/account-mgmt/closure" },
+      {
+        title: "Account Closure",
+        icon: LogOut,
+        subItems: [
+          { title: "Close Account", url: "/close-account/close" },
+          { title: "Close Account by Draft", url: "/close-account/by-draft" },
+          { title: "Account Close Cash Transfer Enquiry", url: "/close-account/cash-transfer-enquiry" },
+        ],
+      },
       { title: "Dormant Account Reactivation", url: "/account-mgmt/reactivation" },
       { title: "Account Blockage/Unblockage", url: "/account-mgmt/blockage" },
       { title: "Account Notes", url: "/account-mgmt/notes" },
