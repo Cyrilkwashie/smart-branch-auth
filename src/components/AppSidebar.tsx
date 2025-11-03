@@ -67,7 +67,6 @@ const menuItems = [
         subItems: [
           { title: "Close Account", url: "/close-account/close" },
           { title: "Close Account by Draft", url: "/close-account/by-draft" },
-          { title: "Account Close Cash Transfer Enquiry", url: "/close-account/cash-transfer-enquiry" },
         ],
       },
       { title: "Dormant Account Reactivation", url: "/account-mgmt/reactivation" },

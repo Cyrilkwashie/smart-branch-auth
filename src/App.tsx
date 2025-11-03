@@ -49,7 +49,6 @@ const App = () => (
             <Route path="/home" element={<Index />} />
             <Route path="/close-account/close" element={<CloseAccount />} />
             <Route path="/close-account/by-draft" element={<CloseAccountByDraft />} />
-            <Route path="/close-account/cash-transfer-enquiry" element={<div>Account Close Cash Transfer Enquiry (Coming Soon)</div>} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

@@ -71,15 +71,14 @@ const CloseAccount = () => {
                       />
                     </div>
                     <div className="flex-1">
-                      <Label htmlFor="accountType">Account Type</Label>
+                      <Label htmlFor="accountType">Transfer Type</Label>
                       <Select value={accountType} onValueChange={setAccountType}>
                         <SelectTrigger id="accountType">
-                          <SelectValue placeholder="Select account type" />
+                          <SelectValue placeholder="Select transfer type" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="savings">Savings</SelectItem>
-                          <SelectItem value="current">Current</SelectItem>
-                          <SelectItem value="fixed-deposit">Fixed Deposit</SelectItem>
+                          <SelectItem value="cash">Cash</SelectItem>
+                          <SelectItem value="draft">Account</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
@@ -87,48 +86,6 @@ const CloseAccount = () => {
                       <Button onClick={handleSearch} disabled={loading}>
                         {loading ? "Searching..." : "Search"}
                       </Button>
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              <Card>
-                <CardHeader>
-                  <CardTitle>Account Information</CardTitle>
-                </CardHeader>
-                <CardContent className="space-y-2">
-                  <div className="grid grid-cols-2 gap-4">
-                    <div>
-                      <Label>Account Name</Label>
-                      <div>{accountInfo ? accountInfo.accountName : "John Doe"}</div>
-                    </div>
-                    <div>
-                      <Label>Currency</Label>
-                      <div>{accountInfo ? accountInfo.accountType : "Savings"}</div>
-                    </div>
-                    <div>
-                      <Label>Product</Label>
-                      <div>{accountInfo ? accountInfo.branch : "Main Branch"}</div>
-                    </div>
-                    <div>
-                      <Label>Branch</Label>
-                      <div>{accountInfo ? accountInfo.status : "Active"}</div>
-                    </div>
-                    <div>
-                      <Label>A/C Status</Label>
-                      <div>{accountInfo ? accountInfo.status : "Active"}</div>
-                    </div>
-                    <div>
-                      <Label>Date Opened</Label>
-                      <div>{accountInfo ? accountInfo.dateOpened : "2022-01-15"}</div>
-                    </div>
-                    <div>
-                      <Label>Date of Last Activity</Label>
-                      <div>{accountInfo ? accountInfo.lastActivityDate : "2023-04-12"}</div>
-                    </div>
-                    <div>
-                      <Label>Level (System Generated)</Label>
-                      <div>{accountInfo ? accountInfo.level : "Gold"}</div>
                     </div>
                   </div>
                 </CardContent>
@@ -151,20 +108,20 @@ const CloseAccount = () => {
                           <Input value={accountInfo.availableBalance} readOnly />
                         </div>
                         <div className="space-y-2">
-                          <Label>Cleared Balance</Label>
+                          <Label>Customer Status</Label>
                           <Input value={accountInfo.clearedBalance} readOnly />
                         </div>
                         <div className="space-y-2">
-                          <Label>Uncleared Balance</Label>
-                          <Input value={accountInfo.unclearedBalance} readOnly />
+                          <Label>Accrued Interest</Label>
+                          <Input value={accountInfo.accruedInterest} readOnly />
                         </div>
                         <div className="space-y-2">
-                          <Label>Minimum Balance</Label>
+                          <Label>COT Amount</Label>
                           <Input value={accountInfo.minimumBalance} readOnly />
                         </div>
                         <div className="space-y-2">
-                          <Label>Overdraft Limit</Label>
-                          <Input value={accountInfo.overdraftLimit} readOnly />
+                          <Label>Accrued Fees</Label>
+                          <Input value={accountInfo.accruedFees} readOnly />
                         </div>
                       </div>
                     </CardContent>

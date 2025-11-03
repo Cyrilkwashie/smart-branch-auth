@@ -34,48 +34,41 @@ import { Button } from "@/components/ui/button";
 
 // Dummy balance info for reuse
 const dummyBalance = {
-  availableBalance: "₵10,000.00",
-  holdBalance: "₵500.00",
-  unclearedEffects: "₵200.00",
-  minimumBalance: "₵50.00",
-  lienAmount: "₵0.00",
-  accruedInterest: "₵100.00",
-  accruedCharges: "₵20.00",
+  currentBalance: "5,230.00",
+  availableBalance: "5,230.00",
+  clearedBalance: "5,230.00",
+  unclearedBalance: "0.00",
+  minimumBalance: "100.00",
+  overdraftLimit: "0.00",
 };
 
-const BalanceSection = () => (
+const BalanceSection = ({ accountInfo }: { accountInfo: any }) => (
   <Card className="mb-6">
     <CardHeader>
       <CardTitle>Balance Information</CardTitle>
     </CardHeader>
-    <CardContent className="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <div>
-        <Label>Available Balance</Label>
-        <Input value={dummyBalance.availableBalance} readOnly />
-      </div>
-      <div>
-        <Label>Hold Balance</Label>
-        <Input value={dummyBalance.holdBalance} readOnly />
-      </div>
-      <div>
-        <Label>Uncleared Effects</Label>
-        <Input value={dummyBalance.unclearedEffects} readOnly />
-      </div>
-      <div>
-        <Label>Minimum Balance</Label>
-        <Input value={dummyBalance.minimumBalance} readOnly />
-      </div>
-      <div>
-        <Label>Lien Amount</Label>
-        <Input value={dummyBalance.lienAmount} readOnly />
-      </div>
-      <div>
-        <Label>Accrued Interest</Label>
-        <Input value={dummyBalance.accruedInterest} readOnly />
-      </div>
-      <div>
-        <Label>Accrued Charges</Label>
-        <Input value={dummyBalance.accruedCharges} readOnly />
+    <CardContent>
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="space-y-2">
+          <Label>Available Balance</Label>
+          <Input value={accountInfo.availableBalance} readOnly />
+        </div>
+        <div className="space-y-2">
+          <Label>Booked Balance</Label>
+          <Input value={accountInfo.clearedBalance} readOnly />
+        </div>
+        <div className="space-y-2">
+          <Label>OD</Label>
+          <Input value={accountInfo.unclearedBalance} readOnly />
+        </div>
+        <div className="space-y-2">
+          <Label>Charges Amount</Label>
+          <Input value={accountInfo.minimumBalance} readOnly />
+        </div>
+        <div className="space-y-2">
+          <Label>Bank Cheuqe A/C</Label>
+          <Input value={accountInfo.overdraftLimit} readOnly />
+        </div>
       </div>
     </CardContent>
   </Card>
@@ -83,6 +76,31 @@ const BalanceSection = () => (
 
 
 const CloseAccountByDraft: React.FC = () => {
+  const [accountNumber, setAccountNumber] = React.useState("");
+  const [transferType, setTransferType] = React.useState("");
+  const [accountInfo, setAccountInfo] = React.useState<any>(null);
+  const [loading, setLoading] = React.useState(false);
+
+  const handleSearch = () => {
+    setLoading(true);
+    setTimeout(() => {
+      setAccountInfo({
+        accountName: "John Doe",
+        accountType: "Savings",
+        branch: "Main Branch",
+        status: "Active",
+        currency: "GHS",
+        currentBalance: "5,230.00",
+        availableBalance: "5,230.00",
+        clearedBalance: "5,230.00",
+        unclearedBalance: "0.00",
+        minimumBalance: "100.00",
+        overdraftLimit: "0.00",
+      });
+      setLoading(false);
+    }, 1000);
+  };
+
   return (
     <SidebarProvider>
       <div className="flex min-h-screen w-full">
@@ -101,6 +119,40 @@ const CloseAccountByDraft: React.FC = () => {
           </div>
           <main className="p-6">
             <div className="max-w-4xl mx-auto">
+              {/* Search Section */}
+              <Card className="mb-6">
+                <CardContent className="pt-6 space-y-4">
+                  <div className="flex gap-4 flex-col md:flex-row">
+                    <div className="flex-1">
+                      <Label htmlFor="accountNumber">Account Number</Label>
+                      <Input
+                        id="accountNumber"
+                        placeholder="Enter account number"
+                        value={accountNumber}
+                        onChange={(e) => setAccountNumber(e.target.value)}
+                      />
+                    </div>
+                    <div className="flex-1">
+                      <Label htmlFor="transferType">Transfer Type</Label>
+                      <Select value={transferType} onValueChange={setTransferType}>
+                        <SelectTrigger id="transferType">
+                          <SelectValue placeholder="Select transfer type" />
+                        </SelectTrigger>
+                        <SelectContent>
+                          <SelectItem value="transfer">Transfer to Another Account</SelectItem>
+                          <SelectItem value="cash">Cash Withdrawal</SelectItem>
+                          <SelectItem value="draft">Bank Draft</SelectItem>
+                        </SelectContent>
+                      </Select>
+                    </div>
+                    <div className="flex items-end">
+                      <Button onClick={handleSearch} disabled={loading}>
+                        {loading ? "Searching..." : "Search"}
+                      </Button>
+                    </div>
+                  </div>
+                </CardContent>
+              </Card>
               {/* Funding Section */}
               <Card className="mb-6">
                 <CardHeader>
@@ -170,7 +222,7 @@ const CloseAccountByDraft: React.FC = () => {
                 </CardContent>
               </Card>
               {/* Balance Section */}
-              <BalanceSection />
+              {accountInfo && <BalanceSection accountInfo={accountInfo} />}
               <div className="flex justify-end mb-8">
                 <Button>Submit</Button>
               </div>
