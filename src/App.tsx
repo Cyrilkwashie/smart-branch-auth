@@ -1,5 +1,18 @@
 import CloseAccount from "./pages/close-account/CloseAccount";
 import CloseAccountByDraft from "./pages/close-account/CloseAccountByDraft";
+import SafeCustodyRegisterEnquiry from "./pages/safe-custody/SafeCustodyRegisterEnquiry";
+import SafeCustodyCreation from "./pages/safe-custody/SafeCustodyCreation";
+import SafeCustodyLiquidation from "./pages/safe-custody/SafeCustodyLiquidation";
+import SafeCustodyLiquidationDetail from "./pages/safe-custody/SafeCustodyLiquidationDetail";
+import NewAccountMsg from "./pages/account-notes/tabs/NewAccountMsg";
+import AmendAccountMsg from "./pages/account-notes/tabs/AmendAccountMsg";
+import EnquiryAccountMsg from "./pages/account-notes/tabs/EnquiryAccountMsg";
+import CancelAccountMsg from "./pages/account-notes/tabs/CancelAccountMsg";
+import AccountMandateAmendment from "./pages/account-notes/tabs/AccountMandateAmendment";
+import SpecialCustomerReg from "./pages/account-notes/tabs/SpecialCustomerReg";
+import PCBulkUpload from "./pages/account-notes/tabs/PCBulkUpload";
+import RelationRemoval from "./pages/account-notes/tabs/RelationRemoval";
+import AccountMinWaiver from "./pages/account-notes/tabs/AccountMinWaiver";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -49,6 +62,19 @@ const App = () => (
             <Route path="/home" element={<Index />} />
             <Route path="/close-account/close" element={<CloseAccount />} />
             <Route path="/close-account/by-draft" element={<CloseAccountByDraft />} />
+            <Route path="/safe-custody/register-enquiry" element={<SafeCustodyRegisterEnquiry />} />
+            <Route path="/safe-custody/creation" element={<SafeCustodyCreation />} />
+            <Route path="/safe-custody/liquidation" element={<SafeCustodyLiquidation />} />
+            <Route path="/safe-custody/liquidation/:requisitionNo" element={<SafeCustodyLiquidationDetail />} />
+            <Route path="/account-notes/new-account-msg" element={<NewAccountMsg />} />
+            <Route path="/account-notes/amend-account-msg" element={<AmendAccountMsg />} />
+            <Route path="/account-notes/enquiry-account-msg" element={<EnquiryAccountMsg />} />
+            <Route path="/account-notes/cancel-account-msg" element={<CancelAccountMsg />} />
+            <Route path="/account-notes/mandate-amendment" element={<AccountMandateAmendment />} />
+            <Route path="/account-notes/special-customer-reg" element={<SpecialCustomerReg />} />
+            <Route path="/account-notes/pc-bulk-upload" element={<PCBulkUpload />} />
+            <Route path="/account-notes/relation-removal" element={<RelationRemoval />} />
+            <Route path="/account-notes/account-min-waiver" element={<AccountMinWaiver />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

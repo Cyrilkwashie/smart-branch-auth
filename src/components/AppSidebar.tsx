@@ -71,8 +71,28 @@ const menuItems = [
       },
       { title: "Dormant Account Reactivation", url: "/account-mgmt/reactivation" },
       { title: "Account Blockage/Unblockage", url: "/account-mgmt/blockage" },
-      { title: "Account Notes", url: "/account-mgmt/notes" },
-      { title: "Safe Custody", url: "/account-mgmt/safe-custody" },
+      {
+        title: "Safe Custody",
+        subItems: [
+          { title: "Safe Custody Register Enquiry", url: "/safe-custody/register-enquiry" },
+          { title: "Safe Custody Creation", url: "/safe-custody/creation" },
+          { title: "Safe Custody Liquidation", url: "/safe-custody/liquidation" },
+        ],
+      },
+      {
+        title: "Account Notes",
+        subItems: [
+          { title: "New Account Msg", url: "/account-notes/new-account-msg" },
+          { title: "Amend Account Msg", url: "/account-notes/amend-account-msg" },
+          { title: "Enquiry Account Msg", url: "/account-notes/enquiry-account-msg" },
+          { title: "Cancel Account Msg", url: "/account-notes/cancel-account-msg" },
+          { title: "Account Mandate Amendment", url: "/account-notes/mandate-amendment" },
+          { title: "Special Customer Reg", url: "/account-notes/special-customer-reg" },
+          { title: "PC Bulk Upload", url: "/account-notes/pc-bulk-upload" },
+          { title: "Relation Removal", url: "/account-notes/relation-removal" },
+          { title: "Account Min Waiver", url: "/account-notes/account-min-waiver" },
+        ],
+      },
     ],
   },
   {
