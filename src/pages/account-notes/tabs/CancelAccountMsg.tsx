@@ -21,7 +21,6 @@ interface AccountMessage {
 const CancelAccountMsg: React.FC = () => {
   const [searchData, setSearchData] = useState({
     accountNumber: "",
-    serialNumber: "",
   });
 
   const [accountMessages, setAccountMessages] = useState<AccountMessage[]>([
@@ -66,8 +65,8 @@ const CancelAccountMsg: React.FC = () => {
   };
 
   const handleSearch = () => {
-    if (!searchData.accountNumber.trim() && !searchData.serialNumber.trim()) {
-      // If no search criteria entered, show all messages
+    if (!searchData.accountNumber.trim()) {
+      // If no account number entered, show all messages
       setAccountMessages([
         {
           accountNo: "1234567890",
@@ -97,7 +96,7 @@ const CancelAccountMsg: React.FC = () => {
       return;
     }
 
-    // Filter messages by account number or serial number
+    // Filter messages by account number
     const allMessages = [
       {
         accountNo: "1234567890",
@@ -126,8 +125,7 @@ const CancelAccountMsg: React.FC = () => {
     ];
 
     const filteredMessages = allMessages.filter(message =>
-      (searchData.accountNumber && message.accountNo.includes(searchData.accountNumber)) ||
-      (searchData.serialNumber && message.accountNo.includes(searchData.serialNumber))
+      message.accountNo.includes(searchData.accountNumber)
     );
     setAccountMessages(filteredMessages);
   };
@@ -135,7 +133,6 @@ const CancelAccountMsg: React.FC = () => {
   const handleClear = () => {
     setSearchData({
       accountNumber: "",
-      serialNumber: "",
     });
     setAccountMessages([
       {
@@ -233,15 +230,6 @@ const CancelAccountMsg: React.FC = () => {
                           value={searchData.accountNumber}
                           onChange={(e) => handleSearchInputChange("accountNumber", e.target.value)}
                           placeholder="Enter account number"
-                        />
-                      </div>
-                      <div className="flex-1 max-w-md">
-                        <Label htmlFor="serialNumber">Serial Number</Label>
-                        <Input
-                          id="serialNumber"
-                          value={searchData.serialNumber}
-                          onChange={(e) => handleSearchInputChange("serialNumber", e.target.value)}
-                          placeholder="Enter serial number"
                         />
                       </div>
                       <Button onClick={handleSearch} className="px-8">

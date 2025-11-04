@@ -3,9 +3,7 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Checkbox } from "@/components/ui/checkbox";
 import { AppSidebar } from "@/components/AppSidebar";
 import AppHeader from "@/components/AppHeader";
 import { SidebarProvider } from "@/components/ui/sidebar";
@@ -13,33 +11,40 @@ import { SidebarProvider } from "@/components/ui/sidebar";
 const AccountMandateAmendment: React.FC = () => {
   const [formData, setFormData] = useState({
     accountNumber: "",
-    customerName: "",
-    currentMandate: "",
+    accountName: "",
     newMandate: "",
-    amendmentType: "",
-    effectiveDate: "",
-    reason: "",
-    supportingDocuments: [] as string[],
-    remarks: "",
+    sourceDocument: "",
   });
 
   const handleInputChange = (field: string, value: string) => {
     setFormData(prev => ({ ...prev, [field]: value }));
-  };
 
-  const handleCheckboxChange = (document: string, checked: boolean) => {
-    setFormData(prev => ({
-      ...prev,
-      supportingDocuments: checked
-        ? [...prev.supportingDocuments, document]
-        : prev.supportingDocuments.filter(doc => doc !== document)
-    }));
+    // When account number is entered, populate account name
+    if (field === "accountNumber" && value.trim()) {
+      // Simulate fetching account details based on account number
+      // In a real application, this would be an API call
+      setTimeout(() => {
+        setFormData(prev => ({
+          ...prev,
+          accountName: "John Doe", // Sample account name
+        }));
+      }, 500); // Simulate API delay
+    }
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     console.log("Account Mandate Amendment submitted:", formData);
     // Handle form submission logic here
+  };
+
+  const handleClear = () => {
+    setFormData({
+      accountNumber: "",
+      accountName: "",
+      newMandate: "",
+      sourceDocument: "",
+    });
   };
 
   return (
@@ -62,7 +67,7 @@ const AccountMandateAmendment: React.FC = () => {
                 </CardHeader>
                 <CardContent className="p-6">
                   <form onSubmit={handleSubmit} className="space-y-6">
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="space-y-2">
                         <Label htmlFor="accountNumber">Account Number *</Label>
                         <Input
@@ -75,137 +80,56 @@ const AccountMandateAmendment: React.FC = () => {
                       </div>
 
                       <div className="space-y-2">
-                        <Label htmlFor="customerName">Customer Name</Label>
+                        <Label htmlFor="accountName">Account Name</Label>
                         <Input
-                          id="customerName"
-                          value={formData.customerName}
-                          onChange={(e) => handleInputChange("customerName", e.target.value)}
-                          placeholder="Enter customer name"
+                          id="accountName"
+                          value={formData.accountName}
                           readOnly
+                          placeholder="Account name will appear here"
                         />
                       </div>
-
-                      <div className="space-y-2">
-                        <Label htmlFor="amendmentType">Amendment Type *</Label>
-                        <Select value={formData.amendmentType} onValueChange={(value) => handleInputChange("amendmentType", value)}>
-                          <SelectTrigger>
-                            <SelectValue placeholder="Select amendment type" />
-                          </SelectTrigger>
-                          <SelectContent>
-                            <SelectItem value="add-signatory">Add Signatory</SelectItem>
-                            <SelectItem value="remove-signatory">Remove Signatory</SelectItem>
-                            <SelectItem value="change-authority">Change Authority Level</SelectItem>
-                            <SelectItem value="update-details">Update Signatory Details</SelectItem>
-                            <SelectItem value="transfer-mandate">Transfer Mandate</SelectItem>
-                          </SelectContent>
-                        </Select>
-                      </div>
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="currentMandate">Current Mandate</Label>
-                      <Textarea
-                        id="currentMandate"
-                        value={formData.currentMandate}
-                        onChange={(e) => handleInputChange("currentMandate", e.target.value)}
-                        placeholder="Describe the current mandate"
-                        rows={3}
-                        readOnly
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="newMandate">New Mandate *</Label>
-                      <Textarea
-                        id="newMandate"
-                        value={formData.newMandate}
-                        onChange={(e) => handleInputChange("newMandate", e.target.value)}
-                        placeholder="Describe the new mandate after amendment"
-                        rows={3}
-                        required
-                      />
                     </div>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div className="space-y-2">
-                        <Label htmlFor="effectiveDate">Effective Date *</Label>
-                        <Input
-                          id="effectiveDate"
-                          type="date"
-                          value={formData.effectiveDate}
-                          onChange={(e) => handleInputChange("effectiveDate", e.target.value)}
-                          required
-                        />
-                      </div>
-
-                      <div className="space-y-2">
-                        <Label htmlFor="reason">Reason for Amendment *</Label>
-                        <Select value={formData.reason} onValueChange={(value) => handleInputChange("reason", value)}>
+                        <Label htmlFor="newMandate">New Mandate *</Label>
+                        <Select value={formData.newMandate} onValueChange={(value) => handleInputChange("newMandate", value)}>
                           <SelectTrigger>
-                            <SelectValue placeholder="Select reason" />
+                            <SelectValue placeholder="Select new mandate" />
                           </SelectTrigger>
                           <SelectContent>
-                            <SelectItem value="customer-request">Customer Request</SelectItem>
-                            <SelectItem value="legal-requirement">Legal Requirement</SelectItem>
-                            <SelectItem value="business-change">Business Change</SelectItem>
-                            <SelectItem value="error-correction">Error Correction</SelectItem>
-                            <SelectItem value="other">Other</SelectItem>
+                            <SelectItem value="individual">Individual Mandate</SelectItem>
+                            <SelectItem value="joint">Joint Mandate</SelectItem>
+                            <SelectItem value="corporate">Corporate Mandate</SelectItem>
+                            <SelectItem value="power-of-attorney">Power of Attorney</SelectItem>
+                            <SelectItem value="trust">Trust Mandate</SelectItem>
                           </SelectContent>
                         </Select>
                       </div>
-                    </div>
 
-                    <div className="space-y-3">
-                      <Label>Supporting Documents</Label>
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                        {[
-                          "ID Document",
-                          "Mandate Form",
-                          "Resolution Letter",
-                          "Power of Attorney",
-                          "Court Order",
-                          "Other"
-                        ].map((document) => (
-                          <div key={document} className="flex items-center space-x-2">
-                            <Checkbox
-                              id={document}
-                              checked={formData.supportingDocuments.includes(document)}
-                              onCheckedChange={(checked) => handleCheckboxChange(document, checked as boolean)}
-                            />
-                            <Label htmlFor={document} className="text-sm font-normal">
-                              {document}
-                            </Label>
-                          </div>
-                        ))}
+                      <div className="space-y-2">
+                        <Label htmlFor="sourceDocument">Source Document *</Label>
+                        <Select value={formData.sourceDocument} onValueChange={(value) => handleInputChange("sourceDocument", value)}>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Select source document" />
+                          </SelectTrigger>
+                          <SelectContent>
+                            <SelectItem value="id-card">ID Card</SelectItem>
+                            <SelectItem value="passport">Passport</SelectItem>
+                            <SelectItem value="mandate-form">Mandate Form</SelectItem>
+                            <SelectItem value="resolution-letter">Resolution Letter</SelectItem>
+                            <SelectItem value="power-of-attorney">Power of Attorney</SelectItem>
+                            <SelectItem value="court-order">Court Order</SelectItem>
+                          </SelectContent>
+                        </Select>
                       </div>
-                    </div>
-
-                    <div className="space-y-2">
-                      <Label htmlFor="remarks">Additional Remarks</Label>
-                      <Textarea
-                        id="remarks"
-                        value={formData.remarks}
-                        onChange={(e) => handleInputChange("remarks", e.target.value)}
-                        placeholder="Enter any additional remarks"
-                        rows={2}
-                      />
                     </div>
 
                     <div className="flex gap-4 pt-4">
                       <Button type="submit" className="px-8">
                         Submit Amendment
                       </Button>
-                      <Button type="button" variant="outline" onClick={() => setFormData({
-                        accountNumber: "",
-                        customerName: "",
-                        currentMandate: "",
-                        newMandate: "",
-                        amendmentType: "",
-                        effectiveDate: "",
-                        reason: "",
-                        supportingDocuments: [],
-                        remarks: "",
-                      })}>
+                      <Button type="button" variant="outline" onClick={handleClear}>
                         Clear
                       </Button>
                     </div>
