@@ -51,7 +51,6 @@ const menuItems = [
     title: "Account Management",
     icon: Building2,
     subItems: [
-      { title: "Static Data Amendment", url: "/account-mgmt/static-data" },
       {
         title: "Additional Account",
         subItems: [
@@ -91,6 +90,30 @@ const menuItems = [
           { title: "PC Bulk Upload", url: "/account-notes/pc-bulk-upload" },
           { title: "Relation Removal", url: "/account-notes/relation-removal" },
           { title: "Account Min Waiver", url: "/account-notes/account-min-waiver" },
+        ],
+      },
+      {
+        title: "Static Amendment",
+        subItems: [
+          { title: "Add Customer Relationship", url: "/static-amendment/add-customer-relationship" },
+          { title: "Customer Care", url: "/static-amendment/customer-care" },
+          { title: "Approve Customer Relationship", url: "/static-amendment/approve-customer-relationship" },
+          { title: "Deceased Customer", url: "/static-amendment/deceased-customer" },
+          { title: "Customer Mapping Enquiry", url: "/static-amendment/customer-mapping-enquiry" },
+          { title: "Deceased Customer Enquiry", url: "/static-amendment/deceased-customer-enquiry" },
+          { title: "Deceased Customer Approval", url: "/static-amendment/deceased-customer-approval" },
+          { title: "Amend Customer Sector Segment", url: "/static-amendment/amend-customer-sector-segment" },
+          { title: "Uploaded Blacklist/Setup", url: "/static-amendment/uploaded-blacklist-setup" },
+          { title: "Customer Type Retagging", url: "/static-amendment/customer-type-retagging" },
+          { title: "Customer Type Retagging App", url: "/static-amendment/customer-type-retagging-app" },
+          { title: "Customer MDA Code Tagging", url: "/static-amendment/customer-mda-code-tagging" },
+          { title: "Customer Merge", url: "/static-amendment/customer-merge" },
+          { title: "Customer Merge Verification", url: "/static-amendment/customer-merge-verification" },
+          { title: "Customer Merge Approval", url: "/static-amendment/customer-merge-approval" },
+          { title: "Amend Customer Relationship", url: "/static-amendment/amend-customer-relationship" },
+          { title: "Risk Review", url: "/static-amendment/risk-review" },
+          { title: "Risk Review Approval", url: "/static-amendment/risk-review-approval" },
+          { title: "Risk Review Compliance App", url: "/static-amendment/risk-review-compliance-app" },
         ],
       },
     ],
@@ -211,7 +234,7 @@ export function AppSidebar() {
               {menuItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   {item.subItems ? (
-                    <Collapsible defaultOpen={false} className="group/collapsible">
+                    <Collapsible defaultOpen={item.title === "Account Management"} className="group/collapsible">
                       <CollapsibleTrigger asChild>
                         <SidebarMenuButton tooltip={item.title}>
                           <item.icon className="h-4 w-4 text-sidebar-foreground" />
@@ -226,7 +249,7 @@ export function AppSidebar() {
                           {item.subItems.map((subItem) => (
                             <SidebarMenuSubItem key={subItem.title}>
                               {subItem.subItems ? (
-                                <Collapsible defaultOpen={false} className="group/sub-collapsible">
+                                <Collapsible defaultOpen={subItem.title === "Static Amendment"} className="group/sub-collapsible">
                                   <CollapsibleTrigger asChild>
                                     <SidebarMenuSubButton tooltip={subItem.title}>
                                       <span className="text-sidebar-foreground">{subItem.title}</span>

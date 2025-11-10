@@ -13,6 +13,26 @@ import SpecialCustomerReg from "./pages/account-notes/tabs/SpecialCustomerReg";
 import PCBulkUpload from "./pages/account-notes/tabs/PCBulkUpload";
 import RelationRemoval from "./pages/account-notes/tabs/RelationRemoval";
 import AccountMinWaiver from "./pages/account-notes/tabs/AccountMinWaiver";
+import AddCustomerRelationship from "./pages/static-amendment/AddCustomerRelationship";
+import CustomerCare from "./pages/static-amendment/CustomerCare";
+import ApproveCustomerRelationship from "./pages/static-amendment/ApproveCustomerRelationship";
+import DeceasedCustomer from "./pages/static-amendment/DeceasedCustomer";
+import CustomerMappingEnquiry from "./pages/static-amendment/CustomerMappingEnquiry";
+import DeceasedCustomerEnquiry from "./pages/static-amendment/DeceasedCustomerEnquiry";
+import DeceasedCustomerApproval from "./pages/static-amendment/DeceasedCustomerApproval";
+import AmendCustomerSectorSegment from "./pages/static-amendment/AmendCustomerSectorSegment";
+import UploadedBlacklistSetup from "./pages/static-amendment/UploadedBlacklistSetup";
+import CustomerTypeRetagging from "./pages/static-amendment/CustomerTypeRetagging";
+import CustomerTypeRetaggingApp from "./pages/static-amendment/CustomerTypeRetaggingApp";
+import CustomerRMRetaggingApproval from "./pages/static-amendment/CustomerRMRetaggingApproval";
+import CustomerMDACodeTagging from "./pages/static-amendment/CustomerMDACodeTagging";
+import CustomerMerge from "./pages/static-amendment/CustomerMerge";
+import CustomerMergeVerification from "./pages/static-amendment/CustomerMergeVerification";
+import CustomerMergeApproval from "./pages/static-amendment/CustomerMergeApproval";
+import AmendCustomerRelationship from "./pages/static-amendment/AmendCustomerRelationship";
+import RiskReview from "./pages/static-amendment/RiskReview";
+import RiskReviewApproval from "./pages/static-amendment/RiskReviewApproval";
+import RiskReviewComplianceApp from "./pages/static-amendment/RiskReviewComplianceApp";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -75,6 +95,26 @@ const App = () => (
             <Route path="/account-notes/pc-bulk-upload" element={<PCBulkUpload />} />
             <Route path="/account-notes/relation-removal" element={<RelationRemoval />} />
             <Route path="/account-notes/account-min-waiver" element={<AccountMinWaiver />} />
+            <Route path="/static-amendment/add-customer-relationship" element={<AddCustomerRelationship />} />
+            <Route path="/static-amendment/customer-care" element={<CustomerCare />} />
+            <Route path="/static-amendment/approve-customer-relationship" element={<ApproveCustomerRelationship />} />
+            <Route path="/static-amendment/deceased-customer" element={<DeceasedCustomer />} />
+            <Route path="/static-amendment/customer-mapping-enquiry" element={<CustomerMappingEnquiry />} />
+            <Route path="/static-amendment/deceased-customer-enquiry" element={<DeceasedCustomerEnquiry />} />
+            <Route path="/static-amendment/deceased-customer-approval" element={<DeceasedCustomerApproval />} />
+            <Route path="/static-amendment/amend-customer-sector-segment" element={<AmendCustomerSectorSegment />} />
+            <Route path="/static-amendment/uploaded-blacklist-setup" element={<UploadedBlacklistSetup />} />
+            <Route path="/static-amendment/customer-type-retagging" element={<CustomerTypeRetagging />} />
+            <Route path="/static-amendment/customer-type-retagging-app" element={<CustomerTypeRetaggingApp />} />
+            <Route path="/static-amendment/customer-rm-retagging-approval" element={<CustomerRMRetaggingApproval />} />
+            <Route path="/static-amendment/customer-mda-code-tagging" element={<CustomerMDACodeTagging />} />
+            <Route path="/static-amendment/customer-merge" element={<CustomerMerge />} />
+            <Route path="/static-amendment/customer-merge-verification" element={<CustomerMergeVerification />} />
+            <Route path="/static-amendment/customer-merge-approval" element={<CustomerMergeApproval />} />
+            <Route path="/static-amendment/amend-customer-relationship" element={<AmendCustomerRelationship />} />
+            <Route path="/static-amendment/risk-review" element={<RiskReview />} />
+            <Route path="/static-amendment/risk-review-approval" element={<RiskReviewApproval />} />
+            <Route path="/static-amendment/risk-review-compliance-app" element={<RiskReviewComplianceApp />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

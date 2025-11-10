@@ -306,39 +306,7 @@ const DormantAccountReactivation = () => {
                 </>
               )}
 
-              {/* Instructions Card */}
-              {!accountData && (
-                <Card className="border-0 shadow-md bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-blue-950/30 dark:to-indigo-950/30">
-                  <CardContent className="p-6">
-                    <div className="flex items-start gap-4">
-                      <div className="h-10 w-10 rounded-full bg-blue-100 dark:bg-blue-900 flex items-center justify-center flex-shrink-0">
-                        <Info className="h-5 w-5 text-blue-600" />
-                      </div>
-                      <div className="flex-1">
-                        <h3 className="font-semibold mb-2">How to Reactivate a Dormant Account</h3>
-                        <ol className="space-y-2 text-sm text-muted-foreground">
-                          <li className="flex items-start gap-2">
-                            <span className="font-semibold text-blue-600">1.</span>
-                            <span>Enter the account number and click Search</span>
-                          </li>
-                          <li className="flex items-start gap-2">
-                            <span className="font-semibold text-blue-600">2.</span>
-                            <span>Review account information and balance details</span>
-                          </li>
-                          <li className="flex items-start gap-2">
-                            <span className="font-semibold text-blue-600">3.</span>
-                            <span>Check recent transactions</span>
-                          </li>
-                          <li className="flex items-start gap-2">
-                            <span className="font-semibold text-blue-600">4.</span>
-                            <span>Click Reactivate Account to submit</span>
-                          </li>
-                        </ol>
-                      </div>
-                    </div>
-                  </CardContent>
-                </Card>
-              )}
+
             </div>
           </main>
         </div>
