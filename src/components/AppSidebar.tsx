@@ -128,6 +128,7 @@ const menuItems = [
           { title: "Counter Cheques", url: "/cheques/counter" },
           { title: "Chequebook Request", url: "/cheques/request" },
           { title: "Chequebook Maintenance", url: "/cheques/maintenance" },
+          { title: "Chequebook Maintenance Approval", url: "/cheques/maintenance-approval" },
           { title: "Chequebook Issuance", url: "/cheques/issuance" },
           { title: "Stopped Cheques", url: "/cheques/stopped" },
           { title: "Untagged Stopped Cheques", url: "/cheques/untagged" },

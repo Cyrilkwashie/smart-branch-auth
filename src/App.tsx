@@ -33,6 +33,9 @@ import AmendCustomerRelationship from "./pages/static-amendment/AmendCustomerRel
 import RiskReview from "./pages/static-amendment/RiskReview";
 import RiskReviewApproval from "./pages/static-amendment/RiskReviewApproval";
 import RiskReviewComplianceApp from "./pages/static-amendment/RiskReviewComplianceApp";
+import ChequebookIssuance from "./pages/cheques/ChequebookIssuance";
+import ChequeMaintenance from "./pages/cheques/ChequeMaintenance";
+import ChequebookMaintenanceApproval from "./pages/cheques/ChequebookMaintenanceApproval";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -115,6 +118,9 @@ const App = () => (
             <Route path="/static-amendment/risk-review" element={<RiskReview />} />
             <Route path="/static-amendment/risk-review-approval" element={<RiskReviewApproval />} />
             <Route path="/static-amendment/risk-review-compliance-app" element={<RiskReviewComplianceApp />} />
+            <Route path="/cheques/issuance" element={<ChequebookIssuance />} />
+            <Route path="/cheques/maintenance" element={<ChequeMaintenance />} />
+            <Route path="/cheques/maintenance-approval" element={<ChequebookMaintenanceApproval />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
