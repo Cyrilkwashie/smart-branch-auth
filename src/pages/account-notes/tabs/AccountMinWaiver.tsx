@@ -7,7 +7,7 @@ import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { AppSidebar } from "@/components/AppSidebar";
 import AppHeader from "@/components/AppHeader";
-import { SidebarProvider } from "@/components/ui/sidebar";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 
 const AccountMinWaiver: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -41,6 +41,9 @@ const AccountMinWaiver: React.FC = () => {
         <AppSidebar />
         <div className="flex-1 flex flex-col min-w-0">
           <AppHeader>
+
+            <SidebarTrigger />
+
             <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 min-w-0">
               <span className="text-base sm:text-lg md:text-xl font-semibold truncate text-primary">
                 Account Minimum Balance Waiver
@@ -207,24 +210,6 @@ const AccountMinWaiver: React.FC = () => {
                         placeholder="Enter any additional remarks for the waiver request"
                         rows={3}
                       />
-                    </div>
-
-                    <div className="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                      <div className="flex items-center">
-                        <div className="flex-shrink-0">
-                          <svg className="h-5 w-5 text-blue-400" viewBox="0 0 20 20" fill="currentColor">
-                            <path fillRule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clipRule="evenodd" />
-                          </svg>
-                        </div>
-                        <div className="ml-3">
-                          <h3 className="text-sm font-medium text-blue-800">
-                            Waiver Information
-                          </h3>
-                          <div className="mt-2 text-sm text-blue-700">
-                            <p>Minimum balance waivers are granted based on customer profile and circumstances. All waivers require appropriate approval levels and may be subject to periodic review.</p>
-                          </div>
-                        </div>
-                      </div>
                     </div>
 
                     <div className="flex gap-4 pt-4">

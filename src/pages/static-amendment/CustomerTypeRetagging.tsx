@@ -6,7 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { AppSidebar } from "@/components/AppSidebar";
 import AppHeader from "@/components/AppHeader";
-import { SidebarProvider } from "@/components/ui/sidebar";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 
 interface CustomerTypeInfo {
   customerId: string;
@@ -43,7 +43,7 @@ const CustomerTypeRetagging: React.FC = () => {
           customerName: `John ${id} Doe`,
           dobDoi: "1990-05-15",
           contactNumber: "+234-801-234-5678",
-          branch: "Lagos Main",
+          branch: "001",
           createdBy: "Admin User",
           customerType: "Individual",
         },
@@ -52,7 +52,7 @@ const CustomerTypeRetagging: React.FC = () => {
           customerName: `Jane ${id} Smith`,
           dobDoi: "1985-08-22",
           contactNumber: "+234-802-345-6789",
-          branch: "Abuja Central",
+          branch: "002",
           createdBy: "System Admin",
           customerType: "Corporate",
         },
@@ -61,7 +61,7 @@ const CustomerTypeRetagging: React.FC = () => {
           customerName: `Bob ${id} Johnson`,
           dobDoi: "1992-12-03",
           contactNumber: "+234-803-456-7890",
-          branch: "Port Harcourt",
+          branch: "003",
           createdBy: "Branch Manager",
           customerType: "Individual",
         },
@@ -82,6 +82,9 @@ const CustomerTypeRetagging: React.FC = () => {
         <AppSidebar />
         <div className="flex-1 flex flex-col min-w-0">
           <AppHeader>
+
+            <SidebarTrigger />
+
             <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 min-w-0">
               <span className="text-base sm:text-lg md:text-xl font-semibold truncate text-primary">
                 Customer Type Retagging
@@ -113,11 +116,11 @@ const CustomerTypeRetagging: React.FC = () => {
                           <SelectValue placeholder="Select Branch Number" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="001">001 - Lagos Main</SelectItem>
-                          <SelectItem value="002">002 - Abuja Central</SelectItem>
-                          <SelectItem value="003">003 - Port Harcourt</SelectItem>
-                          <SelectItem value="004">004 - Kano Branch</SelectItem>
-                          <SelectItem value="005">005 - Ibadan Branch</SelectItem>
+                          <SelectItem value="001">001</SelectItem>
+                          <SelectItem value="002">002</SelectItem>
+                          <SelectItem value="003">003</SelectItem>
+                          <SelectItem value="004">004</SelectItem>
+                          <SelectItem value="005">005</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>

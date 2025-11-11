@@ -5,7 +5,7 @@ import { Label } from "@/components/ui/label";
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { AppSidebar } from "@/components/AppSidebar";
 import AppHeader from "@/components/AppHeader";
-import { SidebarProvider } from "@/components/ui/sidebar";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 
 interface CustomerSectorInfo {
   customerName: string;
@@ -42,7 +42,7 @@ const AmendCustomerSectorSegment: React.FC = () => {
           customerName: `John ${number} Doe`,
           doiDob: "1990-05-15",
           contactNo: "+234-801-234-5678",
-          branch: "Lagos Main",
+          branch: "001",
           postingDate: "2024-01-15",
           createdBy: "Admin User",
           customerType: "Individual",
@@ -51,7 +51,7 @@ const AmendCustomerSectorSegment: React.FC = () => {
           customerName: `Jane ${number} Smith`,
           doiDob: "1985-08-22",
           contactNo: "+234-802-345-6789",
-          branch: "Abuja Central",
+          branch: "002",
           postingDate: "2024-02-10",
           createdBy: "System Admin",
           customerType: "Corporate",
@@ -60,7 +60,7 @@ const AmendCustomerSectorSegment: React.FC = () => {
           customerName: `Bob ${number} Johnson`,
           doiDob: "1992-12-03",
           contactNo: "+234-803-456-7890",
-          branch: "Port Harcourt",
+          branch: "003",
           postingDate: "2024-03-05",
           createdBy: "Branch Manager",
           customerType: "Individual",
@@ -82,6 +82,9 @@ const AmendCustomerSectorSegment: React.FC = () => {
         <AppSidebar />
         <div className="flex-1 flex flex-col min-w-0">
           <AppHeader>
+
+            <SidebarTrigger />
+
             <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 min-w-0">
               <span className="text-base sm:text-lg md:text-xl font-semibold truncate text-primary">
                 Amend Customer Sector

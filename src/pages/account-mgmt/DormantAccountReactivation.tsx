@@ -121,7 +121,7 @@ const DormantAccountReactivation = () => {
                   {/* Section 2: Uneditable Fields */}
                   <Card className="border-0 shadow-md">
                     <CardHeader className="border-b">
-                      <CardTitle className="text-lg">Account Details (System Fields)</CardTitle>
+                      <CardTitle className="text-lg">Account Details</CardTitle>
                     </CardHeader>
                     <CardContent className="p-6">
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -225,23 +225,48 @@ const DormantAccountReactivation = () => {
                       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                         <div className="space-y-2">
                           <Label htmlFor="currentBalance">Current Balance</Label>
-                          <Input id="currentBalance" defaultValue={accountData.currentBalance} />
+                          <Input 
+                            id="currentBalance" 
+                            defaultValue={accountData.currentBalance} 
+                            disabled 
+                            className="bg-muted cursor-not-allowed"
+                          />
                         </div>
                         <div className="space-y-2">
                           <Label htmlFor="availableBalance">Accrued Int</Label>
-                          <Input id="availableBalance" defaultValue={accountData.availableBalance} />
+                          <Input 
+                            id="availableBalance" 
+                            defaultValue={accountData.availableBalance} 
+                            disabled 
+                            className="bg-muted cursor-not-allowed"
+                          />
                         </div>
                         <div className="space-y-2">
                           <Label htmlFor="clearedBalance">COT Amount</Label>
-                          <Input id="clearedBalance" defaultValue={accountData.clearedBalance} />
+                          <Input 
+                            id="clearedBalance" 
+                            defaultValue={accountData.clearedBalance} 
+                            disabled 
+                            className="bg-muted cursor-not-allowed"
+                          />
                         </div>
                         <div className="space-y-2">
                           <Label htmlFor="unclearedBalance">Current Balance</Label>
-                          <Input id="unclearedBalance" defaultValue={accountData.unclearedBalance} />
+                          <Input 
+                            id="unclearedBalance" 
+                            defaultValue={accountData.unclearedBalance} 
+                            disabled 
+                            className="bg-muted cursor-not-allowed"
+                          />
                         </div>
                         <div className="space-y-2">
                           <Label htmlFor="minimumBalance">Net Balance</Label>
-                          <Input id="minimumBalance" defaultValue={accountData.minimumBalance} />
+                          <Input 
+                            id="minimumBalance" 
+                            defaultValue={accountData.minimumBalance} 
+                            disabled 
+                            className="bg-muted cursor-not-allowed"
+                          />
                         </div>
                       </div>
                     </CardContent>

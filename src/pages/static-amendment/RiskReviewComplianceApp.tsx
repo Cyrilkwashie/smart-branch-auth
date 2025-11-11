@@ -6,7 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { AppSidebar } from "@/components/AppSidebar";
 import AppHeader from "@/components/AppHeader";
-import { SidebarProvider } from "@/components/ui/sidebar";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 
 interface RiskReviewComplianceInfo {
   requisitionNumber: string;
@@ -77,6 +77,9 @@ const RiskReviewComplianceApp: React.FC = () => {
         <AppSidebar />
         <div className="flex-1 flex flex-col min-w-0">
           <AppHeader>
+
+            <SidebarTrigger />
+
             <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 min-w-0">
               <span className="text-base sm:text-lg md:text-xl font-semibold truncate text-primary">
                 Risk Review Compliance App
@@ -108,11 +111,7 @@ const RiskReviewComplianceApp: React.FC = () => {
                           <SelectValue placeholder="Select Branch" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="lagos-main">Lagos Main</SelectItem>
-                          <SelectItem value="abuja-central">Abuja Central</SelectItem>
-                          <SelectItem value="port-harcourt">Port Harcourt</SelectItem>
-                          <SelectItem value="kano">Kano Branch</SelectItem>
-                          <SelectItem value="ibadan">Ibadan Branch</SelectItem>
+                          <SelectItem value="001">001</SelectItem><SelectItem value="002">002</SelectItem><SelectItem value="003">003</SelectItem><SelectItem value="004">004</SelectItem><SelectItem value="005">005</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>

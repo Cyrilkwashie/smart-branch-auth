@@ -2,7 +2,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { AppSidebar } from "@/components/AppSidebar";
 import AppHeader from "@/components/AppHeader";
-import { SidebarProvider } from "@/components/ui/sidebar";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 
 const AmendAdditionalCMAccount = () => {
   // Example mock data
@@ -34,6 +34,9 @@ const AmendAdditionalCMAccount = () => {
         <AppSidebar />
         <div className="flex-1 flex flex-col min-w-0">
           <AppHeader>
+
+            <SidebarTrigger />
+
             <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 min-w-0">
               <a href="/individual-joint-account-creation" className="text-base sm:text-lg md:text-xl font-semibold truncate text-primary hover:underline">
                 Addtional Account

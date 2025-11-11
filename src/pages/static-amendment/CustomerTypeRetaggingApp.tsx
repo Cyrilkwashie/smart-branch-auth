@@ -6,7 +6,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 import { AppSidebar } from "@/components/AppSidebar";
 import AppHeader from "@/components/AppHeader";
-import { SidebarProvider } from "@/components/ui/sidebar";
+import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 
 interface CustomerTypeInfo {
   customerId: string;
@@ -81,6 +81,9 @@ const CustomerTypeRetaggingApp: React.FC = () => {
         <AppSidebar />
         <div className="flex-1 flex flex-col min-w-0">
           <AppHeader>
+
+            <SidebarTrigger />
+
             <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 min-w-0">
               <span className="text-base sm:text-lg md:text-xl font-semibold truncate text-primary">
                 Customer Type Retagging App
@@ -112,11 +115,11 @@ const CustomerTypeRetaggingApp: React.FC = () => {
                           <SelectValue placeholder="Select Branch" />
                         </SelectTrigger>
                         <SelectContent>
-                          <SelectItem value="Lagos Main">Lagos Main</SelectItem>
-                          <SelectItem value="Abuja Central">Abuja Central</SelectItem>
-                          <SelectItem value="Port Harcourt">Port Harcourt</SelectItem>
-                          <SelectItem value="Kano Branch">Kano Branch</SelectItem>
-                          <SelectItem value="Ibadan Branch">Ibadan Branch</SelectItem>
+                          <SelectItem value="001">001</SelectItem>
+                          <SelectItem value="002">002</SelectItem>
+                          <SelectItem value="003">003</SelectItem>
+                          <SelectItem value="004">004</SelectItem>
+                          <SelectItem value="005">005</SelectItem>
                         </SelectContent>
                       </Select>
                     </div>
