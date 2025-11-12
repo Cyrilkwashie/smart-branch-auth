@@ -40,6 +40,12 @@ import CounterCheques from "./pages/cheques/CounterCheques";
 import ChequebookRequest from "./pages/cheques/ChequebookRequest";
 import UntaggedStoppedCheques from "./pages/cheques/UntaggedStoppedCheques";
 import StoppedChequeCreation from "./pages/cheques/StoppedChequeCreation";
+import ChequeDeposit from "./pages/cheques/ChequeDeposit";
+import ATMRequest from "./pages/card/ATMRequest";
+import ATMCardIssuance from "./pages/card/ATMCardIssuance";
+import ATMCardBlockage from "./pages/card/ATMCardBlockage";
+import ATMPinRegenerating from "./pages/card/ATMPinRegenerating";
+import AccountStatementRequest from "./pages/statement/AccountStatementRequest";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -130,6 +136,12 @@ const App = () => (
             <Route path="/cheques/maintenance-approval" element={<ChequebookMaintenanceApproval />} />
             <Route path="/cheques/stopped-creation" element={<StoppedChequeCreation />} />
             <Route path="/cheques/untagged-stopped" element={<UntaggedStoppedCheques />} />
+            <Route path="/cheques/deposit" element={<ChequeDeposit />} />
+            <Route path="/account-mgmt/atm" element={<ATMRequest />} />
+            <Route path="/card/atm-issuance" element={<ATMCardIssuance />} />
+            <Route path="/card/atm-blockage" element={<ATMCardBlockage />} />
+            <Route path="/card/atm-pin-regenerating" element={<ATMPinRegenerating />} />
+            <Route path="/account-mgmt/statement" element={<AccountStatementRequest />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>

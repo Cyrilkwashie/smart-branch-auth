@@ -140,7 +140,6 @@ const menuItems = [
             title: "Stopped Cheques",
             subItems: [
               { title: "Stopped Cheque Creation", url: "/cheques/stopped-creation" },
-              { title: "Stopped Cheque Approval", url: "/cheques/stopped-approval" },
               { title: "Untagged Stopped Cheques", url: "/cheques/untagged-stopped" },
             ]
           },
@@ -157,6 +156,9 @@ const menuItems = [
         title: "Card",
         subItems: [
           { title: "ATM Request", url: "/account-mgmt/atm" },
+          { title: "ATM Card Issuance", url: "/card/atm-issuance" },
+          { title: "ATM Card Blockage", url: "/card/atm-blockage" },
+          { title: "ATM PIN Regenerating", url: "/card/atm-pin-regenerating" },
         ]
       }
     ],
