@@ -4,6 +4,7 @@ import { AppSidebar } from "@/components/AppSidebar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+
 import {
   Select,
   SelectContent,
@@ -20,6 +21,7 @@ import {
   TableRow,
   TableFooter,
 } from "@/components/ui/table";
+import { Button } from "@/components/ui/button";
 
 interface FeeRecord {
   chgCode: string;
@@ -99,16 +101,13 @@ export default function StoppedChequeCreation() {
           <div className="flex items-center gap-4 mb-6">
             <SidebarTrigger />
             <div>
-              <h1 className="text-3xl font-bold">Stopped Cheque Creation</h1>
-              <p className="text-muted-foreground">
-                Create and process stopped cheque requests
-              </p>
+              <h1 className="text-base sm:text-lg md:text-xl font-bold">Stopped Cheque Creation</h1>
             </div>
           </div>
 
           <Card>
             <CardHeader>
-              <CardTitle>Cheque Information</CardTitle>
+              <CardTitle className="text-base sm:text-lg md:text-xl">Cheque Information</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -244,7 +243,7 @@ export default function StoppedChequeCreation() {
 
           <Card className="mt-6">
             <CardHeader>
-              <CardTitle>Fee Schedule</CardTitle>
+              <CardTitle className="text-base sm:text-lg md:text-xl">Fee Schedule</CardTitle>
             </CardHeader>
             <CardContent>
               <Table>
@@ -293,6 +292,16 @@ export default function StoppedChequeCreation() {
               </Table>
             </CardContent>
           </Card>
+        {/* Bottom Action Button */}
+        </div> {/* Close container div */}
+        <div className="w-full mt-8">
+          <Button
+            type="button"
+            className="w-full bg-primary text-primary-foreground hover:bg-primary/90 h-11 px-8 text-base font-semibold rounded-md shadow-md transition-all"
+            onClick={() => {/* TODO: Add submit or next action here */}}
+          >
+            Submit Stop Cheque Request
+          </Button>
         </div>
       </main>
     </SidebarProvider>

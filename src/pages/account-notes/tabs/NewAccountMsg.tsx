@@ -117,11 +117,11 @@ const NewAccountMsg: React.FC = () => {
                       </div>
                     </div>
 
-                    <div className="flex gap-4 pt-4">
-                      <Button type="submit" className="px-8">
+                    <div className="flex flex-col sm:flex-row gap-4 pt-4 w-full">
+                      <Button type="submit" className="w-full sm:w-auto px-8">
                         Create Message
                       </Button>
-                      <Button type="button" variant="outline" onClick={() => setFormData({
+                      <Button type="button" variant="outline" className="w-full sm:w-auto" onClick={() => setFormData({
                         accountNumber: "",
                         stopCode: "",
                         messageCode: "",

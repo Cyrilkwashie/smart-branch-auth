@@ -179,11 +179,11 @@ const RelationRemoval: React.FC = () => {
 
 
 
-                    <div className="flex gap-4 pt-4">
-                      <Button type="submit" variant="destructive" className="px-8">
+                    <div className="flex flex-col sm:flex-row gap-4 pt-4 w-full">
+                      <Button type="submit" variant="destructive" className="w-full sm:w-auto px-8">
                         Remove Relation
                       </Button>
-                      <Button type="button" variant="outline" onClick={() => setFormData({
+                      <Button type="button" variant="outline" className="w-full sm:w-auto" onClick={() => setFormData({
                         accountNumber: "",
                         customerName: "",
                         relationType: "",

@@ -180,11 +180,11 @@ const PCBulkUpload: React.FC = () => {
                       </div>
                     </div>
 
-                    <div className="flex gap-4 pt-4">
-                      <Button type="submit" className="px-8">
+                    <div className="flex flex-col sm:flex-row gap-4 pt-4 w-full">
+                      <Button type="submit" className="w-full sm:w-auto px-8">
                         Upload File
                       </Button>
-                      <Button type="button" variant="outline" onClick={() => setFormData({
+                      <Button type="button" variant="outline" className="w-full sm:w-auto" onClick={() => setFormData({
                         branchCode: "",
                         uploadType: "",
                         period: "",
@@ -236,15 +236,15 @@ const PCBulkUpload: React.FC = () => {
                               </span>
                             </TableCell>
                             <TableCell>
-                              <div className="flex gap-2">
-                                <Button variant="outline" size="sm">
+                              <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
+                                <Button variant="outline" size="sm" className="w-full sm:w-auto">
                                   View
                                 </Button>
                                 <Button
                                   variant="outline"
                                   size="sm"
                                   onClick={() => removeFile(file.id)}
-                                  className="text-red-600 hover:text-red-700"
+                                  className="w-full sm:w-auto text-red-600 hover:text-red-700"
                                 >
                                   <X className="h-4 w-4" />
                                 </Button>

@@ -6,6 +6,7 @@ import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@
 import { AppSidebar } from "@/components/AppSidebar";
 import AppHeader from "@/components/AppHeader";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
+import { Button } from "@/components/ui/button";
 
 interface ChequebookIssuance {
   requisitionNumber: string;
@@ -126,7 +127,7 @@ const ChequebookIssuance: React.FC = () => {
                   </div>
                 </CardContent>
               </Card>
-
+              
               {/* Chequebook Issuance Table */}
               <Card className="border shadow-sm">
                 <CardHeader className="bg-muted/30">
@@ -179,6 +180,16 @@ const ChequebookIssuance: React.FC = () => {
                   </div>
                 </CardContent>
               </Card>
+            </div>
+            {/* Bottom Action Button */}
+            <div className="flex justify-end mt-8">
+              <Button
+                type="button"
+                className="bg-primary text-primary-foreground hover:bg-primary/90 h-11 px-8 text-base font-semibold rounded-md shadow-md transition-all"
+                onClick={() => {/* TODO: Add submit or next action here */}}
+              >
+                Submit Chequebook Issuance
+              </Button>
             </div>
           </main>
         </div>

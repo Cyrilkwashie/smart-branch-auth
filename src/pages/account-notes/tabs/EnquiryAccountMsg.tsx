@@ -196,7 +196,7 @@ const EnquiryAccountMsg: React.FC = () => {
                           placeholder="Enter serial number"
                         />
                       </div>
-                      <div className="flex gap-2 w-full sm:w-auto">
+                      <div className="flex flex-col sm:flex-row gap-2 w-full">
                         <Button onClick={handleSearch} className="w-full sm:w-auto">
                           Search
                         </Button>
@@ -237,11 +237,11 @@ const EnquiryAccountMsg: React.FC = () => {
                             <TableCell>{message.otherMessage}</TableCell>
                             <TableCell>{message.postedBy}</TableCell>
                             <TableCell>
-                              <div className="flex gap-2">
-                                <Button variant="outline" size="sm">
+                              <div className="flex flex-col sm:flex-row gap-2 w-full sm:w-auto">
+                                <Button variant="outline" size="sm" className="w-full sm:w-auto">
                                   View
                                 </Button>
-                                <Button variant="outline" size="sm">
+                                <Button variant="outline" size="sm" className="w-full sm:w-auto">
                                   Print
                                 </Button>
                               </div>

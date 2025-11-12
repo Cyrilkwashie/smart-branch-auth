@@ -12,6 +12,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
+
 import {
   Table,
   TableBody,
@@ -20,6 +21,7 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/ui/table";
+import { Button } from "@/components/ui/button";
 
 interface ChequeRecord {
   seqNo: string;
@@ -139,10 +141,7 @@ export default function ChequeDeposit() {
           <div className="flex items-center gap-4 mb-6">
             <SidebarTrigger />
             <div>
-              <h1 className="text-3xl font-bold">Cheque Deposit</h1>
-              <p className="text-muted-foreground">
-                Process cheque deposits for customer accounts
-              </p>
+              <h1 className="text-xl sm:text-3xl font-bold">Cheque Deposit</h1>
             </div>
           </div>
 
@@ -501,6 +500,16 @@ export default function ChequeDeposit() {
               </Table>
             </CardContent>
           </Card>
+        {/* Bottom Action Button */}
+        </div> {/* Close container div */}
+        <div className="w-full mt-8">
+          <Button
+            type="button"
+            className="w-full bg-primary text-primary-foreground hover:bg-primary/90 h-11 px-8 text-base font-semibold rounded-md shadow-md transition-all"
+            onClick={() => {/* TODO: Add submit or next action here */}}
+          >
+            Submit Cheque Deposit
+          </Button>
         </div>
       </main>
     </SidebarProvider>

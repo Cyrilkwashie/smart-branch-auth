@@ -82,15 +82,15 @@ export default function CounterCheques() {
           <div className="flex items-center gap-4 mb-6">
             <SidebarTrigger />
             <div>
-              <h1 className="text-3xl font-bold">
+              <h1 className="text-xl sm:text-3xl font-bold">
                 {isApproval ? "Counter Cheque Approval" : "Counter Cheque Enquiry"}
               </h1>
-              <p className="text-muted-foreground">
+              {/* <p className="text-muted-foreground">
                 {isApproval 
                   ? "Review and approve counter cheque requests"
                   : "Search and view counter cheque records"
                 }
-              </p>
+              </p> */}
             </div>
           </div>
 

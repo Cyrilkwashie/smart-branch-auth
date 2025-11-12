@@ -37,9 +37,7 @@ const LienCreation = () => {
             <SidebarTrigger />
             <div>
               <h1 className="text-xl font-semibold">Lien Creation</h1>
-              <p className="text-sm text-muted-foreground">
-                Create a new lien on customer account
-              </p>
+              {/* Sub text removed */}
             </div>
           </AppHeader>
 
@@ -201,12 +199,12 @@ const LienCreation = () => {
                     </div>
 
                     {/* Form Actions */}
-                    <div className="flex items-center justify-end gap-3 pt-4 border-t">
-                      <Button variant="outline" type="button">
+                    <div className="flex flex-col gap-3 pt-4 border-t sm:flex-row sm:items-center sm:justify-end">
+                      <Button variant="outline" type="button" className="w-full sm:w-auto">
                         <X className="mr-2 h-4 w-4" />
                         Cancel
                       </Button>
-                      <Button type="submit" className="bg-primary">
+                      <Button type="submit" className="bg-primary w-full sm:w-auto">
                         <Save className="mr-2 h-4 w-4" />
                         Create Lien
                       </Button>

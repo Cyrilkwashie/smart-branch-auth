@@ -209,8 +209,8 @@ const SafeCustodyCreation: React.FC = () => {
                       />
                     </div>
 
-                    <div className="flex justify-end pt-4">
-                      <Button type="submit" className="px-8">
+                    <div className="flex flex-col gap-3 pt-4 sm:flex-row sm:justify-end">
+                      <Button type="submit" className="w-full sm:w-auto px-8">
                         Create Safe Custody
                       </Button>
                     </div>

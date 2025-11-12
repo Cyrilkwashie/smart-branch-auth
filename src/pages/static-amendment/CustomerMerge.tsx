@@ -229,22 +229,22 @@ const CustomerMerge: React.FC = () => {
                     </div>
                     <div className="space-y-2">
                       <Label htmlFor="scannedDocument">Scanned Document</Label>
-                      <div className="flex gap-2">
+                      <div className="flex flex-col sm:flex-row gap-2 w-full">
                         <Input
                           id="scannedDocument"
                           value={scannedDocument}
                           onChange={(e) => setScannedDocument(e.target.value)}
                           placeholder="Enter document reference or upload path"
                         />
-                        <Button variant="outline" size="icon">
+                        <Button variant="outline" size="icon" className="w-full sm:w-auto">
                           <Upload className="h-4 w-4" />
                         </Button>
                       </div>
                     </div>
                   </div>
 
-                  <div className="flex justify-start">
-                    <Button onClick={handleAddDocument} className="flex items-center gap-2">
+                  <div className="flex flex-col sm:flex-row justify-start w-full gap-2">
+                    <Button onClick={handleAddDocument} className="w-full sm:w-auto flex items-center gap-2">
                       <Plus className="h-4 w-4" />
                       Add Document
                     </Button>

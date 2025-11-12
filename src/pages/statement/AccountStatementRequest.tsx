@@ -76,8 +76,7 @@ export default function AccountStatementRequest() {
         <SidebarTrigger className="mb-4" />
         <div className="max-w-6xl mx-auto space-y-6">
           <div>
-            <h1 className="text-3xl font-bold">Account Statement Request</h1>
-            <p className="text-muted-foreground">Request periodic account statements</p>
+            <h1 className="text-xl sm:text-3xl font-bold">Account Statement Request</h1>
           </div>
 
           {/* Account Information */}
@@ -216,9 +215,15 @@ export default function AccountStatementRequest() {
           </Card>
 
           {/* Action Buttons */}
-          <div className="flex justify-end gap-4">
-            <Button variant="outline">Cancel</Button>
-            <Button 
+          <div className="flex flex-col sm:flex-row gap-4 w-full mt-8">
+            <Button
+              variant="outline"
+              className="w-full sm:w-auto"
+            >
+              Cancel
+            </Button>
+            <Button
+              className="w-full sm:w-auto"
               onClick={handleSubmitRequest}
               disabled={!accountNumber || !statementFrequency || !statementStartDate}
             >

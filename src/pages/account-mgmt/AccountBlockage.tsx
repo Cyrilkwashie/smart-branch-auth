@@ -73,7 +73,7 @@ const AccountBlockage = () => {
           <AppHeader>
             <SidebarTrigger />
             <div>
-              <h1 className="text-xl font-semibold">Account Blockage/Unblockage</h1>
+              <h1 className="text-base sm:text-xl font-semibold">Account Blockage/Unblockage</h1>
             </div>
           </AppHeader>
 
@@ -258,14 +258,15 @@ const AccountBlockage = () => {
 
 
                       {/* Form Actions */}
-                      <div className="flex items-center justify-end gap-3 pt-4 border-t">
-                        <Button variant="outline" type="button">
+                      <div className="flex flex-col gap-3 pt-4 border-t sm:flex-row sm:items-center sm:justify-end">
+                        <Button variant="outline" type="button" className="w-full sm:w-auto">
                           <X className="mr-2 h-4 w-4" />
                           Cancel
                         </Button>
                         <Button 
                           type="submit" 
                           className={cn(
+                            "w-full sm:w-auto",
                             actionType === "block"
                               ? "bg-red-600 hover:bg-red-700"
                               : "bg-green-600 hover:bg-green-700"

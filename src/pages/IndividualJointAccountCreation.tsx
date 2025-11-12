@@ -2372,9 +2372,8 @@ const IndividualJointAccountCreation = () => {
                                 <Users className="h-8 w-8 text-muted-foreground" />
                               </div>
                               <h3 className="text-lg font-semibold text-muted-foreground mb-2">No Signatories Added</h3>
-                              <p className="text-sm text-muted-foreground mb-4">
-                                Add at least one authorized signatory to continue with the account creation process.
-                              </p>
+                              {/* Sub text removed */}
+                              <p>Add at least one authorized signatory to continue with the account creation process.</p>
                             </div>
                           )}
                         </div>
@@ -2611,11 +2610,11 @@ const IndividualJointAccountCreation = () => {
                               <span>Showing 1-4 of 4 items</span>
                               <span className="font-medium">Total Records: 4</span>
                             </div>
-                            <div className="flex items-center gap-2">
-                              <Button variant="outline" size="sm" disabled className="h-7 sm:h-8 px-2 sm:px-3 text-xs">
+                            <div className="flex flex-col sm:flex-row gap-2 w-full">
+                              <Button variant="outline" size="sm" disabled className="w-full sm:w-auto h-7 sm:h-8 px-2 sm:px-3 text-xs">
                                 Previous
                               </Button>
-                              <Button variant="outline" size="sm" disabled className="h-7 sm:h-8 px-2 sm:px-3 text-xs">
+                              <Button variant="outline" size="sm" disabled className="w-full sm:w-auto h-7 sm:h-8 px-2 sm:px-3 text-xs">
                                 Next
                               </Button>
                             </div>
@@ -2636,7 +2635,7 @@ const IndividualJointAccountCreation = () => {
                             <Button
                               type="button"
                               variant="outline"
-                              className="flex items-center justify-center gap-2 sm:gap-3 h-10 sm:h-12 hover:scale-105 transition-all duration-200 border-2 border-primary/20 hover:border-primary/40 text-sm"
+                              className="w-full sm:w-auto flex items-center justify-center gap-2 sm:gap-3 h-10 sm:h-12 hover:scale-105 transition-all duration-200 border-2 border-primary/20 hover:border-primary/40 text-sm"
                               onClick={() => {
                                 toast({
                                   title: "Upload Documents",
@@ -2651,7 +2650,7 @@ const IndividualJointAccountCreation = () => {
                             <Button
                               type="button"
                               variant="outline"
-                              className="flex items-center justify-center gap-2 sm:gap-3 h-10 sm:h-12 hover:scale-105 transition-all duration-200 border-2 border-primary/20 hover:border-primary/40 text-sm"
+                              className="w-full sm:w-auto flex items-center justify-center gap-2 sm:gap-3 h-10 sm:h-12 hover:scale-105 transition-all duration-200 border-2 border-primary/20 hover:border-primary/40 text-sm"
                               onClick={() => {
                                 toast({
                                   title: "View Documents",
@@ -2666,7 +2665,7 @@ const IndividualJointAccountCreation = () => {
                             <Button
                               type="button"
                               variant="outline"
-                              className="flex items-center justify-center gap-2 sm:gap-3 h-10 sm:h-12 hover:scale-105 transition-all duration-200 border-2 border-primary/20 hover:border-primary/40 text-sm sm:col-span-2 lg:col-span-1"
+                              className="w-full sm:w-auto flex items-center justify-center gap-2 sm:gap-3 h-10 sm:h-12 hover:scale-105 transition-all duration-200 border-2 border-primary/20 hover:border-primary/40 text-sm sm:col-span-2 lg:col-span-1"
                               onClick={() => {
                                 toast({
                                   title: "Document Status",
@@ -2958,9 +2957,8 @@ const IndividualJointAccountCreation = () => {
                             <div className="h-12 w-12 rounded-full bg-muted/20 flex items-center justify-center mx-auto mb-3">
                               <Users className="h-6 w-6 text-muted-foreground" />
                             </div>
-                            <p className="text-sm text-muted-foreground">
-                              No emergency contacts added yet. Click "Add Next of Kin" to add emergency contact information.
-                            </p>
+                            {/* Sub text removed */}
+                            <p>No emergency contacts added yet. Click "Add Next of Kin" to add emergency contact information.</p>
                           </div>
                         </div>
                       </CardContent>
@@ -3361,6 +3359,7 @@ const IndividualJointAccountCreation = () => {
                       </div>
                     </CardContent>
                   </Card>
+
                 </form>
               </Form>
             </div>

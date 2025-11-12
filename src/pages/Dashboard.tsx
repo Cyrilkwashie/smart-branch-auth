@@ -86,9 +86,8 @@ const Dashboard = () => {
             <SidebarTrigger />
             <div>
               <h1 className="text-xl font-semibold">Dashboard Overview</h1>
-              <p className="text-sm text-muted-foreground">
-                Welcome back, Cyril!
-              </p>
+              {/* Sub text removed */}
+              <p>Welcome back, Cyril!</p>
             </div>
           </AppHeader>
 
@@ -121,9 +120,8 @@ const Dashboard = () => {
                         <div className="space-y-4">
                           <div>
                             <h2 className="text-2xl font-bold">Cyril Kwashie</h2>
-                            <p className="text-sm text-muted-foreground">
-                              Relationship Manager
-                            </p>
+                            {/* Sub text removed */}
+                            <p>Relationship Manager</p>
                           </div>
 
                           <Badge className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-yellow-950 hover:from-yellow-500 hover:to-yellow-600 border-0 shadow-sm">
@@ -421,9 +419,8 @@ const Dashboard = () => {
                           <p className="font-semibold text-sm mb-1">
                             Follow-up Required
                           </p>
-                          <p className="text-sm text-muted-foreground">
-                            Client meeting scheduled tomorrow at 10:00 AM
-                          </p>
+                          {/* Sub text removed */}
+                          <p>Client meeting scheduled tomorrow at 10:00 AM</p>
                           <p className="text-xs text-muted-foreground mt-2 flex items-center gap-1">
                             <Clock className="h-3 w-3" />2 hours ago
                           </p>
@@ -436,9 +433,8 @@ const Dashboard = () => {
                           <p className="font-semibold text-sm mb-1">
                             KYC Update Pending
                           </p>
-                          <p className="text-sm text-muted-foreground">
-                            3 customers require document verification
-                          </p>
+                          {/* Sub text removed */}
+                          <p>3 customers require document verification</p>
                           <p className="text-xs text-muted-foreground mt-2 flex items-center gap-1">
                             <Clock className="h-3 w-3" />5 hours ago
                           </p>
@@ -451,9 +447,8 @@ const Dashboard = () => {
                           <p className="font-semibold text-sm mb-1">
                             Loan Renewal Due
                           </p>
-                          <p className="text-sm text-muted-foreground">
-                            ABC Corp loan renewal in 5 days - $500K
-                          </p>
+                          {/* Sub text removed */}
+                          <p>ABC Corp loan renewal in 5 days - $500K</p>
                           <p className="text-xs text-muted-foreground mt-2 flex items-center gap-1">
                             <Clock className="h-3 w-3" />1 day ago
                           </p>
@@ -466,9 +461,8 @@ const Dashboard = () => {
                           <p className="font-semibold text-sm mb-1">
                             Customer Birthday
                           </p>
-                          <p className="text-sm text-muted-foreground">
-                            Jane Doe celebrates today - Send wishes
-                          </p>
+                          {/* Sub text removed */}
+                          <p>Jane Doe celebrates today - Send wishes</p>
                           <p className="text-xs text-muted-foreground mt-2 flex items-center gap-1">
                             <Clock className="h-3 w-3" />
                             Today
@@ -510,9 +504,8 @@ const Dashboard = () => {
                                 High
                               </Badge>
                             </div>
-                            <p className="text-sm text-muted-foreground mb-3">
-                              Discuss new loan application - $750K
-                            </p>
+                            {/* Sub text removed */}
+                            <p>Discuss new loan application - $750K</p>
                             <div className="flex items-center gap-4 text-xs text-muted-foreground">
                               <span className="flex items-center gap-1">
                                 <MapPin className="h-3 w-3" />

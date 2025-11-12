@@ -171,8 +171,8 @@ const CloseAccount = () => {
                   </Card>
 
                   {/* Close Button */}
-                  <div className="flex justify-end mt-6">
-                    <Button variant="destructive" onClick={() => alert("Account closed!")}>Close Account</Button>
+                  <div className="flex flex-col gap-3 mt-6 sm:flex-row sm:justify-end">
+                    <Button variant="destructive" onClick={() => alert("Account closed!")} className="w-full sm:w-auto">Close Account</Button>
                   </div>
                 </>
               )}

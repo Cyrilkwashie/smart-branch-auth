@@ -4,6 +4,7 @@ import { AppSidebar } from "@/components/AppSidebar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
 import {
   Select,
   SelectContent,
@@ -98,11 +99,8 @@ export default function ChequeMaintenance() {
         <div className="container mx-auto p-6">
           <div className="flex items-center gap-4 mb-6">
             <SidebarTrigger />
-            <div>
-              <h1 className="text-3xl font-bold">Chequebook Maintenance</h1>
-              <p className="text-muted-foreground">
-                Maintain and track chequebook records
-              </p>
+            <div className="w-full">
+              <h1 className="text-xl sm:text-3xl font-bold w-full">Chequebook Maintenance</h1>
             </div>
           </div>
 
@@ -209,6 +207,16 @@ export default function ChequeMaintenance() {
               </Table>
             </CardContent>
           </Card>
+          {/* Bottom Action Button */}
+          <div className="w-full mt-8">
+            <Button
+              type="button"
+              className="w-full bg-primary text-primary-foreground hover:bg-primary/90 h-11 px-8 text-base font-semibold rounded-md shadow-md transition-all"
+              onClick={() => {/* TODO: Add submit or next action here */}}
+            >
+              Save Maintenance
+            </Button>
+          </div>
         </div>
       </main>
     </SidebarProvider>

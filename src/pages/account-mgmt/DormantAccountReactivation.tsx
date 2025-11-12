@@ -83,10 +83,10 @@ const DormantAccountReactivation = () => {
             </div>
           </AppHeader>
 
-          <main className="flex-1 p-4 sm:p-6 overflow-auto">
-            <div className="max-w-5xl mx-auto space-y-6 animate-fade-in">
+          <main className="flex-1 p-2 sm:p-6 overflow-auto">
+            <div className="max-w-5xl mx-auto space-y-6 animate-fade-in px-2 sm:px-0">
               {/* Search Account */}
-              <Card className="border-0 shadow-md">
+              <Card className="border-0 shadow-md px-2 sm:px-0">
                 <CardHeader className="border-b bg-gradient-to-r from-primary/10 to-primary/5">
                   <CardTitle className="text-lg flex items-center gap-2">
                     <Search className="h-5 w-5" />
@@ -118,12 +118,12 @@ const DormantAccountReactivation = () => {
                 <>
 
                   {/* Section 2: Uneditable Fields */}
-                  <Card className="border-0 shadow-md">
+                  <Card className="border-0 shadow-md px-2 sm:px-0">
                     <CardHeader className="border-b">
                       <CardTitle className="text-lg">Account Details</CardTitle>
                     </CardHeader>
-                    <CardContent className="p-6">
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <CardContent className="p-4 sm:p-6">
+                      <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
                         <div className="space-y-2">
                           <Label htmlFor="productCode">A/C Name</Label>
                           <Input 
@@ -201,8 +201,8 @@ const DormantAccountReactivation = () => {
                   </Card>
 
                   {/* Remarks Section */}
-                  <Card className="border-0 shadow-md">
-                    <CardContent className="p-6">
+                  <Card className="border-0 shadow-md px-2 sm:px-0">
+                    <CardContent className="p-4 sm:p-6">
                       <div className="space-y-2">
                         <Label htmlFor="remarks">Reason</Label>
                         <Textarea
@@ -216,12 +216,12 @@ const DormantAccountReactivation = () => {
                   </Card>
 
                   {/* Section 3: Balance Section */}
-                  <Card className="border-0 shadow-md">
+                  <Card className="border-0 shadow-md px-2 sm:px-0">
                     <CardHeader className="border-b">
                       <CardTitle className="text-lg">Balance Information</CardTitle>
                     </CardHeader>
-                    <CardContent className="p-6">
-                      <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                    <CardContent className="p-4 sm:p-6">
+                      <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
                         <div className="space-y-2">
                           <Label htmlFor="currentBalance">Current Balance</Label>
                           <Input 
@@ -272,13 +272,13 @@ const DormantAccountReactivation = () => {
                   </Card>
 
                   {/* Section 4: Transaction Table */}
-                  <Card className="border-0 shadow-md">
+                  <Card className="border-0 shadow-md px-2 sm:px-0">
                     <CardHeader className="border-b">
                       <CardTitle className="text-lg">Recent Transactions</CardTitle>
                     </CardHeader>
-                    <CardContent className="p-6">
+                    <CardContent className="p-4 sm:p-6">
                       <div className="overflow-x-auto">
-                        <Table className="min-w-[600px]">
+                        <Table className="min-w-[600px] w-full">
                           <TableHeader>
                             <TableRow>
                               <TableHead>Change Code</TableHead>
@@ -320,9 +320,9 @@ const DormantAccountReactivation = () => {
                   </Card>
 
                   {/* Submit Button */}
-                  <div className="flex justify-end gap-3">
-                    <Button variant="outline">Cancel</Button>
-                    <Button onClick={handleSubmit} className="bg-primary">
+                  <div className="flex flex-col gap-3 mt-6 sm:flex-row sm:justify-end">
+                    <Button variant="outline" className="w-full sm:w-auto">Cancel</Button>
+                    <Button onClick={handleSubmit} className="bg-primary w-full sm:w-auto">
                       <RefreshCcw className="mr-2 h-4 w-4" />
                       Reactivate Account
                     </Button>

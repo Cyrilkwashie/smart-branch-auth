@@ -87,10 +87,7 @@ export default function UntaggedStoppedCheques() {
           <div className="flex items-center gap-4 mb-6">
             <SidebarTrigger />
             <div>
-              <h1 className="text-3xl font-bold">Untagged Stopped Cheques</h1>
-              <p className="text-muted-foreground">
-                View and manage untagged stopped cheque records
-              </p>
+              <h1 className="text-xl sm:text-3xl font-bold">Untagged Stopped Cheques</h1>
             </div>
           </div>
 

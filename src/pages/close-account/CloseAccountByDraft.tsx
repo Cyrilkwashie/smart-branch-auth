@@ -226,8 +226,8 @@ const CloseAccountByDraft: React.FC = () => {
               </Card>
               {/* Balance Section */}
               {accountInfo && <BalanceSection accountInfo={accountInfo} />}
-              <div className="flex justify-end mb-8">
-                <Button>Submit</Button>
+              <div className="flex flex-col gap-3 mb-8 sm:flex-row sm:justify-end">
+                <Button className="w-full sm:w-auto">Submit</Button>
               </div>
 
               {/* Table Section (copied from AmendAdditionalCMAccount) */}

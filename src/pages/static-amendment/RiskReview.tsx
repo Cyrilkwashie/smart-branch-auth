@@ -373,6 +373,17 @@ const RiskReview: React.FC = () => {
                 </CardContent>
               </Card>
 
+
+              {/* Scoreboard above PEP Evaluation */}
+              <div className="flex justify-center mb-4">
+                <div className="flex gap-2 text-xs sm:text-sm font-semibold bg-muted/60 rounded-lg px-3 py-2 border border-primary/30 shadow-sm">
+                  <span className="px-2 py-1 rounded bg-green-100 text-green-700">1 - Low</span>
+                  <span className="px-2 py-1 rounded bg-yellow-100 text-yellow-700">2 - Medium</span>
+                  <span className="px-2 py-1 rounded bg-orange-100 text-orange-700">3 - High</span>
+                  <span className="px-2 py-1 rounded bg-red-100 text-red-700">4 - Refer to Compliance</span>
+                </div>
+              </div>
+
               {/* PEP Evaluation Section */}
               <Card className="border shadow-sm">
                 <CardHeader className="bg-muted/30">
@@ -392,6 +403,13 @@ const RiskReview: React.FC = () => {
                 </CardContent>
               </Card>
 
+
+              {/* Generate Results Button at bottom */}
+              <div className="flex justify-end mt-8">
+                <Button onClick={handleGenerateResults} className="w-full sm:w-auto px-8 font-semibold">
+                  Generate Results
+                </Button>
+              </div>
             </div>
           </main>
         </div>

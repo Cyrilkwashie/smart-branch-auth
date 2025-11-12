@@ -126,20 +126,22 @@ const Login = () => {
                 </label>
                 <button
                   type="button"
-                  className="text-primary hover:text-primary/80 font-medium transition-colors"
+                  className="w-full sm:w-auto text-primary hover:text-primary/80 font-medium transition-colors"
                 >
                   Forgot password?
                 </button>
               </div>
 
               {/* Submit Button */}
-              <Button 
-                type="submit" 
-                className="w-full h-12 text-base font-semibold button-primary mt-6"
-                disabled={isAuthenticating}
-              >
-                {isAuthenticating ? "Authenticating..." : "Sign In"}
-              </Button>
+              <div className="flex flex-col sm:flex-row gap-3 mt-6">
+                <Button 
+                  type="submit" 
+                  className="w-full sm:w-auto h-12 text-base font-semibold button-primary"
+                  disabled={isAuthenticating}
+                >
+                  {isAuthenticating ? "Authenticating..." : "Sign In"}
+                </Button>
+              </div>
             </form>
 
             {/* Divider */}
@@ -155,12 +157,12 @@ const Login = () => {
             </div>
 
             {/* Biometric Authentication Options */}
-            <div className="space-y-3">
+            <div className="flex flex-col sm:flex-row gap-3">
               {/* Face ID Button */}
               <Button
                 type="button"
                 variant="outline"
-                className="w-full h-12 text-base font-medium border-2 hover:border-primary/50 transition-all duration-200"
+                className="w-full sm:w-auto h-12 text-base font-medium border-2 hover:border-primary/50 transition-all duration-200"
                 onClick={() => handleBiometricAuth('faceId')}
                 disabled={isAuthenticating}
               >
@@ -172,7 +174,7 @@ const Login = () => {
               <Button
                 type="button"
                 variant="outline"
-                className="w-full h-12 text-base font-medium border-2 hover:border-primary/50 transition-all duration-200"
+                className="w-full sm:w-auto h-12 text-base font-medium border-2 hover:border-primary/50 transition-all duration-200"
                 onClick={() => handleBiometricAuth('fingerprint')}
                 disabled={isAuthenticating}
               >
@@ -183,9 +185,12 @@ const Login = () => {
 
             {/* Footer */}
             <div className="pt-6 text-center">
-              <p className="text-sm text-muted-foreground">
+              <p className="text-sm text-muted-foreground mb-2">
+                Enter your credentials to access your account.
+              </p>
+              <p>
                 Don't have an account?{" "}
-                <button className="text-primary hover:text-primary/80 font-medium transition-colors">
+                <button className="w-full sm:w-auto text-primary hover:text-primary/80 font-medium transition-colors">
                   Contact your administrator
                 </button>
               </p>

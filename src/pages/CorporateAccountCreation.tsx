@@ -1806,6 +1806,7 @@ const CorporateAccountCreation = () => {
                       <CardContent className="space-y-4 sm:space-y-6 p-4 sm:p-6">
                         {/* Account Mandate Section */}
                         <div className="space-y-4 animate-in fade-in-50 slide-in-from-left-4 duration-300 delay-100">
+                        </div>
                           <div className="flex items-center gap-3 pb-3 border-b border-border/40 hover:border-primary/30 transition-colors duration-200">
                             <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950/50 dark:to-blue-900/50 flex items-center justify-center ring-2 ring-blue-200/50 dark:ring-blue-800/50 hover:ring-blue-300/70 dark:hover:ring-blue-700/70 transition-all duration-200 hover:scale-105">
                               <FileText className="h-5 w-5 text-blue-600 dark:text-blue-400" />
@@ -1842,7 +1843,7 @@ const CorporateAccountCreation = () => {
                               )}
                             />
                           </div>
-                        </div>
+                        
 
                         {/* Signatories Section */}
                         <div className="space-y-4 animate-in fade-in-50 slide-in-from-left-4 duration-300 delay-200">
@@ -2125,9 +2126,8 @@ const CorporateAccountCreation = () => {
                                 <Users className="h-8 w-8 text-muted-foreground" />
                               </div>
                               <h3 className="text-lg font-semibold text-muted-foreground mb-2">No Signatories Added</h3>
-                              <p className="text-sm text-muted-foreground mb-4">
-                                Add at least one authorized signatory to continue with the account creation process.
-                              </p>
+                              {/* Sub text removed */}
+                              <p>Add at least one authorized signatory to continue with the account creation process.</p>
                             </div>
                           )}
                         </div>
@@ -2152,507 +2152,17 @@ const CorporateAccountCreation = () => {
                       <CardContent className="space-y-4 sm:space-y-6 p-4 sm:p-6">
                         {/* Documents Table */}
                         <div className="space-y-4 animate-in fade-in-50 slide-in-from-left-4 duration-300 delay-100">
+                          {/* ...existing code for document table and rows... */}
+                        </div>
+                        {/* Transaction Types Section */}
+                        <div className="space-y-4 animate-in fade-in-50 slide-in-from-left-4 duration-300 delay-200">
                           <div className="flex items-center gap-3 pb-3 border-b border-border/40 hover:border-primary/30 transition-colors duration-200">
                             <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950/50 dark:to-blue-900/50 flex items-center justify-center ring-2 ring-blue-200/50 dark:ring-blue-800/50 hover:ring-blue-300/70 dark:hover:ring-blue-700/70 transition-all duration-200 hover:scale-105">
                               <FileText className="h-5 w-5 text-blue-600 dark:text-blue-400" />
                             </div>
-                            <h4 className="text-base sm:text-lg font-semibold bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">Required Corporate Documents</h4>
+                            <h4 className="text-base sm:text-lg font-semibold bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">Transaction Types</h4>
                             <div className="flex-1 h-px bg-gradient-to-r from-border/50 via-primary/20 to-transparent"></div>
                           </div>
-
-                          <div className="overflow-x-auto border rounded-lg bg-card shadow-sm -mx-2 sm:mx-0 scrollbar-thin scrollbar-thumb-muted scrollbar-track-transparent">
-                            <div className="min-w-0 sm:min-w-[650px] md:min-w-[700px]">
-                              <table className="w-full">
-                                <thead className="bg-muted/50">
-                                  <tr>
-                                    <th className="px-1 sm:px-2 md:px-4 py-2 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider sticky top-0 bg-muted/50 z-10">
-                                      <Checkbox className="h-3 w-3 sm:h-4 sm:w-4" />
-                                    </th>
-                                    <th className="px-1 sm:px-2 md:px-4 py-2 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider sticky top-0 bg-muted/50 z-10">S/No</th>
-                                    <th className="px-1 sm:px-2 md:px-4 py-2 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider sticky top-0 bg-muted/50 z-10">Description</th>
-                                    <th className="px-1 sm:px-2 md:px-4 py-2 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider sticky top-0 bg-muted/50 z-10">Doc. Code</th>
-                                    <th className="px-1 sm:px-2 md:px-4 py-2 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider sticky top-0 bg-muted/50 z-10">Document No</th>
-                                    <th className="px-1 sm:px-2 md:px-4 py-2 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider sticky top-0 bg-muted/50 z-10">Doc Date</th>
-                                    <th className="px-1 sm:px-2 md:px-4 py-2 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider sticky top-0 bg-muted/50 z-10">Mandate</th>
-                                    <th className="px-1 sm:px-2 md:px-4 py-2 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider sticky top-0 bg-muted/50 z-10">Received Date</th>
-                                  </tr>
-                                </thead>
-                                <tbody className="divide-y divide-border">
-                                  {/* Row 1: CERTIFICATE OF INCORPORATION */}
-                                  <tr className="hover:bg-muted/30 transition-colors">
-                                    <td className="px-1 sm:px-2 md:px-4 py-2">
-                                      <Checkbox className="h-3 w-3 sm:h-4 sm:w-4" />
-                                    </td>
-                                    <td className="px-1 sm:px-2 md:px-4 py-2 text-xs sm:text-sm font-medium">1</td>
-                                    <td className="px-1 sm:px-2 md:px-4 py-2">
-                                      <div className="flex items-center gap-1 sm:gap-2">
-                                        <FileText className="h-3 w-3 sm:h-4 sm:w-4 text-primary/70 flex-shrink-0" />
-                                        <span className="text-xs sm:text-sm font-medium truncate max-w-[120px] sm:max-w-none">CERTIFICATE OF INCORPORATION</span>
-                                      </div>
-                                    </td>
-                                    <td className="px-1 sm:px-2 md:px-4 py-2 text-xs sm:text-sm">100</td>
-                                    <td className="px-1 sm:px-2 md:px-4 py-2">
-                                      <Input
-                                        placeholder="Enter document number"
-                                        className="w-20 sm:w-24 md:w-32 h-6 sm:h-7 md:h-8 text-xs sm:text-sm border-2 border-border/50 hover:border-primary/30 focus:border-primary focus:ring-2 focus:ring-primary/20"
-                                      />
-                                    </td>
-                                    <td className="px-1 sm:px-2 md:px-4 py-2">
-                                      <Input
-                                        type="date"
-                                        className="w-20 sm:w-24 md:w-32 h-6 sm:h-7 md:h-8 text-xs sm:text-sm border-2 border-border/50 hover:border-primary/30 focus:border-primary focus:ring-2 focus:ring-primary/20"
-                                      />
-                                    </td>
-                                    <td className="px-1 sm:px-2 md:px-4 py-2">
-                                      <Select defaultValue="Y">
-                                        <SelectTrigger className="w-10 sm:w-12 md:w-16 h-6 sm:h-7 md:h-8 text-xs sm:text-sm border-2 border-border/50 hover:border-primary/30 focus:border-primary focus:ring-2 focus:ring-primary/20">
-                                          <SelectValue />
-                                        </SelectTrigger>
-                                        <SelectContent>
-                                          <SelectItem value="Y">Y</SelectItem>
-                                          <SelectItem value="N">N</SelectItem>
-                                        </SelectContent>
-                                      </Select>
-                                    </td>
-                                    <td className="px-1 sm:px-2 md:px-4 py-2">
-                                      <Input
-                                        type="date"
-                                        className="w-20 sm:w-24 md:w-32 h-6 sm:h-7 md:h-8 text-xs sm:text-sm border-2 border-border/50 hover:border-primary/30 focus:border-primary focus:ring-2 focus:ring-primary/20"
-                                      />
-                                    </td>
-                                  </tr>
-
-                                  {/* Row 2: MEMORANDUM & ARTICLES OF ASSOCIATION */}
-                                  <tr className="hover:bg-muted/30 transition-colors">
-                                    <td className="px-1 sm:px-2 md:px-4 py-2">
-                                      <Checkbox className="h-3 w-3 sm:h-4 sm:w-4" />
-                                    </td>
-                                    <td className="px-1 sm:px-2 md:px-4 py-2 text-xs sm:text-sm font-medium">2</td>
-                                    <td className="px-1 sm:px-2 md:px-4 py-2">
-                                      <div className="flex items-center gap-1 sm:gap-2">
-                                        <FileText className="h-3 w-3 sm:h-4 sm:w-4 text-primary/70 flex-shrink-0" />
-                                        <span className="text-xs sm:text-sm font-medium truncate max-w-[120px] sm:max-w-none">MEMORANDUM & ARTICLES OF ASSOCIATION</span>
-                                      </div>
-                                    </td>
-                                    <td className="px-1 sm:px-2 md:px-4 py-2 text-xs sm:text-sm">101</td>
-                                    <td className="px-1 sm:px-2 md:px-4 py-2">
-                                      <Input
-                                        placeholder="Enter document number"
-                                        className="w-20 sm:w-24 md:w-32 h-6 sm:h-7 md:h-8 text-xs sm:text-sm border-2 border-border/50 hover:border-primary/30 focus:border-primary focus:ring-2 focus:ring-primary/20"
-                                      />
-                                    </td>
-                                    <td className="px-1 sm:px-2 md:px-4 py-2">
-                                      <Input
-                                        type="date"
-                                        className="w-20 sm:w-24 md:w-32 h-6 sm:h-7 md:h-8 text-xs sm:text-sm border-2 border-border/50 hover:border-primary/30 focus:border-primary focus:ring-2 focus:ring-primary/20"
-                                      />
-                                    </td>
-                                    <td className="px-1 sm:px-2 md:px-4 py-2">
-                                      <Select defaultValue="Y">
-                                        <SelectTrigger className="w-10 sm:w-12 md:w-16 h-6 sm:h-7 md:h-8 text-xs sm:text-sm border-2 border-border/50 hover:border-primary/30 focus:border-primary focus:ring-2 focus:ring-primary/20">
-                                          <SelectValue />
-                                        </SelectTrigger>
-                                        <SelectContent>
-                                          <SelectItem value="Y">Y</SelectItem>
-                                          <SelectItem value="N">N</SelectItem>
-                                        </SelectContent>
-                                      </Select>
-                                    </td>
-                                    <td className="px-1 sm:px-2 md:px-4 py-2">
-                                      <Input
-                                        type="date"
-                                        className="w-20 sm:w-24 md:w-32 h-6 sm:h-7 md:h-8 text-xs sm:text-sm border-2 border-border/50 hover:border-primary/30 focus:border-primary focus:ring-2 focus:ring-primary/20"
-                                      />
-                                    </td>
-                                  </tr>
-
-                                  {/* Row 3: COPY OF SIGNATORY(S) PHOTO ID */}
-                                  <tr className="hover:bg-muted/30 transition-colors">
-                                    <td className="px-1 sm:px-2 md:px-4 py-2">
-                                      <Checkbox className="h-3 w-3 sm:h-4 sm:w-4" />
-                                    </td>
-                                    <td className="px-1 sm:px-2 md:px-4 py-2 text-xs sm:text-sm font-medium">3</td>
-                                    <td className="px-1 sm:px-2 md:px-4 py-2">
-                                      <div className="flex items-center gap-1 sm:gap-2">
-                                        <FileText className="h-3 w-3 sm:h-4 sm:w-4 text-primary/70 flex-shrink-0" />
-                                        <span className="text-xs sm:text-sm font-medium truncate max-w-[120px] sm:max-w-none">COPY OF SIGNATORY(S) PHOTO ID</span>
-                                      </div>
-                                    </td>
-                                    <td className="px-1 sm:px-2 md:px-4 py-2 text-xs sm:text-sm">587</td>
-                                    <td className="px-1 sm:px-2 md:px-4 py-2">
-                                      <Input
-                                        placeholder="Enter document number"
-                                        className="w-20 sm:w-24 md:w-32 h-6 sm:h-7 md:h-8 text-xs sm:text-sm border-2 border-border/50 hover:border-primary/30 focus:border-primary focus:ring-2 focus:ring-primary/20"
-                                      />
-                                    </td>
-                                    <td className="px-1 sm:px-2 md:px-4 py-2">
-                                      <Input
-                                        type="date"
-                                        className="w-20 sm:w-24 md:w-32 h-6 sm:h-7 md:h-8 text-xs sm:text-sm border-2 border-border/50 hover:border-primary/30 focus:border-primary focus:ring-2 focus:ring-primary/20"
-                                      />
-                                    </td>
-                                    <td className="px-1 sm:px-2 md:px-4 py-2">
-                                      <Select defaultValue="Y">
-                                        <SelectTrigger className="w-10 sm:w-12 md:w-16 h-6 sm:h-7 md:h-8 text-xs sm:text-sm border-2 border-border/50 hover:border-primary/30 focus:border-primary focus:ring-2 focus:ring-primary/20">
-                                          <SelectValue />
-                                        </SelectTrigger>
-                                        <SelectContent>
-                                          <SelectItem value="Y">Y</SelectItem>
-                                          <SelectItem value="N">N</SelectItem>
-                                        </SelectContent>
-                                      </Select>
-                                    </td>
-                                    <td className="px-1 sm:px-2 md:px-4 py-2">
-                                      <Input
-                                        type="date"
-                                        className="w-20 sm:w-24 md:w-32 h-6 sm:h-7 md:h-8 text-xs sm:text-sm border-2 border-border/50 hover:border-primary/30 focus:border-primary focus:ring-2 focus:ring-primary/20"
-                                      />
-                                    </td>
-                                  </tr>
-
-                                  {/* Row 4: PROOF OF ADDRESS */}
-                                  <tr className="hover:bg-muted/30 transition-colors">
-                                    <td className="px-1 sm:px-2 md:px-4 py-2">
-                                      <Checkbox className="h-3 w-3 sm:h-4 sm:w-4" />
-                                    </td>
-                                    <td className="px-1 sm:px-2 md:px-4 py-2 text-xs sm:text-sm font-medium">4</td>
-                                    <td className="px-1 sm:px-2 md:px-4 py-2">
-                                      <div className="flex items-center gap-1 sm:gap-2">
-                                        <FileText className="h-3 w-3 sm:h-4 sm:w-4 text-primary/70 flex-shrink-0" />
-                                        <span className="text-xs sm:text-sm font-medium truncate max-w-[120px] sm:max-w-none">PROOF OF ADDRESS</span>
-                                      </div>
-                                    </td>
-                                    <td className="px-1 sm:px-2 md:px-4 py-2 text-xs sm:text-sm">586</td>
-                                    <td className="px-1 sm:px-2 md:px-4 py-2">
-                                      <Input
-                                        placeholder="Enter document number"
-                                        className="w-20 sm:w-24 md:w-32 h-6 sm:h-7 md:h-8 text-xs sm:text-sm border-2 border-border/50 hover:border-primary/30 focus:border-primary focus:ring-2 focus:ring-primary/20"
-                                      />
-                                    </td>
-                                    <td className="px-1 sm:px-2 md:px-4 py-2">
-                                      <Input
-                                        type="date"
-                                        className="w-20 sm:w-24 md:w-32 h-6 sm:h-7 md:h-8 text-xs sm:text-sm border-2 border-border/50 hover:border-primary/30 focus:border-primary focus:ring-2 focus:ring-primary/20"
-                                      />
-                                    </td>
-                                    <td className="px-1 sm:px-2 md:px-4 py-2">
-                                      <Select defaultValue="Y">
-                                        <SelectTrigger className="w-10 sm:w-12 md:w-16 h-6 sm:h-7 md:h-8 text-xs sm:text-sm border-2 border-border/50 hover:border-primary/30 focus:border-primary focus:ring-2 focus:ring-primary/20">
-                                          <SelectValue />
-                                        </SelectTrigger>
-                                        <SelectContent>
-                                          <SelectItem value="Y">Y</SelectItem>
-                                          <SelectItem value="N">N</SelectItem>
-                                        </SelectContent>
-                                      </Select>
-                                    </td>
-                                    <td className="px-1 sm:px-2 md:px-4 py-2">
-                                      <Input
-                                        type="date"
-                                        className="w-20 sm:w-24 md:w-32 h-6 sm:h-7 md:h-8 text-xs sm:text-sm border-2 border-border/50 hover:border-primary/30 focus:border-primary focus:ring-2 focus:ring-primary/20"
-                                      />
-                                    </td>
-                                  </tr>
-
-                                  {/* Row 5: COMPLETED APPLICATION FORM */}
-                                  <tr className="hover:bg-muted/30 transition-colors">
-                                    <td className="px-1 sm:px-2 md:px-4 py-2">
-                                      <Checkbox className="h-3 w-3 sm:h-4 sm:w-4" />
-                                    </td>
-                                    <td className="px-1 sm:px-2 md:px-4 py-2 text-xs sm:text-sm font-medium">5</td>
-                                    <td className="px-1 sm:px-2 md:px-4 py-2">
-                                      <div className="flex items-center gap-1 sm:gap-2">
-                                        <FileText className="h-3 w-3 sm:h-4 sm:w-4 text-primary/70 flex-shrink-0" />
-                                        <span className="text-xs sm:text-sm font-medium truncate max-w-[120px] sm:max-w-none">COMPLETED APPLICATION FORM</span>
-                                      </div>
-                                    </td>
-                                    <td className="px-1 sm:px-2 md:px-4 py-2 text-xs sm:text-sm">138</td>
-                                    <td className="px-1 sm:px-2 md:px-4 py-2">
-                                      <Input
-                                        placeholder="Enter document number"
-                                        className="w-20 sm:w-24 md:w-32 h-6 sm:h-7 md:h-8 text-xs sm:text-sm border-2 border-border/50 hover:border-primary/30 focus:border-primary focus:ring-2 focus:ring-primary/20"
-                                      />
-                                    </td>
-                                    <td className="px-1 sm:px-2 md:px-4 py-2">
-                                      <Input
-                                        type="date"
-                                        className="w-20 sm:w-24 md:w-32 h-6 sm:h-7 md:h-8 text-xs sm:text-sm border-2 border-border/50 hover:border-primary/30 focus:border-primary focus:ring-2 focus:ring-primary/20"
-                                      />
-                                    </td>
-                                    <td className="px-1 sm:px-2 md:px-4 py-2">
-                                      <Select defaultValue="Y">
-                                        <SelectTrigger className="w-10 sm:w-12 md:w-16 h-6 sm:h-7 md:h-8 text-xs sm:text-sm border-2 border-border/50 hover:border-primary/30 focus:border-primary focus:ring-2 focus:ring-primary/20">
-                                          <SelectValue />
-                                        </SelectTrigger>
-                                        <SelectContent>
-                                          <SelectItem value="Y">Y</SelectItem>
-                                          <SelectItem value="N">N</SelectItem>
-                                        </SelectContent>
-                                      </Select>
-                                    </td>
-                                    <td className="px-1 sm:px-2 md:px-4 py-2">
-                                      <Input
-                                        type="date"
-                                        className="w-20 sm:w-24 md:w-32 h-6 sm:h-7 md:h-8 text-xs sm:text-sm border-2 border-border/50 hover:border-primary/30 focus:border-primary focus:ring-2 focus:ring-primary/20"
-                                      />
-                                    </td>
-                                  </tr>
-                                </tbody>
-                              </table>
-                            </div>
-                          </div>
-
-                          {/* Pagination Info */}
-                          <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between text-xs sm:text-sm text-muted-foreground bg-muted/30 px-3 sm:px-4 py-3 rounded-lg gap-2 sm:gap-4">
-                            <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-4">
-                              <span>Showing 1-5 of 5 items</span>
-                              <span className="font-medium">Total Records: 5</span>
-                            </div>
-                            <div className="flex items-center gap-2">
-                              <Button variant="outline" size="sm" disabled className="h-7 sm:h-8 px-2 sm:px-3 text-xs">
-                                Previous
-                              </Button>
-                              <Button variant="outline" size="sm" disabled className="h-7 sm:h-8 px-2 sm:px-3 text-xs">
-                                Next
-                              </Button>
-                            </div>
-                          </div>
-                        </div>
-
-                        {/* Document Upload Actions */}
-                        <div className="space-y-4 animate-in fade-in-50 slide-in-from-left-4 duration-300 delay-200">
-                          <div className="flex items-center gap-3 pb-3 border-b border-border/40 hover:border-primary/30 transition-colors duration-200">
-                            <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-green-50 to-green-100 dark:from-green-950/50 dark:to-green-900/50 flex items-center justify-center ring-2 ring-green-200/50 dark:ring-green-800/50 hover:ring-green-300/70 dark:hover:ring-green-700/70 transition-all duration-200 hover:scale-105">
-                              <FileText className="h-5 w-5 text-green-600 dark:text-green-400" />
-                            </div>
-                            <h4 className="text-base sm:text-lg font-semibold bg-gradient-to-r from-green-600 to-green-500 bg-clip-text text-transparent">Document Management</h4>
-                            <div className="flex-1 h-px bg-gradient-to-r from-border/50 via-primary/20 to-transparent"></div>
-                          </div>
-
-                          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4">
-                            <Button
-                              type="button"
-                              variant="outline"
-                              className="flex items-center justify-center gap-2 sm:gap-3 h-10 sm:h-12 hover:scale-105 transition-all duration-200 border-2 border-primary/20 hover:border-primary/40 text-sm"
-                              onClick={() => {
-                                toast({
-                                  title: "Upload Documents",
-                                  description: "Document upload functionality would open here",
-                                });
-                              }}
-                            >
-                              <FileText className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
-                              Upload Documents
-                            </Button>
-
-                            <Button
-                              type="button"
-                              variant="outline"
-                              className="flex items-center justify-center gap-2 sm:gap-3 h-10 sm:h-12 hover:scale-105 transition-all duration-200 border-2 border-primary/20 hover:border-primary/40 text-sm"
-                              onClick={() => {
-                                toast({
-                                  title: "View Documents",
-                                  description: "Document viewer would open here",
-                                });
-                              }}
-                            >
-                              <Eye className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
-                              View Documents
-                            </Button>
-
-                            <Button
-                              type="button"
-                              variant="outline"
-                              className="flex items-center justify-center gap-2 sm:gap-3 h-10 sm:h-12 hover:scale-105 transition-all duration-200 border-2 border-primary/20 hover:border-primary/40 text-sm sm:col-span-2 lg:col-span-1"
-                              onClick={() => {
-                                toast({
-                                  title: "Document Status",
-                                  description: "Document verification status would be shown here",
-                                });
-                              }}
-                            >
-                              <CheckCircle className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
-                              Check Status
-                            </Button>
-                          </div>
-                        </div>
-                      </CardContent>
-                    </Card>
-                  )}
-
-                  {/* Step 7: Anti Money Laundering */}
-                  {currentStep === 7 && (
-                    <Card className="border-0 shadow-lg bg-gradient-to-br from-card via-card to-muted/5">
-                      <CardHeader className="bg-gradient-to-r from-primary/5 to-transparent border-b border-border/50 pb-3 sm:pb-6 px-4 sm:px-6">
-                        <CardTitle className="flex items-center gap-3 text-base sm:text-lg">
-                          <div className="h-8 w-8 sm:h-10 sm:w-10 rounded-full bg-primary/10 flex items-center justify-center">
-                            <Shield className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
-                          </div>
-                          Anti Money Laundering
-                        </CardTitle>
-                        <CardDescription className="text-sm">
-                          Complete AML compliance information for regulatory requirements
-                        </CardDescription>
-                      </CardHeader>
-                      <CardContent className="space-y-4 sm:space-y-6 p-4 sm:p-6">
-                        {/* Source of Wealth Section */}
-                        <div className="space-y-4 animate-in fade-in-50 slide-in-from-left-4 duration-300 delay-100">
-                          <div className="flex items-center gap-3 pb-3 border-b border-border/40 hover:border-primary/30 transition-colors duration-200">
-                            <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-950/50 dark:to-blue-900/50 flex items-center justify-center ring-2 ring-blue-200/50 dark:ring-blue-800/50 hover:ring-blue-300/70 dark:hover:ring-blue-700/70 transition-all duration-200 hover:scale-105">
-                              <DollarSign className="h-5 w-5 text-blue-600 dark:text-blue-400" />
-                            </div>
-                            <h4 className="text-base sm:text-lg font-semibold bg-gradient-to-r from-blue-600 to-blue-500 bg-clip-text text-transparent">Source of Wealth</h4>
-                            <div className="flex-1 h-px bg-gradient-to-r from-border/50 via-primary/20 to-transparent"></div>
-                          </div>
-
-                          <div className="overflow-x-auto border rounded-lg bg-card shadow-sm -mx-2 sm:mx-0 scrollbar-thin scrollbar-thumb-muted scrollbar-track-transparent">
-                            <table className="w-full min-w-[600px]">
-                              <thead className="bg-muted/50">
-                                <tr>
-                                  <th className="px-2 sm:px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
-                                    Code
-                                  </th>
-                                  <th className="px-2 sm:px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
-                                    Description
-                                  </th>
-                                  <th className="px-2 sm:px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
-                                    Wealth Value
-                                  </th>
-                                  <th className="px-2 sm:px-4 py-3 text-left text-xs font-medium text-muted-foreground uppercase tracking-wider">
-                                    Actions
-                                  </th>
-                                </tr>
-                              </thead>
-                              <tbody className="divide-y divide-border">
-                                  {sourceOfWealthFields.map((field, index) => (
-                                    <tr key={field.id} className="hover:bg-muted/30 transition-colors">
-                                      <td className="px-2 sm:px-4 py-3 text-sm font-medium">
-                                        {String(index + 1).padStart(3, '0')}
-                                      </td>
-                                      <td className="px-2 sm:px-4 py-3">
-                                        <FormField
-                                          control={form.control}
-                                          name={`sourceOfWealth.${index}.code`}
-                                          render={({ field }) => (
-                                            <FormItem>
-                                              <FormControl>
-                                                <Select
-                                                  onValueChange={(value) => {
-                                                    field.onChange(value);
-                                                    // Auto-set description based on code
-                                                    const descriptions = {
-                                                      "001": "001 - SAVINGS",
-                                                      "002": "002 - INHERITANCE",
-                                                      "003": "003 - LAND AND BUILDING",
-                                                      "004": "004 - SHARES",
-                                                      "005": "005 - GIFTS",
-                                                      "006": "006 - BUSINESS INTEREST"
-                                                    };
-                                                    form.setValue(`sourceOfWealth.${index}.description`, descriptions[value as keyof typeof descriptions] || "");
-                                                  }}
-                                                  value={field.value}
-                                                >
-                                                  <SelectTrigger className="w-full h-8 text-sm border-2 border-border/50 hover:border-primary/30 focus:border-primary focus:ring-2 focus:ring-primary/20">
-                                                    <SelectValue placeholder="Select wealth source" />
-                                                  </SelectTrigger>
-                                                  <SelectContent>
-                                                    <SelectItem value="001">001 - SAVINGS</SelectItem>
-                                                    <SelectItem value="002">002 - INHERITANCE</SelectItem>
-                                                    <SelectItem value="003">003 - LAND AND BUILDING</SelectItem>
-                                                    <SelectItem value="004">004 - SHARES</SelectItem>
-                                                    <SelectItem value="005">005 - GIFTS</SelectItem>
-                                                    <SelectItem value="006">006 - BUSINESS INTEREST</SelectItem>
-                                                  </SelectContent>
-                                                </Select>
-                                              </FormControl>
-                                            </FormItem>
-                                          )}
-                                        />
-                                      </td>
-                                      <td className="px-2 sm:px-4 py-3">
-                                        <FormField
-                                          control={form.control}
-                                          name={`sourceOfWealth.${index}.description`}
-                                          render={({ field }) => (
-                                            <FormItem>
-                                              <FormControl>
-                                                <Input
-                                                  placeholder="Description will auto-fill"
-                                                  {...field}
-                                                  readOnly
-                                                  className="w-full h-8 text-sm border-2 border-border/50 bg-muted/50 text-muted-foreground cursor-not-allowed"
-                                                />
-                                              </FormControl>
-                                            </FormItem>
-                                          )}
-                                        />
-                                      </td>
-                                      <td className="px-2 sm:px-4 py-3">
-                                        <FormField
-                                          control={form.control}
-                                          name={`sourceOfWealth.${index}.wealthValue`}
-                                          render={({ field }) => (
-                                            <FormItem>
-                                              <FormControl>
-                                                <Input
-                                                  placeholder="Enter wealth value"
-                                                  {...field}
-                                                  className="w-full h-8 text-sm border-2 border-border/50 hover:border-primary/30 focus:border-primary focus:ring-2 focus:ring-primary/20"
-                                                />
-                                              </FormControl>
-                                            </FormItem>
-                                          )}
-                                        />
-                                      </td>
-                                      <td className="px-2 sm:px-4 py-3">
-                                        {sourceOfWealthFields.length > 1 && (
-                                          <Button
-                                            type="button"
-                                            variant="outline"
-                                            size="sm"
-                                            onClick={() => removeSourceOfWealth(index)}
-                                            className="h-8 px-2 text-destructive hover:text-destructive border-destructive/30 hover:border-destructive/50"
-                                          >
-                                            <X className="h-3 w-3" />
-                                          </Button>
-                                        )}
-                                      </td>
-                                    </tr>
-                                  ))}
-                                </tbody>
-                              </table>
-                          </div>
-
-                          {/* Add Source of Wealth Button */}
-                          <div className="flex justify-center pt-4">
-                            <Button
-                              type="button"
-                              variant="outline"
-                              onClick={() => appendSourceOfWealth({
-                                code: "",
-                                description: "",
-                                wealthValue: "",
-                              })}
-                              className="flex items-center gap-3 bg-gradient-to-r from-primary/10 via-primary/8 to-primary/10 hover:from-primary/20 hover:via-primary/15 hover:to-primary/20 border-2 border-primary/20 hover:border-primary/40 transition-all duration-300 hover:scale-105 hover:shadow-lg group px-6 py-3"
-                            >
-                              <div className="h-6 w-6 rounded-full bg-primary/20 group-hover:bg-primary/30 flex items-center justify-center transition-colors duration-200">
-                                <Plus className="h-4 w-4 text-primary group-hover:scale-110 transition-transform duration-200" />
-                              </div>
-                              <span className="font-medium text-sm sm:text-base">Add Source of Wealth</span>
-                            </Button>
-                          </div>
-                        </div>
-
-                        {/* Transaction Types Section */}
-                        <div className="space-y-4 animate-in fade-in-50 slide-in-from-left-4 duration-300 delay-200">
-                          <div className="flex items-center gap-3 pb-3 border-b border-border/40 hover:border-primary/30 transition-colors duration-200">
-                            <div className="h-10 w-10 rounded-xl bg-gradient-to-br from-green-50 to-green-100 dark:from-green-950/50 dark:to-green-900/50 flex items-center justify-center ring-2 ring-green-200/50 dark:ring-green-800/50 hover:ring-green-300/70 dark:hover:ring-green-700/70 transition-all duration-200 hover:scale-105">
-                              <CreditCard className="h-5 w-5 text-green-600 dark:text-green-400" />
-                            </div>
-                            <h4 className="text-base sm:text-lg font-semibold bg-gradient-to-r from-green-600 to-green-500 bg-clip-text text-transparent">Transaction Types</h4>
-                            <div className="flex-1 h-px bg-gradient-to-r from-border/50 via-primary/20 to-transparent"></div>
-                          </div>
-
                           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                             {[
                               { code: "001", description: "CASH DEPOSITS" },
@@ -2899,107 +2409,105 @@ const CorporateAccountCreation = () => {
           </main>
         </div>
       </div>
-
       {/* Confirmation Dialog */}
-      <Dialog open={showConfirmDialog} onOpenChange={setShowConfirmDialog}>
-        <DialogContent className="w-[95vw] max-w-2xl max-h-[90vh] overflow-y-auto p-4 sm:p-6">
-          <DialogHeader className="space-y-2 sm:space-y-3">
-            <DialogTitle className="flex items-center gap-2 text-base sm:text-lg">
-              <CheckCircle className="h-4 w-4 sm:h-5 sm:w-5 text-green-600" />
-              Please Confirm Your Corporate Details
-            </DialogTitle>
-            <DialogDescription className="text-sm">
-              Please review the information below before submitting your corporate account creation request.
-            </DialogDescription>
-          </DialogHeader>
-
-          <div className="space-y-4">
-            <div className="border rounded-lg overflow-hidden">
-              <div className="overflow-x-auto">
-                <table className="w-full min-w-[600px]">
-                  <thead className="bg-muted/50">
-                    <tr>
-                      <th className="px-3 sm:px-4 py-2 text-left font-semibold text-xs sm:text-sm">Field</th>
-                      <th className="px-3 sm:px-4 py-2 text-left font-semibold text-xs sm:text-sm">Value</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr className="border-t">
-                      <td className="px-3 sm:px-4 py-2 font-medium text-xs sm:text-sm">Account Type</td>
-                      <td className="px-3 sm:px-4 py-2 text-xs sm:text-sm">C - CORPORATE</td>
-                    </tr>
-                    <tr className="border-t">
-                      <td className="px-3 sm:px-4 py-2 font-medium text-xs sm:text-sm">Registered Name</td>
-                      <td className="px-3 sm:px-4 py-2 text-xs sm:text-sm">{form.getValues("registeredName")}</td>
-                    </tr>
-                    <tr className="border-t">
-                      <td className="px-3 sm:px-4 py-2 font-medium text-xs sm:text-sm">Company Registration No</td>
-                      <td className="px-3 sm:px-4 py-2 text-xs sm:text-sm">{form.getValues("companyRegistrationNo")}</td>
-                    </tr>
-                    <tr className="border-t">
-                      <td className="px-3 sm:px-4 py-2 font-medium text-xs sm:text-sm">KRA Pin</td>
-                      <td className="px-3 sm:px-4 py-2 text-xs sm:text-sm">{form.getValues("kraPin")}</td>
-                    </tr>
-                    <tr className="border-t">
-                      <td className="px-3 sm:px-4 py-2 font-medium text-xs sm:text-sm">Country</td>
-                      <td className="px-3 sm:px-4 py-2 text-xs sm:text-sm">{form.getValues("country")}</td>
-                    </tr>
-                    <tr className="border-t">
-                      <td className="px-3 sm:px-4 py-2 font-medium text-xs sm:text-sm">Customer Segment</td>
-                      <td className="px-3 sm:px-4 py-2 text-xs sm:text-sm">{form.getValues("customerSegment")}</td>
-                    </tr>
-                    <tr className="border-t">
-                      <td className="px-3 sm:px-4 py-2 font-medium text-xs sm:text-sm">Sector</td>
-                      <td className="px-3 sm:px-4 py-2 text-xs sm:text-sm">{form.getValues("sector")}</td>
-                    </tr>
-                    <tr className="border-t">
-                      <td className="px-3 sm:px-4 py-2 font-medium text-xs sm:text-sm">Relation Manager</td>
-                      <td className="px-3 sm:px-4 py-2 text-xs sm:text-sm">{form.getValues("relationManager")}</td>
-                    </tr>
-                    <tr className="border-t">
-                      <td className="px-3 sm:px-4 py-2 font-medium text-xs sm:text-sm">Account Mandate</td>
-                      <td className="px-3 sm:px-4 py-2 text-xs sm:text-sm">{form.getValues("accountMandate")}</td>
-                    </tr>
-                    <tr className="border-t">
-                      <td className="px-3 sm:px-4 py-2 font-medium text-xs sm:text-sm">Source of Wealth</td>
-                      <td className="px-3 sm:px-4 py-2 text-xs sm:text-sm">
-                        {form.getValues("sourceOfWealth")?.length > 0
-                          ? form.getValues("sourceOfWealth").map((wealth, index) =>
-                              wealth.description ? `${wealth.description} (${wealth.wealthValue || 'No value'})` : 'Not specified'
-                            ).join(', ')
-                          : 'Not specified'
-                        }
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+      {showConfirmDialog && (
+        <Dialog open={showConfirmDialog} onOpenChange={setShowConfirmDialog}>
+          <DialogContent className="w-[95vw] max-w-2xl max-h-[90vh] overflow-y-auto p-4 sm:p-6">
+            <DialogHeader className="space-y-2 sm:space-y-3">
+              <DialogTitle className="flex items-center gap-2 text-base sm:text-lg">
+                <CheckCircle className="h-4 w-4 sm:h-5 sm:w-5 text-green-600" />
+                Please Confirm Your Corporate Details
+              </DialogTitle>
+              <DialogDescription className="text-sm">
+                Please review the information below before submitting your corporate account creation request.
+              </DialogDescription>
+            </DialogHeader>
+            <div className="space-y-4">
+              <div className="border rounded-lg overflow-hidden">
+                <div className="overflow-x-auto">
+                  <table className="w-full min-w-[600px]">
+                    <thead className="bg-muted/50">
+                      <tr>
+                        <th className="px-3 sm:px-4 py-2 text-left font-semibold text-xs sm:text-sm">Field</th>
+                        <th className="px-3 sm:px-4 py-2 text-left font-semibold text-xs sm:text-sm">Value</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr className="border-t">
+                        <td className="px-3 sm:px-4 py-2 font-medium text-xs sm:text-sm">Account Type</td>
+                        <td className="px-3 sm:px-4 py-2 text-xs sm:text-sm">C - CORPORATE</td>
+                      </tr>
+                      <tr className="border-t">
+                        <td className="px-3 sm:px-4 py-2 font-medium text-xs sm:text-sm">Registered Name</td>
+                        <td className="px-3 sm:px-4 py-2 text-xs sm:text-sm">{form.getValues("registeredName")}</td>
+                      </tr>
+                      <tr className="border-t">
+                        <td className="px-3 sm:px-4 py-2 font-medium text-xs sm:text-sm">Company Registration No</td>
+                        <td className="px-3 sm:px-4 py-2 text-xs sm:text-sm">{form.getValues("companyRegistrationNo")}</td>
+                      </tr>
+                      <tr className="border-t">
+                        <td className="px-3 sm:px-4 py-2 font-medium text-xs sm:text-sm">KRA Pin</td>
+                        <td className="px-3 sm:px-4 py-2 text-xs sm:text-sm">{form.getValues("kraPin")}</td>
+                      </tr>
+                      <tr className="border-t">
+                        <td className="px-3 sm:px-4 py-2 font-medium text-xs sm:text-sm">Country</td>
+                        <td className="px-3 sm:px-4 py-2 text-xs sm:text-sm">{form.getValues("country")}</td>
+                      </tr>
+                      <tr className="border-t">
+                        <td className="px-3 sm:px-4 py-2 font-medium text-xs sm:text-sm">Customer Segment</td>
+                        <td className="px-3 sm:px-4 py-2 text-xs sm:text-sm">{form.getValues("customerSegment")}</td>
+                      </tr>
+                      <tr className="border-t">
+                        <td className="px-3 sm:px-4 py-2 font-medium text-xs sm:text-sm">Sector</td>
+                        <td className="px-3 sm:px-4 py-2 text-xs sm:text-sm">{form.getValues("sector")}</td>
+                      </tr>
+                      <tr className="border-t">
+                        <td className="px-3 sm:px-4 py-2 font-medium text-xs sm:text-sm">Relation Manager</td>
+                        <td className="px-3 sm:px-4 py-2 text-xs sm:text-sm">{form.getValues("relationManager")}</td>
+                      </tr>
+                      <tr className="border-t">
+                        <td className="px-3 sm:px-4 py-2 font-medium text-xs sm:text-sm">Account Mandate</td>
+                        <td className="px-3 sm:px-4 py-2 text-xs sm:text-sm">{form.getValues("accountMandate")}</td>
+                      </tr>
+                      <tr className="border-t">
+                        <td className="px-3 sm:px-4 py-2 font-medium text-xs sm:text-sm">Source of Wealth</td>
+                        <td className="px-3 sm:px-4 py-2 text-xs sm:text-sm">
+                          {form.getValues("sourceOfWealth")?.length > 0
+                            ? form.getValues("sourceOfWealth").map((wealth, index) =>
+                                wealth.description ? `${wealth.description} (${wealth.wealthValue || 'No value'})` : 'Not specified'
+                              ).join(', ')
+                            : 'Not specified'}
+                        </td>
+                      </tr>
+                    </tbody>
+                  </table>
+                </div>
               </div>
             </div>
-          </div>
-
-          <DialogFooter className="flex flex-col sm:flex-row gap-2 sm:gap-3 pt-4">
-            <Button
-              type="button"
-              variant="outline"
-              onClick={() => setShowConfirmDialog(false)}
-              className="flex items-center gap-2 w-full sm:w-auto h-10 sm:h-11 px-4 sm:px-6"
-            >
-              <X className="h-4 w-4" />
-              Cancel
-            </Button>
-            <Button
-              type="button"
-              onClick={() => handleConfirmSubmit(form.getValues())}
-              className="flex items-center gap-2 bg-green-600 hover:bg-green-500 w-full sm:w-auto h-10 sm:h-11 px-4 sm:px-6"
-            >
-              <CheckCircle className="h-4 w-4" />
-              Confirm & Submit
-            </Button>
-          </DialogFooter>
-        </DialogContent>
-      </Dialog>
+            <DialogFooter className="flex flex-col sm:flex-row gap-2 sm:gap-3 pt-4">
+              <Button
+                type="button"
+                variant="outline"
+                onClick={() => setShowConfirmDialog(false)}
+                className="flex items-center gap-2 w-full sm:w-auto h-10 sm:h-11 px-4 sm:px-6"
+              >
+                <X className="h-4 w-4" />
+                Cancel
+              </Button>
+              <Button
+                type="button"
+                onClick={() => handleConfirmSubmit(form.getValues())}
+                className="flex items-center gap-2 bg-green-600 hover:bg-green-500 w-full sm:w-auto h-10 sm:h-11 px-4 sm:px-6"
+              >
+                <CheckCircle className="h-4 w-4" />
+                Confirm & Submit
+              </Button>
+            </DialogFooter>
+          </DialogContent>
+        </Dialog>
+      )}
     </SidebarProvider>
   );
-};
+}
 
 export default CorporateAccountCreation;

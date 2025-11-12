@@ -2,6 +2,7 @@ import { useState } from "react";
 import { SidebarProvider, SidebarTrigger } from "@/components/ui/sidebar";
 import { AppSidebar } from "@/components/AppSidebar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Textarea } from "@/components/ui/textarea";
@@ -97,16 +98,13 @@ export default function ChequebookRequest() {
           <div className="flex items-center gap-4 mb-6">
             <SidebarTrigger />
             <div>
-              <h1 className="text-3xl font-bold">Chequebook Request</h1>
-              <p className="text-muted-foreground">
-                Request new chequebooks for customer accounts
-              </p>
+              <h1 className="text-xl sm:text-2xl md:text-3xl font-bold">Chequebook Request</h1>
             </div>
           </div>
 
           <Card>
             <CardHeader>
-              <CardTitle>Request Information</CardTitle>
+              <CardTitle className="text-base sm:text-lg md:text-xl">Request Information</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -176,7 +174,7 @@ export default function ChequebookRequest() {
 
           <Card className="mt-6">
             <CardHeader>
-              <CardTitle>Account Details</CardTitle>
+              <CardTitle className="text-base sm:text-lg md:text-xl">Account Details</CardTitle>
             </CardHeader>
             <CardContent className="space-y-4">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -225,7 +223,7 @@ export default function ChequebookRequest() {
 
           <Card className="mt-6">
             <CardHeader>
-              <CardTitle>Fee Schedule</CardTitle>
+              <CardTitle className="text-base sm:text-lg md:text-xl">Fee Schedule</CardTitle>
             </CardHeader>
             <CardContent>
               <Table>
@@ -268,6 +266,17 @@ export default function ChequebookRequest() {
               </Table>
             </CardContent>
           </Card>
+
+          {/* Bottom Action Button */}
+          <div className="flex flex-col sm:flex-row gap-4 mt-8">
+            <Button
+              type="button"
+              className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 h-11 px-8 text-base font-semibold rounded-md shadow-md transition-all"
+              onClick={() => {/* TODO: Add submit or next action here */}}
+            >
+              Submit Chequebook Request
+            </Button>
+          </div>
         </div>
       </main>
     </SidebarProvider>

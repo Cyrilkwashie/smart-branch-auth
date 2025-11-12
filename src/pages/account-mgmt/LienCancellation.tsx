@@ -135,7 +135,7 @@ const LienCancellation = () => {
             <SidebarTrigger />
             <div>
               <h1 className="text-xl font-semibold">Lien Cancellation</h1>
-              <p className="text-sm text-muted-foreground">Search liens and cancel when appropriate</p>
+              {/* Sub text removed */}
             </div>
           </AppHeader>
 
@@ -244,9 +244,10 @@ const LienCancellation = () => {
                                     <DialogTitle>Confirm lien cancellation</DialogTitle>
                                   </DialogHeader>
                                   <div className="space-y-3">
-                                    <p className="text-sm text-muted-foreground">
+                                    {/* Sub text restored */}
+                                    <div>
                                       You are cancelling the lien on account <span className="font-medium">{row.accountNumber}</span> ({row.accountName}).
-                                    </p>
+                                    </div>
                                     <div className="space-y-2">
                                       <Label htmlFor="reason">Reason (optional)</Label>
                                       <Textarea
@@ -257,9 +258,9 @@ const LienCancellation = () => {
                                       />
                                     </div>
                                   </div>
-                                  <DialogFooter>
-                                    <Button variant="outline" onClick={() => setCancelId(null)}>Close</Button>
-                                    <Button variant="destructive" onClick={onConfirmCancel} disabled={!cancelId}>Confirm Cancel</Button>
+                                  <DialogFooter className="flex flex-col gap-3 sm:flex-row sm:justify-end">
+                                    <Button variant="outline" onClick={() => setCancelId(null)} className="w-full sm:w-auto">Close</Button>
+                                    <Button variant="destructive" onClick={onConfirmCancel} disabled={!cancelId} className="w-full sm:w-auto">Confirm Cancel</Button>
                                   </DialogFooter>
                                 </DialogContent>
                               </Dialog>
