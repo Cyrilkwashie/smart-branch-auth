@@ -125,13 +125,25 @@ const menuItems = [
       {
         title: "Cheques",
         subItems: [
-          { title: "Counter Cheques", url: "/cheques/counter" },
+          { 
+            title: "Counter Cheques",
+            subItems: [
+              { title: "Counter Cheque Enquiry", url: "/cheques/counter-enquiry" },
+              { title: "Counter Cheque Approval", url: "/cheques/counter-approval" },
+            ]
+          },
           { title: "Chequebook Request", url: "/cheques/request" },
           { title: "Chequebook Maintenance", url: "/cheques/maintenance" },
           { title: "Chequebook Maintenance Approval", url: "/cheques/maintenance-approval" },
           { title: "Chequebook Issuance", url: "/cheques/issuance" },
-          { title: "Stopped Cheques", url: "/cheques/stopped" },
-          { title: "Untagged Stopped Cheques", url: "/cheques/untagged" },
+          { 
+            title: "Stopped Cheques",
+            subItems: [
+              { title: "Stopped Cheque Creation", url: "/cheques/stopped-creation" },
+              { title: "Stopped Cheque Approval", url: "/cheques/stopped-approval" },
+              { title: "Untagged Stopped Cheques", url: "/cheques/untagged-stopped" },
+            ]
+          },
           { title: "Cheque Deposit", url: "/cheques/deposit" },
         ]
       },
@@ -235,7 +247,7 @@ export function AppSidebar() {
               {menuItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   {item.subItems ? (
-                    <Collapsible defaultOpen={item.title === "Account Management"} className="group/collapsible">
+                    <Collapsible defaultOpen={item.title === "Account Management" || item.title === "Requests"} className="group/collapsible">
                       <CollapsibleTrigger asChild>
                         <SidebarMenuButton tooltip={item.title}>
                           <item.icon className="h-4 w-4 text-sidebar-foreground" />
@@ -250,7 +262,7 @@ export function AppSidebar() {
                           {item.subItems.map((subItem) => (
                             <SidebarMenuSubItem key={subItem.title}>
                               {subItem.subItems ? (
-                                <Collapsible defaultOpen={subItem.title === "Static Amendment"} className="group/sub-collapsible">
+                                <Collapsible defaultOpen={subItem.title === "Static Amendment" || subItem.title === "Cheques"} className="group/sub-collapsible">
                                   <CollapsibleTrigger asChild>
                                     <SidebarMenuSubButton tooltip={subItem.title}>
                                       <span className="text-sidebar-foreground">{subItem.title}</span>
@@ -260,19 +272,50 @@ export function AppSidebar() {
                                   <CollapsibleContent>
                                     <SidebarMenuSub>
                                       {subItem.subItems.map((nestedItem) => (
-                                        <SidebarMenuSubItem key={nestedItem.title}>
-                                          <SidebarMenuSubButton asChild tooltip={nestedItem.title}>
-                                            <NavLink
-                                              to={nestedItem.url}
-                                              className={({ isActive }) =>
-                                                isActive
-                                                  ? "bg-sidebar-accent text-sidebar-accent-foreground"
-                                                  : "text-sidebar-foreground hover:text-sidebar-accent-foreground"
-                                              }
-                                            >
-                                              <span className="text-sidebar-foreground">{nestedItem.title}</span>
-                                            </NavLink>
-                                          </SidebarMenuSubButton>
+                                        <SidebarMenuSubItem key={nestedItem.title} className="mb-1">
+                                          {nestedItem.subItems ? (
+                                            <Collapsible className="group/nested-collapsible">
+                                              <CollapsibleTrigger asChild>
+                                                <SidebarMenuSubButton tooltip={nestedItem.title} className="h-9">
+                                                  <span className="text-sidebar-foreground">{nestedItem.title}</span>
+                                                  <ChevronDown className="ml-auto h-3 w-3 transition-transform duration-200 group-data-[state=open]/nested-collapsible:rotate-180" />
+                                                </SidebarMenuSubButton>
+                                              </CollapsibleTrigger>
+                                              <CollapsibleContent className="mt-1">
+                                                <SidebarMenuSub>
+                                                  {nestedItem.subItems.map((deepItem) => (
+                                                    <SidebarMenuSubItem key={deepItem.title} className="mb-1">
+                                                      <SidebarMenuSubButton asChild tooltip={deepItem.title} className="h-9 pl-6">
+                                                        <NavLink
+                                                          to={deepItem.url}
+                                                          className={({ isActive }) =>
+                                                            isActive
+                                                              ? "bg-sidebar-accent text-sidebar-accent-foreground"
+                                                              : "text-sidebar-foreground hover:text-sidebar-accent-foreground"
+                                                          }
+                                                        >
+                                                          <span className="text-sidebar-foreground">{deepItem.title}</span>
+                                                        </NavLink>
+                                                      </SidebarMenuSubButton>
+                                                    </SidebarMenuSubItem>
+                                                  ))}
+                                                </SidebarMenuSub>
+                                              </CollapsibleContent>
+                                            </Collapsible>
+                                          ) : (
+                                            <SidebarMenuSubButton asChild tooltip={nestedItem.title} className="h-9">
+                                              <NavLink
+                                                to={nestedItem.url}
+                                                className={({ isActive }) =>
+                                                  isActive
+                                                    ? "bg-sidebar-accent text-sidebar-accent-foreground"
+                                                    : "text-sidebar-foreground hover:text-sidebar-accent-foreground"
+                                                }
+                                              >
+                                                <span className="text-sidebar-foreground">{nestedItem.title}</span>
+                                              </NavLink>
+                                            </SidebarMenuSubButton>
+                                          )}
                                         </SidebarMenuSubItem>
                                       ))}
                                     </SidebarMenuSub>

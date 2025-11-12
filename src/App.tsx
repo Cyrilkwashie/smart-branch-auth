@@ -36,6 +36,9 @@ import RiskReviewComplianceApp from "./pages/static-amendment/RiskReviewComplian
 import ChequebookIssuance from "./pages/cheques/ChequebookIssuance";
 import ChequeMaintenance from "./pages/cheques/ChequeMaintenance";
 import ChequebookMaintenanceApproval from "./pages/cheques/ChequebookMaintenanceApproval";
+import CounterCheques from "./pages/cheques/CounterCheques";
+import ChequebookRequest from "./pages/cheques/ChequebookRequest";
+import UntaggedStoppedCheques from "./pages/cheques/UntaggedStoppedCheques";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -118,9 +121,13 @@ const App = () => (
             <Route path="/static-amendment/risk-review" element={<RiskReview />} />
             <Route path="/static-amendment/risk-review-approval" element={<RiskReviewApproval />} />
             <Route path="/static-amendment/risk-review-compliance-app" element={<RiskReviewComplianceApp />} />
+            <Route path="/cheques/counter-enquiry" element={<CounterCheques />} />
+            <Route path="/cheques/counter-approval" element={<CounterCheques />} />
+            <Route path="/cheques/request" element={<ChequebookRequest />} />
             <Route path="/cheques/issuance" element={<ChequebookIssuance />} />
             <Route path="/cheques/maintenance" element={<ChequeMaintenance />} />
             <Route path="/cheques/maintenance-approval" element={<ChequebookMaintenanceApproval />} />
+            <Route path="/cheques/untagged-stopped" element={<UntaggedStoppedCheques />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
           </Routes>
