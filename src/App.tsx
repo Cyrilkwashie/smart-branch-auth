@@ -60,6 +60,7 @@ import IndividualJointAccountCreation from "./pages/IndividualJointAccountCreati
 import CorporateAccountCreation from "./pages/CorporateAccountCreation";
 import LienCreation from "./pages/account-mgmt/LienCreation";
 import LienCancellation from "./pages/account-mgmt/LienCancellation";
+import AccountStatementDeactivation from "./pages/statement/AccountStatementDeactivation.jsx";
 import AccountBlockage from "@/pages/account-mgmt/AccountBlockage";
 import DormantAccountReactivation from "@/pages/account-mgmt/DormantAccountReactivation";
 import CreateAdditionalCMAccount from "@/pages/additional-account/CreateAdditionalCMAccount";
@@ -133,6 +134,7 @@ const App = () => (
             <Route path="/cheques/request" element={<ChequebookRequest />} />
             <Route path="/cheques/issuance" element={<ChequebookIssuance />} />
             <Route path="/cheques/maintenance" element={<ChequeMaintenance />} />
+            <Route path="/account-mgmt/statement-deactivation" element={<AccountStatementDeactivation />} />
             <Route path="/cheques/maintenance-approval" element={<ChequebookMaintenanceApproval />} />
             <Route path="/cheques/stopped-creation" element={<StoppedChequeCreation />} />
             <Route path="/cheques/untagged-stopped" element={<UntaggedStoppedCheques />} />

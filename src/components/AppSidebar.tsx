@@ -150,6 +150,7 @@ const menuItems = [
         title: "Statement",
         subItems: [
           { title: "Account Statement Request", url: "/account-mgmt/statement" },
+          { title: "Statement Deactivation", url: "/account-mgmt/statement-deactivation" },
         ]
       },
       {

@@ -4,6 +4,7 @@ import { AppSidebar } from "@/components/AppSidebar";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
+import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import {
   Select,
@@ -199,7 +200,12 @@ export default function ATMRequest() {
               </div>
             </CardContent>
           </Card>
+
         </div>
+                    <div className="flex justify-end gap-4">
+                <Button variant="outline">Cancel</Button>
+                <Button>Request Card</Button>
+          </div>
       </main>
     </SidebarProvider>
   );
