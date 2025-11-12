@@ -39,6 +39,7 @@ import ChequebookMaintenanceApproval from "./pages/cheques/ChequebookMaintenance
 import CounterCheques from "./pages/cheques/CounterCheques";
 import ChequebookRequest from "./pages/cheques/ChequebookRequest";
 import UntaggedStoppedCheques from "./pages/cheques/UntaggedStoppedCheques";
+import StoppedChequeCreation from "./pages/cheques/StoppedChequeCreation";
 import { Toaster } from "@/components/ui/toaster";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -127,6 +128,7 @@ const App = () => (
             <Route path="/cheques/issuance" element={<ChequebookIssuance />} />
             <Route path="/cheques/maintenance" element={<ChequeMaintenance />} />
             <Route path="/cheques/maintenance-approval" element={<ChequebookMaintenanceApproval />} />
+            <Route path="/cheques/stopped-creation" element={<StoppedChequeCreation />} />
             <Route path="/cheques/untagged-stopped" element={<UntaggedStoppedCheques />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />
