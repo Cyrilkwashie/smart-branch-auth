@@ -117,7 +117,7 @@ const CloseAccountByDraft: React.FC = () => {
             </div>
           </AppHeader>
           {/* Important Notice Heading */}
-          <div className="w-full bg-yellow-100 border-l-4 border-yellow-500 text-yellow-700 p-4 text-center font-semibold text-base md:text-lg">
+          <div className="w-full bg-blue-100 border-l-4 border-blue-500 text-blue-700 p-4 text-center font-semibold text-base md:text-lg">
             Do not add commission to draft amount
           </div>
           <main className="p-6">

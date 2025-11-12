@@ -102,7 +102,7 @@ const AddCustomerRelationship: React.FC = () => {
                         id="customerName"
                         value={customerName}
                         readOnly
-                        placeholder="Customer name will auto-populate"
+                        placeholder=""
                         className="bg-muted"
                       />
                     </div>

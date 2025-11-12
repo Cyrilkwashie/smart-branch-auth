@@ -80,7 +80,6 @@ const DormantAccountReactivation = () => {
             <SidebarTrigger />
             <div>
               <h1 className="text-xl font-semibold">Dormant Account Reactivation</h1>
-              <p className="text-sm text-muted-foreground">Search and reactivate dormant accounts</p>
             </div>
           </AppHeader>
 

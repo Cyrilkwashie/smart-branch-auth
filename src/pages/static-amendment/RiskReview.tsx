@@ -392,43 +392,6 @@ const RiskReview: React.FC = () => {
                 </CardContent>
               </Card>
 
-              {/* Scoreboard Section */}
-              <Card className="border shadow-sm">
-                <CardHeader className="bg-muted/30">
-                  <CardTitle className="text-base">Scoreboard</CardTitle>
-                </CardHeader>
-                <CardContent className="p-6">
-                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-                    <div className="p-4 border rounded-lg bg-green-50 border-green-200">
-                      <div className="text-sm font-medium text-gray-600 mb-1">Low</div>
-                      <div className="text-2xl font-bold text-green-700">1</div>
-                    </div>
-                    <div className="p-4 border rounded-lg bg-yellow-50 border-yellow-200">
-                      <div className="text-sm font-medium text-gray-600 mb-1">Medium</div>
-                      <div className="text-2xl font-bold text-yellow-700">2</div>
-                    </div>
-                    <div className="p-4 border rounded-lg bg-orange-50 border-orange-200">
-                      <div className="text-sm font-medium text-gray-600 mb-1">High</div>
-                      <div className="text-2xl font-bold text-orange-700">3</div>
-                    </div>
-                    <div className="p-4 border rounded-lg bg-red-50 border-red-200">
-                      <div className="text-sm font-medium text-gray-600 mb-1">Refer to Compliance</div>
-                      <div className="text-2xl font-bold text-red-700">4</div>
-                    </div>
-                  </div>
-                  
-                  <div className="flex justify-center">
-                    <Button 
-                      onClick={handleGenerateResults}
-                      className="flex items-center gap-2"
-                      size="lg"
-                    >
-                      <Calculator className="h-5 w-5" />
-                      Generate Results
-                    </Button>
-                  </div>
-                </CardContent>
-              </Card>
             </div>
           </main>
         </div>

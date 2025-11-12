@@ -64,6 +64,7 @@ const menuItems = [
         title: "Account Closure",
         icon: LogOut,
         subItems: [
+          { title: "Close Account", url: "/close-account/close" },
           { title: "Close Account by Draft", url: "/close-account/by-draft" },
         ],
       },

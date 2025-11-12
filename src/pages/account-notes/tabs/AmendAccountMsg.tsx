@@ -165,7 +165,7 @@ const AmendAccountMsg: React.FC = () => {
                 </CardHeader>
                 <CardContent className="p-6">
                   <div className="space-y-4">
-                    <div className="flex gap-4 items-end">
+                    <div className="flex flex-col gap-3 sm:flex-row sm:gap-4 sm:items-end">
                       <div className="flex-1 max-w-md">
                         <Label htmlFor="searchAccountNumber">Account Number *</Label>
                         <Input
@@ -176,12 +176,14 @@ const AmendAccountMsg: React.FC = () => {
                           required
                         />
                       </div>
-                      <Button onClick={handleSearch} className="px-8">
-                        Search
-                      </Button>
-                      <Button type="button" variant="outline" onClick={handleClear}>
-                        Clear
-                      </Button>
+                      <div className="flex gap-2 w-full sm:w-auto">
+                        <Button onClick={handleSearch} className="w-full sm:w-auto">
+                          Search
+                        </Button>
+                        <Button type="button" variant="outline" onClick={handleClear} className="w-full sm:w-auto">
+                          Clear
+                        </Button>
+                      </div>
                     </div>
                   </div>
                 </CardContent>

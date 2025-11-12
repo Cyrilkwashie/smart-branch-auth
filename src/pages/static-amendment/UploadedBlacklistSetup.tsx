@@ -214,10 +214,10 @@ const UploadedBlacklistSetup: React.FC = () => {
                       />
                     </div>
 
-                    <div className="flex gap-3">
+                    <div className="flex flex-col gap-2 sm:flex-row sm:gap-3 w-full sm:w-auto">
                       <Button
                         onClick={handleAddToBlacklist}
-                        className="flex items-center gap-2"
+                        className="flex items-center gap-2 w-full sm:w-auto"
                         variant="default"
                       >
                         <UserPlus className="h-4 w-4" />
@@ -225,7 +225,7 @@ const UploadedBlacklistSetup: React.FC = () => {
                       </Button>
                       <Button
                         onClick={handleRemoveFromBlacklist}
-                        className="flex items-center gap-2"
+                        className="flex items-center gap-2 w-full sm:w-auto"
                         variant="outline"
                       >
                         <UserMinus className="h-4 w-4" />

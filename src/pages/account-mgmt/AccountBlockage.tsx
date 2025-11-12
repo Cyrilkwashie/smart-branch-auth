@@ -36,24 +36,26 @@ const AccountBlockage = () => {
   // Simulated account search
   const handleSearch = () => {
     setIsSearching(true);
-    // Simulate API call
-    setTimeout(() => {
-      if (accountNumber) {
-        setAccountData({
-          accountNumber: accountNumber,
-          accountName: "John Doe",
-          accountType: "Savings Account",
-          currency: "GHS",
-          availableBalance: "25,430.50",
-          status: "Normal",  // or whatever status you want
-          productGroup: "Retail Banking",
-          productSubGroup: "Personal Savings",
-          branch: "Downtown Branch",
-          customerID: "CUST-2024-001",
-        });
-      }
-      setIsSearching(false);
-    }, 1000);
+      // Simulate API call
+      setTimeout(() => {
+        if (accountNumber) {
+          // Demo: Blocked if account number ends with 1, else Unblocked
+          const isBlocked = accountNumber.trim().endsWith('1');
+          setAccountData({
+            accountNumber: accountNumber,
+            accountName: "John Doe",
+            accountType: "Savings Account",
+            currency: "GHS",
+            availableBalance: "25,430.50",
+            status: isBlocked ? "Blocked" : "Unblocked",
+            productGroup: "Retail Banking",
+            productSubGroup: "Personal Savings",
+            branch: "Downtown Branch",
+            customerID: "CUST-2024-001",
+          });
+        }
+        setIsSearching(false);
+      }, 1000);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
@@ -67,13 +69,11 @@ const AccountBlockage = () => {
       <div className="flex min-h-screen w-full bg-gradient-to-br from-background via-muted/20 to-background">
         <AppSidebar />
         <div className="flex-1 flex flex-col">
+
           <AppHeader>
             <SidebarTrigger />
             <div>
               <h1 className="text-xl font-semibold">Account Blockage/Unblockage</h1>
-              <p className="text-sm text-muted-foreground">
-                Block or unblock customer accounts
-              </p>
             </div>
           </AppHeader>
 
@@ -122,7 +122,7 @@ const AccountBlockage = () => {
                         Account Information
                       </span>
                       <Badge className={cn(
-                        accountData.status === "N"
+                        accountData.status === "Unblocked"
                           ? "bg-green-500 hover:bg-green-600"
                           : "bg-red-500 hover:bg-red-600"
                       )}>
