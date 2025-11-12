@@ -64,7 +64,6 @@ const menuItems = [
         title: "Account Closure",
         icon: LogOut,
         subItems: [
-          { title: "Close Account", url: "/close-account/close" },
           { title: "Close Account by Draft", url: "/close-account/by-draft" },
         ],
       },
@@ -82,7 +81,6 @@ const menuItems = [
         title: "Account Notes",
         subItems: [
           { title: "New Account Msg", url: "/account-notes/new-account-msg" },
-          { title: "Amend Account Msg", url: "/account-notes/amend-account-msg" },
           { title: "Enquiry Account Msg", url: "/account-notes/enquiry-account-msg" },
           { title: "Cancel Account Msg", url: "/account-notes/cancel-account-msg" },
           { title: "Account Mandate Amendment", url: "/account-notes/mandate-amendment" },
@@ -101,7 +99,6 @@ const menuItems = [
           { title: "Deceased Customer", url: "/static-amendment/deceased-customer" },
           { title: "Customer Mapping Enquiry", url: "/static-amendment/customer-mapping-enquiry" },
           { title: "Deceased Customer Enquiry", url: "/static-amendment/deceased-customer-enquiry" },
-          { title: "Deceased Customer Approval", url: "/static-amendment/deceased-customer-approval" },
           { title: "Amend Customer Sector Segment", url: "/static-amendment/amend-customer-sector-segment" },
           { title: "Uploaded Blacklist/Setup", url: "/static-amendment/uploaded-blacklist-setup" },
           { title: "Customer Type Retagging", url: "/static-amendment/customer-type-retagging" },
@@ -113,8 +110,8 @@ const menuItems = [
           { title: "Amend Customer Relationship", url: "/static-amendment/amend-customer-relationship" },
           { title: "Risk Review", url: "/static-amendment/risk-review" },
           { title: "Risk Review Approval", url: "/static-amendment/risk-review-approval" },
-          { title: "Risk Review Compliance App", url: "/static-amendment/risk-review-compliance-app" },
-        ],
+          { title: "Risk Review Compliance App", url: "/static-amendment/risk-review-compliance-app" }
+        ]
       },
     ],
   },
@@ -250,7 +247,7 @@ export function AppSidebar() {
               {menuItems.map((item) => (
                 <SidebarMenuItem key={item.title}>
                   {item.subItems ? (
-                    <Collapsible defaultOpen={item.title === "Account Management" || item.title === "Requests"} className="group/collapsible">
+                    <Collapsible className="group/collapsible">
                       <CollapsibleTrigger asChild>
                         <SidebarMenuButton tooltip={item.title}>
                           <item.icon className="h-4 w-4 text-sidebar-foreground" />
@@ -265,7 +262,7 @@ export function AppSidebar() {
                           {item.subItems.map((subItem) => (
                             <SidebarMenuSubItem key={subItem.title}>
                               {subItem.subItems ? (
-                                <Collapsible defaultOpen={subItem.title === "Static Amendment" || subItem.title === "Cheques"} className="group/sub-collapsible">
+                                <Collapsible defaultOpen={subItem.title === "Cheques"} className="group/sub-collapsible">
                                   <CollapsibleTrigger asChild>
                                     <SidebarMenuSubButton tooltip={subItem.title}>
                                       <span className="text-sidebar-foreground">{subItem.title}</span>
@@ -293,7 +290,7 @@ export function AppSidebar() {
                                                           to={deepItem.url}
                                                           className={({ isActive }) =>
                                                             isActive
-                                                              ? "bg-sidebar-accent text-sidebar-accent-foreground"
+                                                              ? "bg-blue-100 font-semibold text-sidebar-accent-foreground"
                                                               : "text-sidebar-foreground hover:text-sidebar-accent-foreground"
                                                           }
                                                         >
@@ -311,7 +308,7 @@ export function AppSidebar() {
                                                 to={nestedItem.url}
                                                 className={({ isActive }) =>
                                                   isActive
-                                                    ? "bg-sidebar-accent text-sidebar-accent-foreground"
+                                                    ? "bg-blue-100 font-semibold text-sidebar-accent-foreground"
                                                     : "text-sidebar-foreground hover:text-sidebar-accent-foreground"
                                                 }
                                               >
@@ -330,7 +327,7 @@ export function AppSidebar() {
                                     to={subItem.url}
                                     className={({ isActive }) =>
                                       isActive
-                                        ? "bg-sidebar-accent text-sidebar-accent-foreground"
+                                        ? "bg-blue-100 font-semibold text-sidebar-accent-foreground"
                                         : "text-sidebar-foreground hover:text-sidebar-accent-foreground"
                                     }
                                   >
@@ -349,7 +346,7 @@ export function AppSidebar() {
                         to={item.url}
                         className={({ isActive }) =>
                           isActive
-                            ? "bg-primary text-primary-foreground hover:bg-primary hover:text-primary-foreground"
+                            ? "bg-blue-100 font-semibold text-sidebar-accent-foreground"
                             : "text-sidebar-foreground hover:text-sidebar-accent-foreground"
                         }
                       >
