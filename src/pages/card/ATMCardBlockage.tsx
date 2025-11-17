@@ -41,9 +41,9 @@ export default function ATMCardBlockage() {
       <div className="flex min-h-screen w-full bg-gradient-to-br from-background via-muted/20 to-background">
         <AppSidebar />
         <div className="flex-1 flex flex-col">
-          <AppHeader>
+          {/* <AppHeader>
             <SidebarTrigger />
-          </AppHeader>
+          </AppHeader> */}
           <main className="flex-1 p-6 overflow-auto">
             <div className="max-w-5xl mx-auto space-y-6 animate-fade-in">
               <Card className="border-0 shadow-lg">
