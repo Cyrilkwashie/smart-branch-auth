@@ -201,12 +201,12 @@ export default function ATMRequest() {
             </CardContent>
           </Card>
 
+        <div className="flex flex-col sm:flex-row sm:justify-end gap-4 w-full mt-8">
+          <Button variant="outline" className="w-full sm:w-auto">Cancel</Button>
+          <Button className="w-full sm:w-auto">Request Card</Button>
         </div>
-                    <div className="flex justify-end gap-4">
-                <Button variant="outline">Cancel</Button>
-                <Button>Request Card</Button>
-          </div>
-      </main>
-    </SidebarProvider>
+      </div>
+    </main>
+  </SidebarProvider>
   );
 }

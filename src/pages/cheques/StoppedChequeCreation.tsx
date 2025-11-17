@@ -294,10 +294,10 @@ export default function StoppedChequeCreation() {
           </Card>
         {/* Bottom Action Button */}
         </div> {/* Close container div */}
-        <div className="w-full mt-8">
+        <div className="flex flex-col sm:flex-row sm:justify-end gap-4 w-full mt-8">
           <Button
             type="button"
-            className="w-full bg-primary text-primary-foreground hover:bg-primary/90 h-11 px-8 text-base font-semibold rounded-md shadow-md transition-all"
+            className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 h-11 px-8 text-base font-semibold rounded-md shadow-md transition-all"
             onClick={() => {/* TODO: Add submit or next action here */}}
           >
             Submit Stop Cheque Request

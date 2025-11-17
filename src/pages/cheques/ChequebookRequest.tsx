@@ -268,7 +268,7 @@ export default function ChequebookRequest() {
           </Card>
 
           {/* Bottom Action Button */}
-          <div className="flex flex-col sm:flex-row gap-4 mt-8">
+          <div className="flex flex-col sm:flex-row sm:justify-end gap-4 mt-8">
             <Button
               type="button"
               className="w-full sm:w-auto bg-primary text-primary-foreground hover:bg-primary/90 h-11 px-8 text-base font-semibold rounded-md shadow-md transition-all"

@@ -110,10 +110,12 @@ const AppHeader = ({ children }: AppHeaderProps) => {
   };
 
   return (
-    <header className="sticky top-0 z-10 flex h-16 items-center gap-4 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-6">
-      {children}
-      <div className="flex-1" />
-      <div className="flex items-center gap-2">
+    <header className="sticky top-0 z-10 flex h-20 items-center justify-between gap-4 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-6">
+      <div className="flex items-center gap-3">
+        {/* Sidebar expand button */}
+        {children}
+      </div>
+      <div className="flex items-center gap-4">
         <ThemeToggle />
         <Popover>
           <PopoverTrigger asChild>
@@ -128,7 +130,7 @@ const AppHeader = ({ children }: AppHeaderProps) => {
           </PopoverTrigger>
           <PopoverContent
             className="w-96 max-w-[calc(100vw-2rem)] max-h-[70vh] p-0 shadow-xl border-2 sm:w-96"
-            align="start"
+            align="end"
             side="bottom"
             sideOffset={8}
           >

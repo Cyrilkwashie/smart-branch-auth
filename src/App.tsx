@@ -42,7 +42,7 @@ import UntaggedStoppedCheques from "./pages/cheques/UntaggedStoppedCheques";
 import StoppedChequeCreation from "./pages/cheques/StoppedChequeCreation";
 import ChequeDeposit from "./pages/cheques/ChequeDeposit";
 import ATMRequest from "./pages/card/ATMRequest";
-import ATMCardIssuance from "./pages/card/ATMCardIssuance";
+import CardBlockage from "./pages/card/CardBlockage";
 import ATMCardBlockage from "./pages/card/ATMCardBlockage";
 import ATMPinRegenerating from "./pages/card/ATMPinRegenerating";
 import AccountStatementRequest from "./pages/statement/AccountStatementRequest";
@@ -82,6 +82,7 @@ const App = () => (
         <Sonner />
         <BrowserRouter>
           <Routes>
+                        <Route path="/card/blockage" element={<CardBlockage />} />
             <Route path="/" element={<Login />} />
             <Route path="/dashboard" element={<Dashboard />} />
             <Route path="/customers" element={<CustomerManagement />} />
@@ -140,9 +141,6 @@ const App = () => (
             <Route path="/cheques/untagged-stopped" element={<UntaggedStoppedCheques />} />
             <Route path="/cheques/deposit" element={<ChequeDeposit />} />
             <Route path="/account-mgmt/atm" element={<ATMRequest />} />
-            <Route path="/card/atm-issuance" element={<ATMCardIssuance />} />
-            <Route path="/card/atm-blockage" element={<ATMCardBlockage />} />
-            <Route path="/card/atm-pin-regenerating" element={<ATMPinRegenerating />} />
             <Route path="/account-mgmt/statement" element={<AccountStatementRequest />} />
             {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
             <Route path="*" element={<NotFound />} />

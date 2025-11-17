@@ -14,7 +14,7 @@ import {
   TrendingUp,
   ChevronDown,
 } from "lucide-react";
-import { NavLink, useNavigate } from "react-router-dom";
+import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import {
   Sidebar,
   SidebarContent,
@@ -159,7 +159,7 @@ export function AppSidebar() {
           subItems: [
             { title: "ATM Request", url: "/account-mgmt/atm" },
             { title: "ATM Card Issuance", url: "/card/atm-issuance" },
-            { title: "ATM Card Blockage", url: "/card/atm-blockage" },
+            { title: "ATM Card Blockage", url: "/card/blockage" },
             { title: "ATM PIN Regenerating", url: "/card/atm-pin-regenerating" },
           ]
         }
@@ -227,8 +227,23 @@ export function AppSidebar() {
   ];
 
   const navigate = useNavigate();
+  const location = useLocation();
+  // Find the key for the current route
+  function findKeyByUrl(items, url, parents = []) {
+    for (const item of items) {
+      if (item.url === url) {
+        return [...parents, item.title].join('>');
+      }
+      if (item.subItems) {
+        const found = findKeyByUrl(item.subItems, url, [...parents, item.title]);
+        if (found) return found;
+      }
+    }
+    return null;
+  }
+  const currentKey = findKeyByUrl(menuItems, location.pathname);
   const [selectedKey, setSelectedKey] = useState<string | null>(() => {
-    return sessionStorage.getItem('sidebar-selected-key') || null;
+    return sessionStorage.getItem('sidebar-selected-key') || currentKey || null;
   });
 
   // Helper to generate a unique key for each menu item (by title path)
@@ -240,8 +255,12 @@ export function AppSidebar() {
   function handleMenuClick(url: string, key: string) {
     setSelectedKey(key);
     sessionStorage.setItem('sidebar-selected-key', key);
-    // Use setTimeout to ensure highlight appears before navigation
     setTimeout(() => navigate(url), 0);
+  }
+
+  // Helper to check if a menu/submenu should be expanded
+  function isExpanded(keyPrefix: string) {
+    return selectedKey && selectedKey.startsWith(keyPrefix);
   }
 
   return (
@@ -263,126 +282,135 @@ export function AppSidebar() {
             <SidebarGroup>
               <SidebarGroupContent>
                 <SidebarMenu className="space-y-7">
-                  {menuItems.map((item) => (
-                    <SidebarMenuItem key={item.title}>
-                      {item.subItems ? (
-                        <Collapsible className="group/collapsible">
-                          <CollapsibleTrigger asChild>
-                            <SidebarMenuButton tooltip={item.title}>
-                              <item.icon className="h-4 w-4 text-sidebar-foreground" />
-                              <span className="group-data-[collapsible=icon]:hidden text-sidebar-foreground">
-                                {item.title}
-                              </span>
-                              <ChevronDown className="ml-auto h-4 w-4 transition-transform duration-200 group-data-[collapsible=icon]:hidden group-data-[state=open]/collapsible:rotate-180" />
-                            </SidebarMenuButton>
-                          </CollapsibleTrigger>
-                          <CollapsibleContent>
-                            <SidebarMenuSub>
-                              {item.subItems.map((subItem) => (
-                                <SidebarMenuSubItem key={subItem.title}>
-                                  {subItem.subItems ? (
-                                    <Collapsible defaultOpen={subItem.title === "Cheques"} className="group/sub-collapsible">
-                                      <CollapsibleTrigger asChild>
-                                        <SidebarMenuSubButton tooltip={subItem.title}>
-                                          <span className="text-sidebar-foreground">{subItem.title}</span>
-                                          <ChevronDown className="ml-auto h-3 w-3 transition-transform duration-200 group-data-[state=open]/sub-collapsible:rotate-180" />
+                  {menuItems.map((item) => {
+                    const itemKey = getKey(item.title);
+                    return (
+                      <SidebarMenuItem key={item.title}>
+                        {item.subItems ? (
+                          <Collapsible className="group/collapsible" defaultOpen={isExpanded(itemKey)}>
+                            <CollapsibleTrigger asChild>
+                              <SidebarMenuButton tooltip={item.title}>
+                                <item.icon className="h-4 w-4 text-sidebar-foreground" />
+                                <span className="group-data-[collapsible=icon]:hidden text-sidebar-foreground">
+                                  {item.title}
+                                </span>
+                                <ChevronDown className="ml-auto h-4 w-4 transition-transform duration-200 group-data-[collapsible=icon]:hidden group-data-[state=open]/collapsible:rotate-180" />
+                              </SidebarMenuButton>
+                            </CollapsibleTrigger>
+                            <CollapsibleContent>
+                              <SidebarMenuSub>
+                                {item.subItems.map((subItem) => {
+                                  const subKey = getKey(item.title, subItem.title);
+                                  return (
+                                    <SidebarMenuSubItem key={subItem.title}>
+                                      {subItem.subItems ? (
+                                        <Collapsible className="group/sub-collapsible" defaultOpen={isExpanded(subKey)}>
+                                          <CollapsibleTrigger asChild>
+                                            <SidebarMenuSubButton tooltip={subItem.title}>
+                                              <span className="text-sidebar-foreground">{subItem.title}</span>
+                                              <ChevronDown className="ml-auto h-3 w-3 transition-transform duration-200 group-data-[state=open]/sub-collapsible:rotate-180" />
+                                            </SidebarMenuSubButton>
+                                          </CollapsibleTrigger>
+                                          <CollapsibleContent>
+                                            <SidebarMenuSub>
+                                              {subItem.subItems.map((nestedItem) => {
+                                                const nestedKey = getKey(item.title, subItem.title, nestedItem.title);
+                                                return (
+                                                  <SidebarMenuSubItem key={nestedItem.title} className="mb-1">
+                                                    {nestedItem.subItems ? (
+                                                      <Collapsible className="group/nested-collapsible" defaultOpen={isExpanded(nestedKey)}>
+                                                        <CollapsibleTrigger asChild>
+                                                          <SidebarMenuSubButton tooltip={nestedItem.title} className="h-9">
+                                                            <span className="text-sidebar-foreground">{nestedItem.title}</span>
+                                                            <ChevronDown className="ml-auto h-3 w-3 transition-transform duration-200 group-data-[state=open]/nested-collapsible:rotate-180" />
+                                                          </SidebarMenuSubButton>
+                                                        </CollapsibleTrigger>
+                                                        <CollapsibleContent className="mt-1">
+                                                          <SidebarMenuSub>
+                                                            {nestedItem.subItems.map((deepItem) => {
+                                                              const deepKey = getKey(item.title, subItem.title, nestedItem.title, deepItem.title);
+                                                              return (
+                                                                <SidebarMenuSubItem key={deepItem.title} className="mb-1">
+                                                                  <SidebarMenuSubButton asChild tooltip={deepItem.title} className="h-9 pl-6">
+                                                                    <button
+                                                                      type="button"
+                                                                      onClick={() => handleMenuClick(deepItem.url, deepKey)}
+                                                                      className={
+                                                                        selectedKey === deepKey
+                                                                          ? "font-semibold text-blue-600 border-l-4 border-blue-600 bg-blue-50 w-full text-left"
+                                                                          : "text-sidebar-foreground hover:text-blue-600 w-full text-left"
+                                                                      }
+                                                                    >
+                                                                      <span>{deepItem.title}</span>
+                                                                    </button>
+                                                                  </SidebarMenuSubButton>
+                                                                </SidebarMenuSubItem>
+                                                              );
+                                                            })}
+                                                          </SidebarMenuSub>
+                                                        </CollapsibleContent>
+                                                      </Collapsible>
+                                                    ) : (
+                                                      <SidebarMenuSubButton asChild tooltip={nestedItem.title} className="h-9">
+                                                        <button
+                                                          type="button"
+                                                          onClick={() => handleMenuClick(nestedItem.url, nestedKey)}
+                                                          className={
+                                                            selectedKey === nestedKey
+                                                              ? "font-semibold text-blue-600 border-l-4 border-blue-600 bg-blue-50 w-full text-left"
+                                                              : "text-sidebar-foreground hover:text-blue-600 w-full text-left"
+                                                          }
+                                                        >
+                                                          <span>{nestedItem.title}</span>
+                                                        </button>
+                                                      </SidebarMenuSubButton>
+                                                    )}
+                                                  </SidebarMenuSubItem>
+                                                );
+                                              })}
+                                            </SidebarMenuSub>
+                                          </CollapsibleContent>
+                                        </Collapsible>
+                                      ) : (
+                                        <SidebarMenuSubButton asChild tooltip={subItem.title}>
+                                          <button
+                                            type="button"
+                                            onClick={() => handleMenuClick(subItem.url, subKey)}
+                                            className={
+                                              selectedKey === subKey
+                                                ? "font-semibold text-blue-600 border-l-4 border-blue-600 bg-blue-50 w-full text-left"
+                                                : "text-sidebar-foreground hover:text-blue-600 w-full text-left"
+                                            }
+                                          >
+                                            <span>{subItem.title}</span>
+                                          </button>
                                         </SidebarMenuSubButton>
-                                      </CollapsibleTrigger>
-                                      <CollapsibleContent>
-                                        <SidebarMenuSub>
-                                          {subItem.subItems.map((nestedItem) => (
-                                            <SidebarMenuSubItem key={nestedItem.title} className="mb-1">
-                                              {nestedItem.subItems ? (
-                                                <Collapsible className="group/nested-collapsible">
-                                                  <CollapsibleTrigger asChild>
-                                                    <SidebarMenuSubButton tooltip={nestedItem.title} className="h-9">
-                                                      <span className="text-sidebar-foreground">{nestedItem.title}</span>
-                                                      <ChevronDown className="ml-auto h-3 w-3 transition-transform duration-200 group-data-[state=open]/nested-collapsible:rotate-180" />
-                                                    </SidebarMenuSubButton>
-                                                  </CollapsibleTrigger>
-                                                  <CollapsibleContent className="mt-1">
-                                                    <SidebarMenuSub>
-                                                      {nestedItem.subItems.map((deepItem) => {
-                                                        const deepKey = getKey(item.title, subItem.title, nestedItem.title, deepItem.title);
-                                                        return (
-                                                          <SidebarMenuSubItem key={deepItem.title} className="mb-1">
-                                                            <SidebarMenuSubButton asChild tooltip={deepItem.title} className="h-9 pl-6">
-                                                              <button
-                                                                type="button"
-                                                                onClick={() => handleMenuClick(deepItem.url, deepKey)}
-                                                                className={
-                                                                  selectedKey === deepKey
-                                                                    ? "font-semibold text-blue-600 border-l-4 border-blue-600 bg-blue-50 w-full text-left"
-                                                                    : "text-sidebar-foreground hover:text-blue-600 w-full text-left"
-                                                                }
-                                                              >
-                                                                <span>{deepItem.title}</span>
-                                                              </button>
-                                                            </SidebarMenuSubButton>
-                                                          </SidebarMenuSubItem>
-                                                        );
-                                                      })}
-                                                    </SidebarMenuSub>
-                                                  </CollapsibleContent>
-                                                </Collapsible>
-                                              ) : (
-                                                <SidebarMenuSubButton asChild tooltip={nestedItem.title} className="h-9">
-                                                  <button
-                                                    type="button"
-                                                    onClick={() => handleMenuClick(nestedItem.url, getKey(item.title, subItem.title, nestedItem.title))}
-                                                    className={
-                                                      selectedKey === getKey(item.title, subItem.title, nestedItem.title)
-                                                        ? "font-semibold text-blue-600 border-l-4 border-blue-600 bg-blue-50 w-full text-left"
-                                                        : "text-sidebar-foreground hover:text-blue-600 w-full text-left"
-                                                    }
-                                                  >
-                                                    <span>{nestedItem.title}</span>
-                                                  </button>
-                                                </SidebarMenuSubButton>
-                                              )}
-                                            </SidebarMenuSubItem>
-                                          ))}
-                                        </SidebarMenuSub>
-                                      </CollapsibleContent>
-                                    </Collapsible>
-                                  ) : (
-                                    <SidebarMenuSubButton asChild tooltip={subItem.title}>
-                                      <button
-                                        type="button"
-                                        onClick={() => handleMenuClick(subItem.url, getKey(item.title, subItem.title))}
-                                        className={
-                                          selectedKey === getKey(item.title, subItem.title)
-                                            ? "font-semibold text-blue-600 border-l-4 border-blue-600 bg-blue-50 w-full text-left"
-                                            : "text-sidebar-foreground hover:text-blue-600 w-full text-left"
-                                        }
-                                      >
-                                        <span>{subItem.title}</span>
-                                      </button>
-                                    </SidebarMenuSubButton>
-                                  )}
-                                </SidebarMenuSubItem>
-                              ))}
-                            </SidebarMenuSub>
-                          </CollapsibleContent>
-                        </Collapsible>
-                      ) : (
-                        <SidebarMenuButton asChild tooltip={item.title}>
-                          <button
-                            type="button"
-                            onClick={() => handleMenuClick(item.url, getKey(item.title))}
-                            className={
-                              selectedKey === getKey(item.title)
-                                ? "font-semibold text-blue-600 border-l-4 border-blue-600 bg-blue-50 w-full text-left"
-                                : "text-sidebar-foreground hover:text-blue-600 w-full text-left"
-                            }
-                          >
-                            <item.icon className="h-4 w-4 text-sidebar-foreground" />
-                            <span className="group-data-[collapsible=icon]:hidden">{item.title}</span>
-                          </button>
-                        </SidebarMenuButton>
-                      )}
-                    </SidebarMenuItem>
-                  ))}
+                                      )}
+                                    </SidebarMenuSubItem>
+                                  );
+                                })}
+                              </SidebarMenuSub>
+                            </CollapsibleContent>
+                          </Collapsible>
+                        ) : (
+                          <SidebarMenuButton asChild tooltip={item.title}>
+                            <button
+                              type="button"
+                              onClick={() => handleMenuClick(item.url, itemKey)}
+                              className={
+                                selectedKey === itemKey
+                                  ? "font-semibold text-blue-600 border-l-4 border-blue-600 bg-blue-50 w-full text-left hover:bg-blue-100 hover:text-blue-700"
+                                  : "text-sidebar-foreground hover:text-blue-600 w-full text-left"
+                              }
+                            >
+                              <item.icon className="h-4 w-4 text-sidebar-foreground" />
+                              <span className="group-data-[collapsible=icon]:hidden">{item.title}</span>
+                            </button>
+                          </SidebarMenuButton>
+                        )}
+                      </SidebarMenuItem>
+                    );
+                  })}
                 </SidebarMenu>
               </SidebarGroupContent>
             </SidebarGroup>

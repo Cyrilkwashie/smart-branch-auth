@@ -133,10 +133,10 @@ const Login = () => {
               </div>
 
               {/* Submit Button */}
-              <div className="flex flex-col sm:flex-row gap-3 mt-6">
+              <div className="w-full mt-6">
                 <Button 
                   type="submit" 
-                  className="w-full sm:w-auto h-12 text-base font-semibold button-primary"
+                  className="w-full h-12 text-base font-semibold button-primary"
                   disabled={isAuthenticating}
                 >
                   {isAuthenticating ? "Authenticating..." : "Sign In"}
@@ -157,12 +157,12 @@ const Login = () => {
             </div>
 
             {/* Biometric Authentication Options */}
-            <div className="flex flex-col sm:flex-row gap-3">
+            <div className="w-full flex flex-col gap-3">
               {/* Face ID Button */}
               <Button
                 type="button"
                 variant="outline"
-                className="w-full sm:w-auto h-12 text-base font-medium border-2 hover:border-primary/50 transition-all duration-200"
+                className="w-full h-12 text-base font-medium border-2 hover:border-primary/50 transition-all duration-200"
                 onClick={() => handleBiometricAuth('faceId')}
                 disabled={isAuthenticating}
               >
@@ -174,7 +174,7 @@ const Login = () => {
               <Button
                 type="button"
                 variant="outline"
-                className="w-full sm:w-auto h-12 text-base font-medium border-2 hover:border-primary/50 transition-all duration-200"
+                className="w-full h-12 text-base font-medium border-2 hover:border-primary/50 transition-all duration-200"
                 onClick={() => handleBiometricAuth('fingerprint')}
                 disabled={isAuthenticating}
               >

@@ -84,10 +84,10 @@ export default function UntaggedStoppedCheques() {
       <AppSidebar />
       <main className="flex-1 overflow-y-auto">
         <div className="container mx-auto p-6">
-          <div className="flex items-center gap-4 mb-6">
+          <div className="flex items-center gap-4 mb-6 sticky top-0 z-30 bg-background/90 backdrop-blur shadow-sm">
             <SidebarTrigger />
             <div>
-              <h1 className="text-xl sm:text-3xl font-bold">Untagged Stopped Cheques</h1>
+              <h1 className="text-base sm:text-xl md:text-3xl font-bold">Untagged Stopped Cheques</h1>
             </div>
           </div>
 

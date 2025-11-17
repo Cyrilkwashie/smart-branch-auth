@@ -72,11 +72,13 @@ export default function AccountStatementRequest() {
   return (
     <SidebarProvider>
       <AppSidebar />
-      <main className="w-full p-6">
-        <SidebarTrigger className="mb-4" />
-        <div className="max-w-6xl mx-auto space-y-6">
-          <div>
-            <h1 className="text-xl sm:text-3xl font-bold">Account Statement Request</h1>
+      <main className="flex-1 overflow-y-auto">
+        <div className="container mx-auto p-6">
+          <div className="flex items-center gap-4 mb-6">
+            <SidebarTrigger />
+            <div>
+              <h1 className="text-xl sm:text-2xl md:text-3xl font-bold">Account Statement Request</h1>
+            </div>
           </div>
 
           {/* Account Information */}
@@ -215,7 +217,7 @@ export default function AccountStatementRequest() {
           </Card>
 
           {/* Action Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 w-full mt-8">
+          <div className="flex flex-col sm:flex-row sm:justify-end gap-4 w-full mt-8">
             <Button
               variant="outline"
               className="w-full sm:w-auto"
