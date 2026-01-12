@@ -110,37 +110,37 @@ const AppHeader = ({ children }: AppHeaderProps) => {
   };
 
   return (
-    <header className="sticky top-0 z-10 flex h-20 items-center justify-between gap-4 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-6">
-      <div className="flex items-center gap-3">
+    <header className="sticky top-0 z-10 flex h-16 sm:h-20 items-center justify-between gap-2 sm:gap-4 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-3 sm:px-6">
+      <div className="flex items-center gap-2 sm:gap-3 flex-1 min-w-0">
         {/* Sidebar expand button */}
         {children}
       </div>
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-2 sm:gap-4 flex-shrink-0">
         <ThemeToggle />
         <Popover>
           <PopoverTrigger asChild>
-            <button className="relative p-2 hover:bg-accent rounded-lg transition-colors group">
-              <Bell className="h-5 w-5 group-hover:text-primary transition-colors" />
+            <button className="relative p-1.5 sm:p-2 hover:bg-accent rounded-lg transition-colors group">
+              <Bell className="h-4 w-4 sm:h-5 sm:w-5 group-hover:text-primary transition-colors" />
               {unreadCount > 0 && (
-                <span className="absolute -top-1 -right-1 h-5 w-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center animate-pulse font-medium">
+                <span className="absolute -top-1 -right-1 h-4 w-4 sm:h-5 sm:w-5 bg-red-500 text-white text-xs rounded-full flex items-center justify-center animate-pulse font-medium">
                   {unreadCount > 9 ? '9+' : unreadCount}
                 </span>
               )}
             </button>
           </PopoverTrigger>
           <PopoverContent
-            className="w-96 max-w-[calc(100vw-2rem)] max-h-[70vh] p-0 shadow-xl border-2 sm:w-96"
+            className="w-80 sm:w-96 max-w-[calc(100vw-2rem)] max-h-[70vh] p-0 shadow-xl border-2"
             align="end"
             side="bottom"
             sideOffset={8}
           >
-            <div className="p-3 sm:p-4 border-b">
-              <div className="flex items-center justify-between">
-                <div className="flex items-center gap-2">
-                  <Bell className="h-4 w-4 sm:h-5 sm:w-5 text-primary" />
-                  <h3 className="font-semibold text-base sm:text-lg">Notifications</h3>
+            <div className="p-2 sm:p-3 md:p-4 border-b">
+              <div className="flex items-center justify-between gap-2">
+                <div className="flex items-center gap-2 min-w-0">
+                  <Bell className="h-3 w-3 sm:h-4 sm:w-4 md:h-5 md:w-5 text-primary flex-shrink-0" />
+                  <h3 className="font-semibold text-sm sm:text-base md:text-lg truncate">Notifications</h3>
                   {unreadCount > 0 && (
-                    <Badge variant="secondary" className="bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400 text-xs">
+                    <Badge variant="secondary" className="bg-red-100 text-red-800 dark:bg-red-900/20 dark:text-red-400 text-xs flex-shrink-0">
                       {unreadCount} new
                     </Badge>
                   )}
@@ -150,7 +150,7 @@ const AppHeader = ({ children }: AppHeaderProps) => {
                     variant="ghost"
                     size="sm"
                     onClick={markAllAsRead}
-                    className="text-xs h-7 px-2 hidden sm:flex"
+                    className="text-xs h-7 px-2 hidden sm:flex flex-shrink-0"
                   >
                     Mark all read
                   </Button>
@@ -170,19 +170,19 @@ const AppHeader = ({ children }: AppHeaderProps) => {
                     {notificationList.map((notification) => (
                       <div
                         key={notification.id}
-                        className={`relative p-3 rounded-lg transition-all duration-200 hover:bg-accent/50 ${
+                        className={`relative p-2 sm:p-3 rounded-lg transition-all duration-200 hover:bg-accent/50 ${
                           !notification.read
                             ? 'bg-primary/5 border-l-2 border-primary'
                             : 'bg-card'
                         }`}
                       >
-                        <div className="flex items-start gap-3">
+                        <div className="flex items-start gap-2 sm:gap-3">
                           <div className="flex-shrink-0 mt-0.5">
                             {getNotificationIcon(notification.type)}
                           </div>
                           <div className="flex-1 min-w-0">
                             <div className="flex items-start justify-between gap-2">
-                              <h4 className={`text-sm font-medium leading-tight ${
+                              <h4 className={`text-xs sm:text-sm font-medium leading-tight ${
                                 !notification.read ? 'text-foreground' : 'text-muted-foreground'
                               }`}>
                                 {notification.title}
@@ -194,17 +194,17 @@ const AppHeader = ({ children }: AppHeaderProps) => {
                             <p className="text-xs text-muted-foreground mt-1 leading-relaxed line-clamp-2">
                               {notification.message}
                             </p>
-                            <div className="flex items-center justify-between mt-2">
-                              <div className="flex items-center gap-2">
+                            <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between mt-2 gap-1 sm:gap-2">
+                              <div className="flex items-center gap-2 flex-wrap">
                                 <Badge
                                   variant="outline"
-                                  className={`text-xs px-1.5 py-0.5 ${getPriorityColor(notification.priority)}`}
+                                  className={`text-xs px-1.5 py-0.5 flex-shrink-0 ${getPriorityColor(notification.priority)}`}
                                 >
                                   {notification.priority}
                                 </Badge>
                                 <div className="flex items-center gap-1 text-xs text-muted-foreground">
-                                  <Clock className="h-3 w-3" />
-                                  {notification.time}
+                                  <Clock className="h-3 w-3 flex-shrink-0" />
+                                  <span className="truncate">{notification.time}</span>
                                 </div>
                               </div>
                               {!notification.read && (
@@ -212,7 +212,7 @@ const AppHeader = ({ children }: AppHeaderProps) => {
                                   variant="ghost"
                                   size="sm"
                                   onClick={() => markAsRead(notification.id)}
-                                  className="h-6 px-2 text-xs opacity-70 hover:opacity-100 hidden sm:flex"
+                                  className="h-6 px-2 text-xs opacity-70 hover:opacity-100 hidden sm:flex flex-shrink-0"
                                 >
                                   Mark read
                                 </Button>

@@ -35,9 +35,8 @@ const LienCreation = () => {
         <div className="flex-1 flex flex-col">
           <AppHeader>
             <SidebarTrigger />
-            <div>
-              <h1 className="text-xl font-semibold">Lien Creation</h1>
-              {/* Sub text removed */}
+            <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 min-w-0 flex-1">
+              <h1 className="text-base sm:text-lg md:text-xl font-semibold truncate">Lien Creation</h1>
             </div>
           </AppHeader>
 

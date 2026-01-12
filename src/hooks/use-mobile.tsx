@@ -1,6 +1,9 @@
 import * as React from "react";
 
-const MOBILE_BREAKPOINT = 768;
+// Breakpoint for mobile/tablet overlay mode - includes both mobile and tablets
+// Sidebar will cover full screen on screens < 1024px (mobile + tablets)
+// On desktop (≥ 1024px), sidebar will be collapsible inline
+const MOBILE_BREAKPOINT = 1024;
 
 export function useIsMobile() {
   const [isMobile, setIsMobile] = React.useState<boolean | undefined>(undefined);

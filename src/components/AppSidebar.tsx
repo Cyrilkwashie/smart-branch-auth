@@ -265,23 +265,23 @@ export function AppSidebar() {
 
   return (
         <Sidebar collapsible="icon" className="border-r">
-          <SidebarHeader className="border-b">
-            <div className="flex items-center gap-2 px-4 py-4">
-              <div className="h-8 w-8 rounded-lg flex items-center justify-center">
-                <BarChart3 className="h-5 w-5 text-sidebar-foreground" />
+          <SidebarHeader className="border-b p-2 sm:p-4">
+            <div className="flex items-center gap-2 px-2 sm:px-4 py-2 sm:py-4">
+              <div className="h-7 w-7 sm:h-8 sm:w-8 rounded-lg flex items-center justify-center flex-shrink-0">
+                <BarChart3 className="h-4 w-4 sm:h-5 sm:w-5 text-sidebar-foreground" />
               </div>
-              <div className="flex flex-col group-data-[collapsible=icon]:hidden">
-                <span className="font-bold text-lg text-sidebar-foreground">
+              <div className="flex flex-col group-data-[collapsible=icon]:hidden min-w-0">
+                <span className="font-bold text-base sm:text-lg text-sidebar-foreground truncate">
                   Smart Branch
                 </span>
               </div>
             </div>
           </SidebarHeader>
 
-          <SidebarContent className="px-2 py-4">
+          <SidebarContent className="px-1 sm:px-2 py-2 sm:py-4">
             <SidebarGroup>
               <SidebarGroupContent>
-                <SidebarMenu className="space-y-7">
+                <SidebarMenu className="space-y-5 sm:space-y-7">
                   {menuItems.map((item) => {
                     const itemKey = getKey(item.title);
                     return (
@@ -289,12 +289,12 @@ export function AppSidebar() {
                         {item.subItems ? (
                           <Collapsible className="group/collapsible" defaultOpen={isExpanded(itemKey)}>
                             <CollapsibleTrigger asChild>
-                              <SidebarMenuButton tooltip={item.title}>
-                                <item.icon className="h-4 w-4 text-sidebar-foreground" />
-                                <span className="group-data-[collapsible=icon]:hidden text-sidebar-foreground">
+                              <SidebarMenuButton tooltip={item.title} className="h-9 sm:h-10">
+                                <item.icon className="h-4 w-4 text-sidebar-foreground flex-shrink-0" />
+                                <span className="group-data-[collapsible=icon]:hidden text-sidebar-foreground text-sm sm:text-base truncate">
                                   {item.title}
                                 </span>
-                                <ChevronDown className="ml-auto h-4 w-4 transition-transform duration-200 group-data-[collapsible=icon]:hidden group-data-[state=open]/collapsible:rotate-180" />
+                                <ChevronDown className="ml-auto h-3 w-3 sm:h-4 sm:w-4 transition-transform duration-200 group-data-[collapsible=icon]:hidden group-data-[state=open]/collapsible:rotate-180 flex-shrink-0" />
                               </SidebarMenuButton>
                             </CollapsibleTrigger>
                             <CollapsibleContent>
@@ -306,9 +306,9 @@ export function AppSidebar() {
                                       {subItem.subItems ? (
                                         <Collapsible className="group/sub-collapsible" defaultOpen={isExpanded(subKey)}>
                                           <CollapsibleTrigger asChild>
-                                            <SidebarMenuSubButton tooltip={subItem.title}>
-                                              <span className="text-sidebar-foreground">{subItem.title}</span>
-                                              <ChevronDown className="ml-auto h-3 w-3 transition-transform duration-200 group-data-[state=open]/sub-collapsible:rotate-180" />
+                                            <SidebarMenuSubButton tooltip={subItem.title} className="h-8 sm:h-9">
+                                              <span className="text-sidebar-foreground text-sm truncate">{subItem.title}</span>
+                                              <ChevronDown className="ml-auto h-3 w-3 transition-transform duration-200 group-data-[state=open]/sub-collapsible:rotate-180 flex-shrink-0" />
                                             </SidebarMenuSubButton>
                                           </CollapsibleTrigger>
                                           <CollapsibleContent>
@@ -331,14 +331,14 @@ export function AppSidebar() {
                                                               const deepKey = getKey(item.title, subItem.title, nestedItem.title, deepItem.title);
                                                               return (
                                                                 <SidebarMenuSubItem key={deepItem.title} className="mb-1">
-                                                                  <SidebarMenuSubButton asChild tooltip={deepItem.title} className="h-9 pl-6">
+                                                                  <SidebarMenuSubButton asChild tooltip={deepItem.title} className="h-8 sm:h-9 pl-4 sm:pl-6">
                                                                     <button
                                                                       type="button"
                                                                       onClick={() => handleMenuClick(deepItem.url, deepKey)}
                                                                       className={
                                                                         selectedKey === deepKey
-                                                                          ? "font-semibold text-blue-600 border-l-4 border-blue-600 bg-blue-50 w-full text-left"
-                                                                          : "text-sidebar-foreground hover:text-blue-600 w-full text-left"
+                                                                          ? "font-semibold text-blue-600 border-l-4 border-blue-600 bg-blue-50 dark:bg-blue-900 dark:text-blue-200 w-full text-left text-sm truncate"
+                                                                          : "text-sidebar-foreground hover:text-blue-600 w-full text-left text-sm truncate"
                                                                       }
                                                                     >
                                                                       <span>{deepItem.title}</span>
@@ -351,14 +351,14 @@ export function AppSidebar() {
                                                         </CollapsibleContent>
                                                       </Collapsible>
                                                     ) : (
-                                                      <SidebarMenuSubButton asChild tooltip={nestedItem.title} className="h-9">
+                                                      <SidebarMenuSubButton asChild tooltip={nestedItem.title} className="h-8 sm:h-9">
                                                         <button
                                                           type="button"
                                                           onClick={() => handleMenuClick(nestedItem.url, nestedKey)}
                                                           className={
                                                             selectedKey === nestedKey
-                                                              ? "font-semibold text-blue-600 border-l-4 border-blue-600 bg-blue-50 w-full text-left"
-                                                              : "text-sidebar-foreground hover:text-blue-600 w-full text-left"
+                                                              ? "font-semibold text-blue-600 border-l-4 border-blue-600 bg-blue-50 dark:bg-blue-900 dark:text-blue-200 w-full text-left text-sm truncate"
+                                                              : "text-sidebar-foreground hover:text-blue-600 w-full text-left text-sm truncate"
                                                           }
                                                         >
                                                           <span>{nestedItem.title}</span>
@@ -372,14 +372,14 @@ export function AppSidebar() {
                                           </CollapsibleContent>
                                         </Collapsible>
                                       ) : (
-                                        <SidebarMenuSubButton asChild tooltip={subItem.title}>
+                                        <SidebarMenuSubButton asChild tooltip={subItem.title} className="h-8 sm:h-9">
                                           <button
                                             type="button"
                                             onClick={() => handleMenuClick(subItem.url, subKey)}
                                             className={
                                               selectedKey === subKey
-                                                ? "font-semibold text-blue-600 border-l-4 border-blue-600 bg-blue-50 w-full text-left"
-                                                : "text-sidebar-foreground hover:text-blue-600 w-full text-left"
+                                                ? "font-semibold text-blue-600 border-l-4 border-blue-600 bg-blue-50 dark:bg-blue-900 dark:text-blue-200 w-full text-left text-sm truncate"
+                                                : "text-sidebar-foreground hover:text-blue-600 w-full text-left text-sm truncate"
                                             }
                                           >
                                             <span>{subItem.title}</span>
@@ -393,18 +393,18 @@ export function AppSidebar() {
                             </CollapsibleContent>
                           </Collapsible>
                         ) : (
-                          <SidebarMenuButton asChild tooltip={item.title}>
+                          <SidebarMenuButton asChild tooltip={item.title} className="h-9 sm:h-10">
                             <button
                               type="button"
                               onClick={() => handleMenuClick(item.url, itemKey)}
                               className={
                                 selectedKey === itemKey
-                                  ? "font-semibold text-blue-600 border-l-4 border-blue-600 bg-blue-50 w-full text-left hover:bg-blue-100 hover:text-blue-700"
-                                  : "text-sidebar-foreground hover:text-blue-600 w-full text-left"
+                                  ? "font-semibold text-blue-600 border-l-4 border-blue-600 bg-blue-50 dark:bg-blue-900 dark:text-blue-200 w-full text-left hover:bg-blue-100 dark:hover:bg-blue-800 hover:text-blue-700 dark:hover:text-blue-100 text-sm sm:text-base"
+                                  : "text-sidebar-foreground hover:text-blue-600 w-full text-left text-sm sm:text-base"
                               }
                             >
-                              <item.icon className="h-4 w-4 text-sidebar-foreground" />
-                              <span className="group-data-[collapsible=icon]:hidden">{item.title}</span>
+                              <item.icon className="h-4 w-4 text-sidebar-foreground flex-shrink-0" />
+                              <span className="group-data-[collapsible=icon]:hidden truncate">{item.title}</span>
                             </button>
                           </SidebarMenuButton>
                         )}
@@ -416,15 +416,15 @@ export function AppSidebar() {
             </SidebarGroup>
           </SidebarContent>
 
-          <SidebarFooter className="border-t p-2">
+          <SidebarFooter className="border-t p-1 sm:p-2">
             <SidebarMenu>
               <SidebarMenuItem>
-                <SidebarMenuButton asChild tooltip="Logout">
+                <SidebarMenuButton asChild tooltip="Logout" className="h-8 sm:h-9">
                   <button
                     onClick={() => (window.location.href = "/")}
-                    className="hover:bg-sidebar-accent hover:text-sidebar-accent-foreground w-full text-sidebar-foreground"
+                    className="hover:bg-sidebar-accent hover:text-sidebar-accent-foreground w-full text-sidebar-foreground text-sm sm:text-base"
                   >
-                    <LogOut className="h-4 w-4 text-sidebar-foreground" />
+                    <LogOut className="h-4 w-4 text-sidebar-foreground flex-shrink-0" />
                     <span className="text-sidebar-foreground">Logout</span>
                   </button>
                 </SidebarMenuButton>

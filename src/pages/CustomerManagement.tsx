@@ -759,30 +759,31 @@ const CustomerManagement = () => {
 
   return (
     <SidebarProvider defaultOpen={true}>
-      <div className="min-h-screen flex w-full bg-gradient-to-br from-background via-background to-muted/20 overflow-x-hidden">
+      <div className="flex min-h-screen w-full bg-gradient-to-br from-background via-muted/20 to-background overflow-x-hidden">
         <AppSidebar />
-        <main className="flex-1 flex flex-col min-w-0">
+        <div className="flex-1 flex flex-col min-w-0">
           <AppHeader>
             <SidebarTrigger />
-            <div className="flex-1 min-w-0">
-              <h1 className="text-xl md:text-2xl font-bold truncate">Customer Management</h1>
-              <p className="text-xs md:text-sm text-muted-foreground truncate">
-                Manage customer interactions and opportunities
+            <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 min-w-0 flex-1">
+              <h1 className="text-base sm:text-lg md:text-xl font-semibold truncate">Customer Management</h1>
+              <p className="text-xs sm:text-sm text-muted-foreground truncate hidden sm:block">
+                Manage interactions and opportunities
               </p>
             </div>
           </AppHeader>
 
           {/* Content */}
-          <div className="flex-1 p-3 md:p-6 space-y-4 md:space-y-6 overflow-x-hidden">
-            {/* Search & Filter Section */}
-            <Card className="shadow-lg border-2">
-              <CardHeader className="pb-3 md:pb-4">
-                <CardTitle className="flex items-center gap-2 text-base md:text-lg lg:text-xl">
-                  <Search className="h-4 w-4 md:h-5 md:w-5 text-primary flex-shrink-0" />
-                  <span className="truncate">Customer Search & Filter</span>
-                </CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3">
+          <main className="flex-1 p-3 sm:p-4 md:p-6 overflow-auto overflow-x-hidden">
+            <div className="max-w-6xl mx-auto space-y-3 sm:space-y-4 md:space-y-6">
+              {/* Search & Filter Section */}
+              <Card className="shadow-lg border-0">
+                <CardHeader className="pb-3 sm:pb-4 md:pb-6 px-3 sm:px-4 md:px-6">
+                  <CardTitle className="flex items-center gap-2 text-sm sm:text-base md:text-lg">
+                    <Search className="h-4 w-4 sm:h-5 sm:w-5 text-primary flex-shrink-0" />
+                    <span className="truncate">Customer Search & Filter</span>
+                  </CardTitle>
+                </CardHeader>
+                <CardContent className="px-3 sm:px-4 md:px-6 pb-3 sm:pb-4 md:pb-6 space-y-3 sm:space-y-4">
                 {/* Search Input - Full width on mobile */}
                 <div className="w-full">
                   <Input
@@ -1225,8 +1226,9 @@ const CustomerManagement = () => {
                 )}
               </DialogContent>
             </Dialog>
-          </div>
-        </main>
+            </div>
+          </main>
+        </div>
       </div>
     </SidebarProvider>
   );
