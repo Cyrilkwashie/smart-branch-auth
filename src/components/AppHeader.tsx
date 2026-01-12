@@ -110,7 +110,7 @@ const AppHeader = ({ children }: AppHeaderProps) => {
   };
 
   return (
-    <header className="sticky top-0 z-10 flex h-16 sm:h-20 items-center justify-between gap-2 sm:gap-4 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-3 sm:px-6">
+    <header className="fixed top-0 left-0 right-0 z-50 w-full flex h-16 sm:h-20 items-center justify-between gap-2 sm:gap-4 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 px-3 sm:px-6">
       <div className="flex items-center gap-2 sm:gap-3 flex-1 min-w-0">
         {/* Sidebar expand button */}
         {children}

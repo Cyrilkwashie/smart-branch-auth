@@ -347,9 +347,9 @@ const CorporateAccountCreation = () => {
 
   return (
     <SidebarProvider defaultOpen={true}>
-      <div className="flex min-h-screen w-full bg-gradient-to-br from-background via-muted/20 to-background overflow-x-hidden">
+      <div className="flex min-h-screen w-full bg-gradient-to-br from-background via-muted/20 to-background overflow-x-hidden overflow-y-hidden">
         <AppSidebar />
-        <div className="flex-1 flex flex-col min-w-0">
+        <div className="flex-1 flex flex-col min-w-0 relative overflow-hidden pt-16 sm:pt-20">
           <AppHeader>
             <SidebarTrigger />
             <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 min-w-0 flex-1">
@@ -360,7 +360,7 @@ const CorporateAccountCreation = () => {
             </div>
           </AppHeader>
 
-          <main className="flex-1 p-3 sm:p-4 md:p-6 overflow-auto overflow-x-hidden">
+          <main className="flex-1 p-3 sm:p-4 md:p-6 overflow-y-auto overflow-x-hidden">
             <div className="max-w-6xl mx-auto space-y-3 sm:space-y-4 md:space-y-6 animate-fade-in">
               {/* Account Type Indicator */}
               <Card className="border-0 shadow-lg overflow-hidden">

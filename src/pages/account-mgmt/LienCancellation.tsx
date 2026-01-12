@@ -130,7 +130,7 @@ const LienCancellation = () => {
     <SidebarProvider defaultOpen={false}>
       <div className="flex min-h-screen w-full bg-gradient-to-br from-background via-muted/20 to-background overflow-x-hidden">
         <AppSidebar />
-        <div className="flex-1 flex flex-col min-w-0">
+        <div className="flex-1 flex flex-col relative overflow-hidden min-w-0 pt-16 sm:pt-20">
           <AppHeader>
             <SidebarTrigger />
             <div>

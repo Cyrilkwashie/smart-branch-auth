@@ -30,9 +30,9 @@ const LienCreation = () => {
 
   return (
     <SidebarProvider defaultOpen={true}>
-      <div className="flex min-h-screen w-full bg-gradient-to-br from-background via-muted/20 to-background">
+      <div className="flex min-h-screen w-full bg-gradient-to-br from-background via-muted/20 to-background overflow-x-hidden overflow-y-hidden">
         <AppSidebar />
-        <div className="flex-1 flex flex-col">
+        <div className="flex-1 flex flex-col relative overflow-hidden pt-16 sm:pt-20">
           <AppHeader>
             <SidebarTrigger />
             <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 min-w-0 flex-1">
@@ -40,7 +40,7 @@ const LienCreation = () => {
             </div>
           </AppHeader>
 
-          <main className="flex-1 p-6 overflow-auto">
+          <main className="flex-1 p-6 overflow-y-auto overflow-x-hidden">
             <div className="max-w-5xl mx-auto space-y-6 animate-fade-in">
               <Card className="border-0 shadow-lg">
                 <CardContent className="p-6">

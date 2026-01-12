@@ -73,9 +73,9 @@ const DormantAccountReactivation = () => {
 
   return (
     <SidebarProvider defaultOpen={true}>
-      <div className="flex min-h-screen w-full bg-gradient-to-br from-background via-muted/20 to-background">
+      <div className="flex min-h-screen w-full bg-gradient-to-br from-background via-muted/20 to-background overflow-x-hidden overflow-y-hidden">
         <AppSidebar />
-        <div className="flex-1 flex flex-col">
+        <div className="flex-1 flex flex-col relative overflow-hidden pt-16 sm:pt-20">
           <AppHeader>
             <SidebarTrigger />
             <div>
@@ -83,7 +83,7 @@ const DormantAccountReactivation = () => {
             </div>
           </AppHeader>
 
-          <main className="flex-1 p-2 sm:p-6 overflow-auto">
+          <main className="flex-1 p-2 sm:p-6 overflow-y-auto overflow-x-hidden">
             <div className="max-w-5xl mx-auto space-y-6 animate-fade-in px-2 sm:px-0">
               {/* Search Account */}
               <Card className="border-0 shadow-md px-2 sm:px-0">

@@ -79,9 +79,9 @@ const Dashboard = () => {
 
   return (
     <SidebarProvider defaultOpen={true}>
-      <div className="flex min-h-screen w-full bg-gradient-to-br from-background via-muted/20 to-background">
+      <div className="flex min-h-screen w-full bg-gradient-to-br from-background via-muted/20 to-background overflow-x-hidden overflow-y-hidden">
         <AppSidebar />
-        <div className="flex-1 flex flex-col">
+        <div className="flex-1 flex flex-col relative overflow-hidden pt-16 sm:pt-20">
           <AppHeader>
             <SidebarTrigger />
             <div className="hidden sm:flex flex-col">
@@ -91,7 +91,7 @@ const Dashboard = () => {
             </div>
           </AppHeader>
 
-          <main className="flex-1 p-3 sm:p-4 md:p-6 overflow-auto">
+          <main className="flex-1 p-3 sm:p-4 md:p-6 overflow-y-auto overflow-x-hidden">
             <div className="space-y-4 sm:space-y-6 animate-fade-in">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-4 sm:gap-6">
                 {/* RM Profile Card - Left Side */}
