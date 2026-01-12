@@ -45,7 +45,7 @@ const AccountMinWaiver: React.FC = () => {
             <SidebarTrigger />
 
             <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 min-w-0">
-              <span className="text-base sm:text-lg md:text-xl font-semibold truncate text-primary">
+              <span className="text-base sm:text-lg md:text-xl font-semibold truncate">
                 Account Minimum Balance Waiver
               </span>
             </div>

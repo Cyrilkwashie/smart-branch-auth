@@ -126,7 +126,7 @@ const UploadedBlacklistSetup: React.FC = () => {
 
   return (
     <SidebarProvider>
-      <div className="flex min-h-screen w-full">
+      <div className="flex min-h-screen w-full bg-gradient-to-br from-background via-muted/20 to-background overflow-x-hidden overflow-y-hidden">
         <AppSidebar />
         <div className="flex-1 flex flex-col min-w-0 relative overflow-hidden pt-16 sm:pt-20">
           <AppHeader>
@@ -134,7 +134,7 @@ const UploadedBlacklistSetup: React.FC = () => {
             <SidebarTrigger />
 
             <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 min-w-0 flex-1">
-              <span className="text-base sm:text-lg md:text-xl font-semibold truncate text-primary">
+              <span className="text-base sm:text-lg md:text-xl font-semibold truncate">
                 Uploaded Blacklist/Setup
               </span>
             </div>

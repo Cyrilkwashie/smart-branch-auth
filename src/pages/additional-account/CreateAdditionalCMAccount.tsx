@@ -51,9 +51,9 @@ const CreateAdditionalCMAccount = () => {
             <SidebarTrigger />
 
             <div className="flex flex-col sm:flex-row sm:items-center gap-1 sm:gap-2 min-w-0">
-              <a href="/individual-joint-account-creation" className="text-base sm:text-lg md:text-xl font-semibold truncate text-primary hover:underline">
+              <span className="text-base sm:text-lg md:text-xl font-semibold truncate">
                 Addtional Account
-              </a>
+              </span>
               <span className="text-xs sm:text-sm text-muted-foreground truncate">
                 Create Additional CM Account
               </span>
